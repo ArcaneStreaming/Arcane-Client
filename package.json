@@ -56,7 +56,8 @@
   "scripts": {
     "start": "webpack-dev-server -d --hot --inline --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack --progress --colors"
+    "build": "./node_modules/.bin/webpack --progress --colors",
+    "prod": "./node_modules/.bin/webpack --progress --colors --config webpack.prod.config.js"
   },
   "author": "",
   "license": "GNU GENERAL PUBLIC LICENSE V3"
