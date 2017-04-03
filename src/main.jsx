@@ -8,8 +8,6 @@ import injectTapEventPlugin from "react-tap-event-plugin"
 import configureStore from './store/configureStore'
 import routes from './routes/routes'
 
-//Needed for React Developer Tools
-window.React = React;
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
