@@ -2,7 +2,7 @@ import * as types from '../constants/ActionTypes';
 import cookie from 'react-cookie';
 
 
-const host = "http://localhost:8000/api/tracks/";
+const host = "/api/tracks/";
 
 export function getTracks() {
   return fetch(host).then(response => response.json()).then(json => ({
@@ -33,7 +33,7 @@ export function uploadTracks(files) {
   files.forEach((file) => {
      fd.append('uploadfiles', file, file.name)
   });
-  return fetch("http://localhost:8000/api/upload/", {
+  return fetch("/api/upload/", {
     method: "post",
     headers: {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",

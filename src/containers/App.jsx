@@ -50,13 +50,11 @@ export default class App extends Component {
   handleToggleLoop = () => { this.props.toggleLoop(ReactDOM.findDOMNode(this.refs.audio));}
 
   handlePlay = () => {
-    console.info("Handling Play request");
     this.props.play(ReactDOM.findDOMNode(this.refs.audio));
     this.setState({autoPlay: true});
   }
 
   handleNext = () => {
-    console.info("Handling Next request");
     const audio = ReactDOM.findDOMNode(this.refs.audio);
     if (!this.props.audio.isRepeating) { this.props.next(audio);}
   }
@@ -81,7 +79,6 @@ export default class App extends Component {
   pushToQueue = (songs) => {
     const audio = ReactDOM.findDOMNode(this.refs.audio);
     this.props.addToQueue(songs)
-    console.log('IN ADD TO QUEUE', songs)
   }
 
   render() {
@@ -95,7 +92,6 @@ export default class App extends Component {
       if (song == null) {
          song = this.props.audio.defaultSong;
       }
-      // console.info(song);
 
       let queue = this.props.audio.upcoming.map(clone);
       queue.unshift(currentlyPlaying);

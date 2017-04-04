@@ -6,7 +6,7 @@ import ArcaneDrawer from './ArcaneDrawer'
 import NowPlayingDrawer from './NowPlayingDrawer'
 import RightActions from './RightActions';
 
-const host = 'http://localhost:8000/api/search/'
+const host = '/api/search/'
 
 class Header extends Component  {
 
@@ -40,7 +40,6 @@ class Header extends Component  {
 
     handleSignOut = () => {
       const { dispatch } = this.props;
-      console.log("IN header SIGN OUT");
       window.sessionStorage.removeItem('token');
       dispatch(push('/'));
    }

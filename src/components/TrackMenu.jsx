@@ -14,7 +14,6 @@ export default class TrackMenu extends Component {
     // console.log('IN handleSelect', item, e);
     const {id, name} = this.props;
     const {actions} = this.state;
-    console.log(e, value)
     // console.log('Selected ',item.value,' on track ('+id+' : '+name+')');
     alert('Dispatch '+actions[value]+' for track: ('+id+' : '+name+')');
   }

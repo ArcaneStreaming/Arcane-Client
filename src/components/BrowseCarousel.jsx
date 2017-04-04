@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Slider from 'react-slick'
 import Tile from './Tile'
 
-const url = "http://localhost:8000/";
+const url = "/";
 
 const responsiveSettings = [
   {
@@ -67,7 +67,6 @@ export default class BrowseCarousel extends Component {
     super(props);
   }
   select = () => {
-     console.info("Selected!");
   }
   getProps(type, item) {
     let props = {};
@@ -87,7 +86,7 @@ export default class BrowseCarousel extends Component {
       }
     if (type === "genre")
       props = {
-        imgURL: item.icon ? item.icon : url+'static/images/base_icons/hip_hop.png',
+        imgURL: item.icon ? item.icon : url+'static/images/genres/hip_hop.jpg',
         title:item.name,
         subtitle: null,
         artists: item.artists

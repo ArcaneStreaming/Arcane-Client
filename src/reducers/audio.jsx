@@ -34,7 +34,7 @@
    defaultSong: {
      "id": -1,
      "album": "",
-     "url": "http://localhost:8000/static/default.mp3",
+     "url": "/static/default.mp3",
      "name": "Waiting...",
      "artist": "No song loaded",
      "favorite": false
@@ -133,7 +133,6 @@ function getAudioState(audio) {
      case ADD_TO_QUEUE:
         let upcoming = state.upcoming.map(clone);
         upcoming = upcoming.concat(action.songs);
-        console.info("IN audio ADD_TO_QUEUE", action.songs);
        return {...state, upcoming: upcoming };
      case START_GENRE_RADIO:
         return {...state, upcoming: action.songs}

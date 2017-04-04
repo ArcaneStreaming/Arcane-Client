@@ -88,7 +88,6 @@ class Settings extends Component {
      this.setState({[this.key]:val})
    }
    onToggle = (e, val) => {
-     console.log(e.target.value, val)
      this.setState({[e.target.id]:val})
   }
 
@@ -144,7 +143,6 @@ class Settings extends Component {
       }
       if(setting.type === 'toggle') {
         // const {[@setting.key]} = this.state
-        console.info(this.state[setting.key])
          return (
            <div key={section+'_settings_'+setting.key}>
              <Toggle

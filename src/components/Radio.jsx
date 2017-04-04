@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import Slider from 'react-slick'
 import clone from 'lodash/clone';
 import RadioTile from './RadioTile'
-const url = "http://localhost:8000/";
+const url = "/";
 
 // const settings = {
 //    dots: false,

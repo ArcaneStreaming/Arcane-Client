@@ -22,7 +22,7 @@ import * as types from '../constants/ActionTypes'
 
 export function retrieveSongs(shuffle) {
   // This could be written as a thunk or saga
-  return fetch("http://localhost:8000/api/tracks").then(response => response.json()).then(json => ({
+  return fetch("/api/tracks").then(response => response.json()).then(json => ({
             type: types.INITIALIZE,
             songs: shuffle ? shuffle(sortBy(json.results, ['id'])).slice(0,7) : json.results
          }));
@@ -80,10 +80,7 @@ export function setError(audio) {
 }
 
 export function updatePosition(audio, percent) {
-   console.info("Current time before update: ", audio.currentTime);
-   console.info("Current audio duration: ", audio.duration);
   audio.currentTime = percent * audio.duration;
-  console.info("Current time: ", audio.currentTime);
   return { type: types.UPDATE_POSITION, audio }
 }
 
@@ -109,12 +106,11 @@ export function setAutoPlay(value) {
 }
 
 export function addToQueue(songs) {
-   console.info("IN AUDIO ACTIONS ADD TO QUEUE", songs)
   return { type: types.ADD_TO_QUEUE, songs}
 }
 
 export function startGenreRadio(genreID) {
-   return fetch("http://localhost:8000/api/tracks/?genre=" + genreID)
+   return fetch("/api/tracks/?genre=" + genreID)
    .then(response => response.json())
    .then(json => ({
       type: types.START_GENRE_RADIO,

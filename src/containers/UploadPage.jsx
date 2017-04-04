@@ -23,7 +23,6 @@ class UploadPage extends Component {
   }
 
   addTrack(track) {
-    console.info(track);
     let newTrack = new Track();
     newTrack.url = track;
   }

@@ -5,7 +5,7 @@ import MediaQuery from 'react-responsive'
 import Waypoint from 'react-waypoint'
 import * as AlbumActions from '../actions/AlbumActions'
 
-const url = "http://localhost:8000/";
+const url = "/";
 
 export default class AlbumsCollection extends Component {
   constructor(props) {
