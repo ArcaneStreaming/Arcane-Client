@@ -40,7 +40,6 @@ class Header extends Component  {
 
     handleSignOut = () => {
       const { dispatch } = this.props;
-      console.log("IN header SIGN OUT");
       window.sessionStorage.removeItem('token');
       dispatch(push('/'));
    }
