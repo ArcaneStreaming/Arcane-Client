@@ -60,7 +60,6 @@ class ProfilePage extends Component {
    handleChange = (value) => { this.setState({ tabIndex: value});}
 
    renderMemberList(members) {
-      console.info("IN profilepage RENDERMEMBERLIST",members)
       if (members.length > 0) {
          let arr = members.map((member) => {
             if (member.avatar) {
@@ -87,7 +86,6 @@ class ProfilePage extends Component {
    }
 
    renderSummaries(summaries) {
-      console.info(summaries);
       let arr = summaries.map((summary) => (
          <p>{summary.summary}</p>
       ))

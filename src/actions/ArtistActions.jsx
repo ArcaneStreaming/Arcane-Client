@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-const host = "http://localhost:8000/api/artists";
+const host = "/api/artists";
 
 export function getArtists() {
   return fetch(host).then(response => response.json()).then(json => ({

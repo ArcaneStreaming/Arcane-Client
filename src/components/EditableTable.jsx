@@ -14,19 +14,16 @@ export default class EditableTable extends Component {
    onRequestClose = () => {this.setState({expanded: false})}
 
    handleEditSelect = (e) => {
-      console.info("IN editabletable handleEditSelect", e);
       this.setState({selected: this.props.items[e[0]], expanded: true});
    }
 
    render() {
       const { items } = this.props;
-      //console.log("IN editabletable RENDER");
       let listItems = items.map((item) => (
          <TableRow key={'edit_item_'+ items.indexOf(item)}>
             <TableRowColumn>{ item.name }</TableRowColumn>
          </TableRow>
       ))
-      //console.log("IN editabletable RENDER after listItems", listItems);
       return (
          <div>
             <Table

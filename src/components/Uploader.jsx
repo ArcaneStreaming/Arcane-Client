@@ -79,7 +79,7 @@ export default class Uploader extends Component  {
      files.forEach((file) => {
        fd.append('uploadfiles', file, file.name)
      });
-     fetch("http://localhost:8000/api/upload/", {
+     fetch("/api/upload/", {
          method: "post",
          headers: {
          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -89,14 +89,13 @@ export default class Uploader extends Component  {
          body:fd
          })
       .then(response => response.json())
-      .then(json => (console.log(json),
+      .then(json => (
          this.setState({ stepIndex: 3, snackOpen: true, stagedFiles: json.tracks })
       ));
   }
 
   handleUpload = () => {
     const {stagedFiles, confirmedFiles} = this.state;
-    console.log(stagedFiles)
     let uploadFiles = []
     if (confirmedFiles !== 'all') {
       for (let i=0; i < confirmedFiles.length; i++) {
@@ -106,7 +105,6 @@ export default class Uploader extends Component  {
     else {
       uploadFiles = stagedFiles;
     }
-    console.info("Sending files: ", uploadFiles);
     // const { dispatch } = this.props;
     this.uploadTracks(uploadFiles);
     this.setState({message: stagedFiles.length + ' file(s) uploaded' , stagedFiles: [], confirmedFiles:[], stepIndex:2});
@@ -175,7 +173,6 @@ export default class Uploader extends Component  {
             <h3 style={styles.dropzone.text}>
               {"Try dropping some files here, or click to select files to upload."}
             </h3>
-            {/* <iframe src="http://localhost:8000/api/list"></iframe> */}
           </Dropzone>
     );
   }

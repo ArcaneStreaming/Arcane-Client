@@ -115,7 +115,7 @@ class SignUpForm extends Component {
      fd.append('password', this.state.password)
      fd.append('first_name',this.state.first_name)
      fd.append('last_name', this.state.last_name)
-     fetch("http://localhost:8000/api/users/users/", {
+     fetch("/api/users/users/", {
          method: "post",
          headers: {
            "X-CSRFToken": csrftoken
@@ -135,7 +135,7 @@ class SignUpForm extends Component {
               content.append('enctype', 'multipart/form-data');
               content.append('username', this.state.username);
               content.append('password', this.state.password);
-              fetch("http://localhost:8000/api/auth/", {
+              fetch("/api/auth/", {
                 method: "post",
                 header: {
                   "X-CSRFToken": csrftoken

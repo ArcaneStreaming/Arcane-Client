@@ -6,7 +6,7 @@ import ArcaneDrawer from './ArcaneDrawer'
 import NowPlayingDrawer from './NowPlayingDrawer'
 import RightActions from './RightActions';
 
-const host = 'http://localhost:8000/api/search/'
+const host = '/api/search/'
 
 class Header extends Component  {
 

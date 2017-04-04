@@ -5,7 +5,7 @@ import Waypoint from 'react-waypoint'
 import * as TrackActions from '../actions/TrackActions'
 import theme from '../constants/material-ui-theme'
 import TrackMenu from './TrackMenu'
-const url = "http://localhost:8000/";
+const url = "/";
 
 export default class TracksCollection extends Component {
   constructor(props) {

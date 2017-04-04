@@ -74,7 +74,7 @@ class LoginModal extends Component {
    content.append('enctype', 'multipart/form-data');
    content.append('username', this.state.username);
    content.append('password', this.state.password);
-    fetch("http://localhost:8000/api/auth/", {
+    fetch("/api/auth/", {
       method: "POST",
       headers: {
          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",

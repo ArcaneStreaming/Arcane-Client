@@ -35,14 +35,12 @@ export default class EditDialog extends Component {
    }
 
    componentWillReceiveProps(props) {
-      console.info("IN will update", this.state);
       if (!this.state.item.name) {
          this.setState({item: props.item})
       }
    }
 
    handleChange = (e, key) => {
-      console.info("IN editdialog HANDLECHANGE", )
       let item = this.state.item;
       item[key] = e.target.value;
       this.setState({item: item});
@@ -51,7 +49,6 @@ export default class EditDialog extends Component {
    checkSpecialChars = (string) => {
      let format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
      let test = format.test(string)
-     // console.log(test)
      return !test
    }
 
@@ -61,7 +58,6 @@ export default class EditDialog extends Component {
      let errKey = e.target.id+'_errors'
      let obj = this.state.item;
      obj[key] = item;
-     console.log(obj)
 
      if (item.length < 1) { this.setState({[errKey]:['required field']})}
      else if (key !== "email" && item.length > 0 && !this.checkSpecialChars(item)) {
@@ -71,8 +67,6 @@ export default class EditDialog extends Component {
    }
 
    renderTrackForm = () => {
-      //TODO TYLER HELP!!!!
-      console.info(this.state.item);
       if (this.state.item && this.state.item.album && this.state.item.artist)
       return (
          <div style={{display: 'inline-block', justifyContent:'space-between'}}>
@@ -133,7 +127,6 @@ export default class EditDialog extends Component {
    }
 
    render() {
-      // console.info("IN editdialog RENDER", this.props);
       const { item } = this.props;
 
       return (

@@ -7,7 +7,7 @@ import theme from '../constants/material-ui-theme'
 import MediaQuery from 'react-responsive'
 import LoginModal from '../components/LoginModal'
 
-const host = "http://localhost:8000/"
+const host = "/"
 
 const styles = {
    img: {

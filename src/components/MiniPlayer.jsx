@@ -5,7 +5,7 @@ import { DefaultControl, IconChangeControl, ColoredControl } from './PlaybackCon
 import { fade } from 'material-ui/utils/colorManipulator'
 import theme from '../constants/material-ui-theme'
 
-const url = "http://localhost:8000/";
+const url = "/";
 
 const style ={
   container: {

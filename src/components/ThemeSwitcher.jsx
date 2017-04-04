@@ -84,7 +84,6 @@ class ThemeSwitcher extends Component {
     };
   handleClose = () => {
     const { dispatch } = this.props;
-    console.log("in handleClose")
     let theme = {
       spacing: spacing,
       fontFamily: 'Aldrich, Open Sans, sans-serif',

@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-const host = "http://localhost:8000/api";
+const host = "/api";
 
 export function getArtistProfile(id) {
    return fetch(host + "/artists/?id=" + id)
