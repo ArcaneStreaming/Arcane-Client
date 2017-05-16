@@ -13,8 +13,8 @@ module.exports = {
     vendors: [
       "lodash",
       "react",
-      "react-color",
       "react-cookie",
+      "react-color",
       "react-dom",
       "react-dropzone",
       "react-redux",

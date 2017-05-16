@@ -73,7 +73,6 @@ export default class Uploader extends Component  {
   handleSnackClose = () => { this.setState({ snackOpen: false }); }
 
   uploadTracks(files) {
-     let csrftoken = cookie.load('csrftoken');
      let fd = new FormData();
      fd.append('enctype', 'multipart/form-data')
      files.forEach((file) => {

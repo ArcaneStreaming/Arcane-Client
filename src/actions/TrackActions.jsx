@@ -27,7 +27,7 @@ export function getArtistTracks(artistID) {
          };
 
 export function uploadTracks(files) {
-  let csrftoken = cookie.load('csrftoken');
+
   let fd = new FormData();
   fd.append('enctype', 'multipart/form-data')
   files.forEach((file) => {
