@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import EditDialog from '../components/EditDialog'
+import { TextField } from 'material-ui';
 
 export default class EditableTable extends Component {
    constructor(props) {
@@ -11,40 +11,43 @@ export default class EditableTable extends Component {
       }
    }
 
-   onRequestClose = () => {this.setState({expanded: false})}
-
-   handleEditSelect = (e) => {
-      this.setState({selected: this.props.items[e[0]], expanded: true});
-   }
-
    render() {
       const { items } = this.props;
-      let listItems = items.map((item) => (
-         <TableRow key={'edit_item_'+ items.indexOf(item)}>
-            <TableRowColumn>{ item.name }</TableRowColumn>
+      let listItems = items.map((item, index) => (
+         <TableRow key={'edit_item_'+ index}>
+            <TableRowColumn style={{width: '1em'}}>
+               {index + 1}
+            </TableRowColumn>
+            <TableRowColumn >
+               <TextField
+                  key={index}
+                  id={"text_column_" + index}
+                  value={item.name}
+                  onChange={this.props.onValueChange}
+                  fullWidth
+                  />
+            </TableRowColumn>
          </TableRow>
       ))
       return (
          <div>
             <Table
-             onRowSelection={this.handleEditSelect}
+               selectable={false}
             >
-                <TableHeader enableSelectAll>
+                <TableHeader
+                   adjustForCheckbox={false}
+                   displaySelectAll={false}
+                   >
                    <TableRow>
-                     <TableHeaderColumn>{"Name"}</TableHeaderColumn>
+                      <TableHeaderColumn style={{width: '1em'}}>{"Index"}</TableHeaderColumn>
+                     <TableHeaderColumn>{"Track Title"}</TableHeaderColumn>
                    </TableRow>
                 </TableHeader>
                 <TableBody
-                   deselectOnClickaway={true}
                    stripedRows
+                   displayRowCheckbox={false}
                 >{listItems}</TableBody>
             </Table>
-            <EditDialog
-              {...this.props}
-              type={"track"}
-              item={this.state.selected}
-              onRequestClose={this.handleClose}
-              open={this.state.expanded} />
          </div>
       )
    }

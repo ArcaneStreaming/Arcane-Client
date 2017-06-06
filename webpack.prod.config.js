@@ -14,16 +14,24 @@ module.exports = {
       "lodash",
       "react",
       "react-cookie",
-      "react-color",
       "react-dom",
       "react-dropzone",
-      "react-redux",
       "react-responsive",
-      "react-router-redux",
+      "react-waypoint",
+   ],
+   style: [
+      "material-ui",
       "react-slick",
       "react-tap-event-plugin",
-      "react-waypoint",
-      "material-ui",
+      "react-color"
+   ],
+   store: [
+      "react-redux",
+      "react-router-redux",
+      "redux",
+      "redux-logger",
+      "redux-promise",
+      "redux-thunk"
    ]
   },
 

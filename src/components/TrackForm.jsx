@@ -24,7 +24,7 @@ const styles = {
 }
 
 
-export default class EditDialog extends Component {
+export default class TrackForm extends Component {
    constructor(props) {
       super(props);
 

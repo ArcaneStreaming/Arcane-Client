@@ -62,7 +62,7 @@ class SignUpForm extends Component {
     let item = e.target.value;
     let key = e.target.id;
     let errKey = e.target.id+'_errors'
-    console.log(key)
+    //console.log(key)
 
     if (item.length < 1) { this.setState({[errKey]:['required field']})}
     else if (key !== "email" && item.length > 0 && !this.checkSpecialChars(item)) {
@@ -81,7 +81,7 @@ class SignUpForm extends Component {
 
   confirmPassword = (e) => {
     let item = e.target.value;
-    console.log(item, this.state.password)
+    //console.log(item, this.state.password)
     if(item.length < 1)
       this.setState({confirm_errors: ['required field']})
     else if(item !== this.state.password)
@@ -199,7 +199,7 @@ class SignUpForm extends Component {
             errorText={first_name_errors.length > 0 ? first_name_errors.join(', '): null}
             floatingLabelText={'First Name'}
             fullWidth
-            hintText={'Johnny'}
+            hintText={'Jon'}
             id={'first_name'}
             name={'first_name'}
             onChange={this.checkField}
@@ -211,7 +211,7 @@ class SignUpForm extends Component {
             errorText={last_name_errors.length >0 ? last_name_errors.join(', '): null}
             floatingLabelText={'Last Name'}
             fullWidth
-            hintText={'Lingo'}
+            hintText={'Doe'}
             id={'last_name'}
             name={'last_name'}
             onChange={this.checkField}

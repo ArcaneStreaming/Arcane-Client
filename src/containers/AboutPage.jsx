@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Paper, Divider, Subheader} from 'material-ui'
 import ThemeSwitcher from '../components/ThemeSwitcher'
+import AlbumForm from '../components/AlbumForm'
 
 export default class AboutPage extends Component {
    constructor(props) {
@@ -14,6 +15,7 @@ export default class AboutPage extends Component {
       return (
         <div style={{height:'calc(100vh - 64px)', width:'100vw', display:'flex', flexDirection:'column', justifyContent:'space-around'}}>
           {/* <ThemeSwitcher {...this.props}/> */}
+
           <Paper style={{marginLeft:'auto', marginRight:'auto', padding:20, maxWidth:'90vw', maxHeight:'80vh', overflowY:'auto'}}>
             <Divider />
             <h1 id="arcane">Arcane</h1>
