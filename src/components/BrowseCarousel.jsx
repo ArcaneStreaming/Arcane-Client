@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
 import Tile from './Tile'
-
-const url = "/";
+import { host } from '../constants/host'
 
 const responsiveSettings = [
   {
@@ -72,21 +71,21 @@ export default class BrowseCarousel extends Component {
     let props = {};
     if (type === "album")
       props = {
-        imgURL: item.artwork ? item.artwork : url+'static/images/default-artwork.png',
+        imgURL: item.artwork ? item.artwork : host + 'static/images/default-artwork.png',
         title:item.name,
         subtitle: item.artist,
         tracks: item.tracks
       };
     if (type === "artist")
       props = {
-        imgURL: item.cover_photo ? item.cover_photo : url+'static/images/default-avatar.png',
+        imgURL: item.cover_photo ? item.cover_photo : host + 'static/images/default-avatar.png',
         title:item.name,
         subtitle: item.genre,
         albums: item.albums
       }
     if (type === "genre")
       props = {
-        imgURL: item.icon ? item.icon : url+'static/images/genres/hip_hop.jpg',
+        imgURL: item.icon ? item.icon : host + 'static/images/genres/hip_hop.jpg',
         title:item.name,
         subtitle: null,
         artists: item.artists

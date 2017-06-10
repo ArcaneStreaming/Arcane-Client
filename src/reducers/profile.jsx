@@ -1,6 +1,6 @@
 import {
    GET_ARTIST_PROFILE, GET_ARTIST_MEMBERS, GET_ARTIST_SUMMARIES,
-   GET_CURRENT_USER,
+   GET_CURRENT_USER, TOGGLE_USER_VIEW
 } from '../constants/ActionTypes';
 
 const initialState = {
@@ -24,6 +24,11 @@ export default function profile(state = initialState, action) {
          else {
             return {...state, currentUser: {}}
          }
+      case TOGGLE_USER_VIEW:
+         if (action.isArtistView)
+            return {...state, currentUser: {...state.currentUser, artist: 1}}
+         else
+            return {...state, currentUser: {...state.currentUser, artist: null}}
       default:
          return state;
    }

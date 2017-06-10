@@ -5,22 +5,22 @@ const BundleTracker = require('webpack-bundle-tracker')
 const ip = 'localhost';
 
 module.exports = {
-  context: __dirname,
+   context: __dirname,
 
-  entry: {
-    App: [
-      'webpack-dev-server/client?http://' + ip + ':3000',
-      'webpack/hot/only-dev-server',
-      "./src/main.jsx",
-   ],
-    vendors: [
-      "react",
-      "react-dom",
-      "react-redux",
-      "react-tap-event-plugin",
-      "material-ui",
-   ]
-  },
+   entry: {
+      App: [
+         'webpack-dev-server/client?http://' + ip + ':3000',
+         'webpack/hot/only-dev-server',
+         "./src/main.jsx",
+      ],
+      vendors: [
+         "react",
+         "react-dom",
+         "react-dropzone",
+         "react-redux",
+         "material-ui",
+      ]
+   },
 
   plugins: [
      new webpack.HotModuleReplacementPlugin(),

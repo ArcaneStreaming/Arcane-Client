@@ -35,8 +35,8 @@ const styles = {
 };
 
 const profileSettings = [
-  {'key': 'realname','label':'Name', 'type':'text', 'defaultValue': 'Tyler Scott', 'onChange':''},
-  {'key': 'username','label':'Email', 'type':'email', 'defaultValue': 'tscott8@arcane.fm', 'onChange':''},
+  {'key': 'realname','label':'Name', 'type':'text', 'defaultValue': 'John Doe', 'onChange':''},
+  {'key': 'username','label':'Email', 'type':'email', 'defaultValue': 'jdoe@example.com', 'onChange':''},
   {'key': 'password','label':'Password', 'type':'password', 'defaultValue': 'password123', 'onChange':''},
   {'key': 'location','label':'Region', 'type':'select', 'defaultValue': 'US', 'options':['US', 'CAN', 'CHI', 'JAP', 'RUS', 'ENG', 'FRA', 'MEX'],'onChange':''},
   {'key': 'privacy_level','label':'Privay Level', 'type':'select', 'defaultValue': '0 - Everyone', 'options':['0 - Everyone', '1 - Followers', '2 - Freinds Only', '3 - Antisocial'],'onChange':''},
@@ -169,7 +169,7 @@ class Settings extends Component {
          <Paper style={styles.paper}>
            <div style={styles.profileSection}>
              <div style={styles.profileSection.avatarSection}>
-               <img style={{borderRadius:'50%',  width: '100%', height: 'auto'}} src={"https://scontent.xx.fbcdn.net/v/t31.0-1/13418663_10206730877055291_8028342317280224995_o.jpg?oh=2012ec2865e169040bcb3f15f2c31387&oe=59308486"}/>
+               <img style={{borderRadius:'50%',  width: '100%', height: 'auto'}} src={"https://www.explainxkcd.com/wiki/images/6/6d/BlackHat_head.png"}/>
              </div>
              <div style={styles.profileSection.inputSection}>
                {this.renderSettings(profileSettings,'profile')}

@@ -6,8 +6,7 @@ import { redA700, fullWhite } from 'material-ui/styles/colors'
 import theme from '../constants/material-ui-theme'
 import MediaQuery from 'react-responsive'
 import LoginModal from '../components/LoginModal'
-
-const host = "/"
+import { host } from '../constants/host'
 
 const styles = {
    img: {

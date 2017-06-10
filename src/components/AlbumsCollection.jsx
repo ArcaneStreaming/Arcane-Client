@@ -4,8 +4,7 @@ import Tile from './Tile'
 import MediaQuery from 'react-responsive'
 import Waypoint from 'react-waypoint'
 import * as AlbumActions from '../actions/AlbumActions'
-
-const url = "/";
+import { host } from '../constants/host'
 
 export default class AlbumsCollection extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ export default class AlbumsCollection extends Component {
             {...this.props}
             cols={cols}
             id={tile.id}
-            imgURL={tile.artwork ? tile.artwork : url+'static/images/default-artwork.png'}
+            imgURL={tile.artwork ? tile.artwork : host +'static/images/default-artwork.png'}
             subtitle={tile.artist}
             title={tile.name}
             tracks={tile.tracks}

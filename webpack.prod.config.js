@@ -1,5 +1,6 @@
 const path = require("path")
 const webpack = require('webpack')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const ip = 'localhost';
 
@@ -11,9 +12,7 @@ module.exports = {
       "./src/main.jsx",
    ],
     vendors: [
-      "lodash",
       "react",
-      "react-cookie",
       "react-dom",
       "react-dropzone",
       "react-responsive",
@@ -39,6 +38,28 @@ module.exports = {
      new webpack.HotModuleReplacementPlugin(),
      new webpack.NoEmitOnErrorsPlugin(),
      new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'vendors.js'}),
+     new webpack.optimize.UglifyJsPlugin({
+        mangle: true,
+        compress: {
+           warnings: false,
+           pure_getters: true,
+           unsafe: true,
+           unsafe_comps: true,
+           screw_ie8: true
+        },
+        output: {
+           comments: false,
+        },
+        exclude: [/\.min\.js$/gi]
+     }),
+     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
+     new CompressionPlugin({
+        asset: "[path].gz[query]",
+        algorithm: 'gzip',
+        test: /\.js$|\.css$\.html$/,
+        threashold: 10240,
+        minRatio: 0
+     }),
  ],
 
   output: {
@@ -55,6 +76,6 @@ module.exports = {
      resolve: {
        extensions: ['.js', '.jsx']
    },
-   devtool:  "#eval-source-map",
+   devtool:  "cheap-module-source-map, #eval-source-map",
 
 }

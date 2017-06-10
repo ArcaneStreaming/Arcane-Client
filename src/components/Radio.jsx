@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import Slider from 'react-slick'
 import clone from 'lodash/clone';
 import RadioTile from './RadioTile'
-const url = "/";
+import { host } from '../constants/host'
 
 // const settings = {
 //    dots: false,
@@ -109,7 +109,7 @@ export default class Radio extends Component  {
   //            {...this.props}
   //            className={this.getPulse(tile)}
   //            id={tile ? tile.id : -1}
-  //            imgURL={tile && tile.album.artwork ? tile.album.artwork : url+'static/images/default-artwork.png'}
+  //            imgURL={tile && tile.album.artwork ? tile.album.artwork : host+'static/images/default-artwork.png'}
   //            subtitle={tile ? tile.artist.name : 'No Artist'}
   //            title={ tile ? tile.name : -1}
   //          />
@@ -140,7 +140,7 @@ export default class Radio extends Component  {
             className={className ? className : null}
             // disliked
             id={item ? item.id : -1}
-            imgURL={item && item.album.artwork ? item.album.artwork : url+'static/images/default-artwork.png'}
+            imgURL={item && item.album.artwork ? item.album.artwork : host + 'static/images/default-artwork.png'}
             liked
             subtitle={item ? item.artist.name : 'No Artist'}
             title={item ? item.name : -1}

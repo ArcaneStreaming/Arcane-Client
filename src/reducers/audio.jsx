@@ -11,11 +11,8 @@
    START_GENRE_RADIO
  } from '../constants/ActionTypes'
 
- // import find from 'lodash/find';
- // import findIndex from 'lodash/findIndex';
- // import sortBy from 'lodash/sortBy';
- // import indexOf from 'lodash/indexOf';
  import clone from 'lodash/clone';
+ import { host } from '../constants/host';
 
  const initialState = {
    isPlaying: false,
@@ -34,7 +31,7 @@
    defaultSong: {
      "id": -1,
      "album": "",
-     "url": "/static/default.mp3",
+     "url": host + "static/default.mp3",
      "name": "Waiting...",
      "artist": "No song loaded",
      "favorite": false

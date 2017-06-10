@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {GridTile, GridList} from 'material-ui'
 import Tile from './Tile'
 import MediaQuery from 'react-responsive'
-
-const url = "/";
+import { host } from '../constants/host'
 
 export default class GenresCollection extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ export default class GenresCollection extends Component {
             artists={tile.artists}
             cols={cols}
             id={tile.id}
-            imgURL={tile.icon ? tile.icon : url+'static/images/genres/hip_hop.jpg'}
+            imgURL={tile.icon ? tile.icon : host + 'static/images/genres/hip_hop.jpg'}
             title={tile.name}
             type={'genre'}
           />

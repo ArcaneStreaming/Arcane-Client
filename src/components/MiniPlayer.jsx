@@ -4,8 +4,7 @@ import {Card, CardMedia, CardTitle} from 'material-ui/Card'
 import { DefaultControl, IconChangeControl, ColoredControl } from './PlaybackControls'
 import { fade } from 'material-ui/utils/colorManipulator'
 import theme from '../constants/material-ui-theme'
-
-const url = "/";
+import { host } from '../constants/host'
 
 const style ={
   container: {
@@ -167,7 +166,7 @@ export default class MiniPlayer extends Component {
             hoverColor={fade(theme.palette.accent1Color, 0.3)}
             leftAvatar={
               <Avatar
-                src={track && track.album.artwork ? track.album.artwork : url+'static/images/default-artwork.png'}
+                src={track && track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
                 style={style.queueArt}
               />}
             primaryText={track ? track.name : "No Name"}
@@ -205,7 +204,7 @@ export default class MiniPlayer extends Component {
       <Card >
         <CardMedia overlay={cur_song ? this.renderOverlay() : null}>
           <img
-            src={cur_song ? cur_song.album.artwork : url+'static/images/default-artwork.png'}
+            src={cur_song ? cur_song.album.artwork : host + 'static/images/default-artwork.png'}
             style={style.playerArt}
           />
         </CardMedia>

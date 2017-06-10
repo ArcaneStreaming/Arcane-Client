@@ -38,3 +38,10 @@ export function getCurrentUser(id) {
       user: json
    }))
 }
+
+export function toggleUserView(isArtistView) {
+   return {
+      type: types.TOGGLE_USER_VIEW,
+      isArtistView: isArtistView
+   }
+}

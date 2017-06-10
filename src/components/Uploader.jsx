@@ -103,6 +103,7 @@ export default class Uploader extends Component  {
       let fd = new FormData();
       fd.append('enctype', 'multipart/form-data');
       files.forEach((file) => {
+         console.info(file)
          fd.append('uploadfiles', file, file.name);
       });
       filenames.forEach((filename) => {
@@ -117,7 +118,7 @@ export default class Uploader extends Component  {
          method: "post",
          headers: {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "X-CSRFToken": token
+            "X-CSRFToken": csrftoken
          },
          credentials: "same-origin",
          body:fd

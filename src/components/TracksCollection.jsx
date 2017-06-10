@@ -5,7 +5,7 @@ import Waypoint from 'react-waypoint'
 import * as TrackActions from '../actions/TrackActions'
 import theme from '../constants/material-ui-theme'
 import TrackMenu from './TrackMenu'
-const url = "/";
+import { host } from '../constants/host'
 
 export default class TracksCollection extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ export default class TracksCollection extends Component {
     if (!noArt && track) {
       return (
         <Avatar
-          src={track.album.artwork ? track.album.artwork : url+'static/images/default-artwork.png'}
+          src={track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
           style={{borderRadius:1}}
         />
      );

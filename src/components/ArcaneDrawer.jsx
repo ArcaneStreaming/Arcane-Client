@@ -15,7 +15,7 @@ const ArcaneDrawer = (props) => {
       containerStyle={drawerStyle}
       docked={false}
     >
-      <ArcaneMenu onClick={props.onClose} />
+      <ArcaneMenu onClick={props.onClose} currentUser={props.currentUser} />
     </Drawer>
     );
 }
