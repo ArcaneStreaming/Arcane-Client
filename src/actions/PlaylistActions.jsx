@@ -29,21 +29,21 @@ export function createNewPlaylist(name, userID) {
    return fetch(host + "/users/playlists/", {
       method: "POST",
       headers: {
-         "Content-Type": "application/json"
+         "Content-Type": "application/json",
+         "Accept": "application/json"
       },
       credentials: "same-origin",
       body: JSON.stringify(postData)
    }).then(response => response.json()).then((json) => ({
       type: types.CREATE_NEW_PLAYLIST,
-      payload: postData
+      payload: json
    }));
 }
 
 export function deletePlaylist(playlist) {
-   console.info('playlist in DELETE_PLAYLIST', playlist);
-   return fetch(host + "/users/playlists/" + playlist.id, {
+   return fetch(host + "/users/playlists/" + playlist.id + '/', {
       method: "DELETE"
-   }).then(response => response.ok()).then((json) => ({
+   }).then(response => response.ok).then((json) => ({
       type: types.DELETE_PLAYLIST,
       payload: playlist
    }));
