@@ -133,7 +133,7 @@ class LoginModal extends Component {
                key={'login_form_join'}
                label="Join Us"
                onTouchTap={this.handleJoin}
-               // disabled={true}
+               disabled={true}
                />
          </div>
       );

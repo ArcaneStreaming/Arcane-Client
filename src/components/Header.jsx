@@ -89,7 +89,7 @@ class Header extends Component  {
                iconStyleRight={{maxWidth:'66vw'}}
                onLeftIconButtonTouchTap={this.handleLeftToggle}
                primary
-               title={"Arcane" + this.props.currentPage}
+               title={"Arcane"}
                titleStyle={{maxWidth:'33vw'}}
                />
          </div>

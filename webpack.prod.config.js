@@ -64,7 +64,7 @@ module.exports = {
 
   output: {
     path: path.resolve("./bundles/"),
-    filename: "[name]-prod.js",
+    filename: "[name].js",
   },
   module: {
     loaders: [

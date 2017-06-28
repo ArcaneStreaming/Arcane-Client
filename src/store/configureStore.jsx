@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 import * as types from '../constants/ActionTypes'
 const debugware = [];
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = compose;
 
 export default function configureStore(initialState) {
 
