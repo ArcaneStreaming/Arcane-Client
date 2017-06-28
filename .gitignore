@@ -1,3 +1,4 @@
 node_modules/
 bundles/
 webpack-stats-local.json
+webpack-stats-prod-local.json
