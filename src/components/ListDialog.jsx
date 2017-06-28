@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Dialog, FloatingActionButton, FontIcon } from 'material-ui'
 import{ CardTitle } from 'material-ui/Card'
 import TracksCollection  from './TracksCollection'
@@ -38,83 +38,100 @@ const styles = {
 }
 
 export default class ListDialog extends Component {
-   constructor(props) {
-      super(props);
-   }
-   shouldComponentUpdate () {
-        return true;
-    }
 
-   renderDialogTitle(title, subtitle) {
-     return (
-       <CardTitle
-         style={styles.cardTitleRoot}
-         subtitle={subtitle}
-         subtitleStyle={styles.subtitle}
-         title={title}
-         titleStyle={styles.title}
-       >
-         <FloatingActionButton style={styles.fab}>
-           <FontIcon className="material-icons">{"play_arrow"}</FontIcon>
-         </FloatingActionButton>
-       </CardTitle>
-     );
-   }
-   renderContent() {
-     const {type, tracks, albums, artists} = this.props;
-     if (type === "album") {
-       return (
-         <TracksCollection
-           {...this.props}
-           noArt
-           tracks={tracks.albumTracks}
-         />
-       );
-     }
-    if (type === "artist") {
-      return (
-        <AlbumsCollection
-          {...this.props}
-          albums={albums.artistAlbums}
-          cols={4}
-        />
-      );
-    }
-    if (type === "genre") {
-      return (
-        <ArtistsCollection
-          {...this.props}
-          artists={artists.genreArtists}
-          cols={4}
-        />
-      );
-    }
-   }
-   render() {
-     const {tracks, albums, genres, title, subtitle, imgURL} = this.props;
-     if(tracks || albums || genres) {
-      return (
-        <Dialog
-          {...this.props}
-          autoDetectWindowHeight
-          autoScrollBodyContent
-          bodyStyle={{padding:0,margin:0, width:'100%', overflowX:'hidden'}}
-          title={this.renderDialogTitle(title, subtitle)}
-          titleStyle={{padding:0,background: 'linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('+ imgURL + ') ',
-             backgroundSize: 'cover',
-             backgroundPosition:'center center',
-             overflow:'hidden',
-             textShadow:'1px 1px black'
-             //  height:250,
-          }}
-          //  actions={<FlatButton
-          //  label="Cancel"
-          //  primary={true}
-          //  onTouchTap={onClose}/>}
-        > <div> {this.renderContent()}</div>
+	handlePlayClick = () => {
+		const { dispatch, tracks } = this.props;
+		switch (type) {
+			case "album":
+				dispatch(AudioActions.playAlbumTracks(tracks.albumTracks));
+				break;
+			case "artist":
+				dispatch(AudioActions.startArtistRadio(this.props.id));
+				break;
+			case "genre":
+				dispatch(AudioActions.startGenreRadio(this.props.id));
+				break;
+		}
+	}
 
-        </Dialog>
-      );
-   }
- }
+	renderDialogTitle(title, subtitle) {
+		return (
+			<CardTitle
+				style={styles.cardTitleRoot}
+				subtitle={subtitle}
+				subtitleStyle={styles.subtitle}
+				title={title}
+				titleStyle={styles.title}
+				>
+				<FloatingActionButton style={styles.fab} onClick={this.handlePlayClick}>
+					<FontIcon className="material-icons">{"play_arrow"}</FontIcon>
+				</FloatingActionButton>
+			</CardTitle>
+		);
+	}
+
+	renderContent() {
+		const {type, tracks, albums, artists} = this.props;
+		if (type === "album") {
+			return (
+				<TracksCollection
+					{...this.props}
+					noArt
+					tracks={tracks.albumTracks}
+					/>
+			);
+		}
+
+		if (type === "artist") {
+			return (
+				<AlbumsCollection
+					{...this.props}
+					albums={albums.artistAlbums}
+					cols={4}
+					/>
+			);
+		}
+		if (type === "genre") {
+			return (
+				<ArtistsCollection
+					{...this.props}
+					artists={artists.genreArtists}
+					cols={4}
+					/>
+			);
+		}
+	}
+
+	render() {
+		const {tracks, albums, genres, title, subtitle, imgURL} = this.props;
+		if(tracks || albums || genres) {
+			return (
+				<Dialog
+					{...this.props}
+					autoDetectWindowHeight
+					autoScrollBodyContent
+					bodyStyle={{padding:0,margin:0, width:'100%', overflowX:'hidden'}}
+					title={this.renderDialogTitle(title, subtitle)}
+					titleStyle={{
+						padding:0,background: 'linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('+ imgURL + ') ',
+						backgroundSize: 'cover',
+						backgroundPosition:'center center',
+						overflow:'hidden',
+						textShadow:'1px 1px black'
+						//  height:250,
+					}}
+					//  actions={<FlatButton
+					//  label="Cancel"
+					//  primary={true}
+					//  onTouchTap={onClose}/>}
+					>
+					<div>{this.renderContent()}</div>
+				</Dialog>
+			);
+		}
+	}
+}
+
+ListDialog.propTypes = {
+	dispatch: PropTypes.func.isRequired
 }
