@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default function artists(state = initialState, action) {
-	let allArtists = []
+	let allArtists = [];
 	switch (action.type){
 		case GET_ARTISTS:
 			allArtists = action.artists;

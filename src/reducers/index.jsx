@@ -8,18 +8,18 @@ import audio from './audio';
 import profile from './profile';
 import theme from './theme';
 import playlists from './playlists';
-import { routerReducer } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
-    genres,
-    tracks,
-    artists,
-    albums,
-    audio,
-    profile,
-    theme,
-    playlists,
-    routing: routerReducer
+	genres,
+	tracks,
+	artists,
+	albums,
+	audio,
+	profile,
+	theme,
+	playlists,
+	routing: routerReducer
 });
 
 export default rootReducer;

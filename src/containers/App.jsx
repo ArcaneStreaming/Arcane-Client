@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles'
 import { themeEnum, themes } from '../constants/material-ui-theme'
-import Audio from '../components/Audio'
+// import Audio from '../components/Audio'
+import ReactAudioPlayer from 'react-audio-player'
 import Header from "../components/Header"
 import FloatingControls from '../components/FloatingControls'
 import * as AudioActions from '../actions/AudioActions'
@@ -19,7 +20,7 @@ import clone from 'lodash/clone';
 export default class App extends Component {
 	constructor(props) {
 		super(props);
-			this.state = {
+		this.state = {
 			autoPlay: false
 		}
 	}
@@ -27,9 +28,10 @@ export default class App extends Component {
 
 	componentDidMount() {
 		// Initialize DOM Audio and retrieve
-		this.props.updateVolume(ReactDOM.findDOMNode(this.refs.audio), this.props.audio.volume);
-		this.props.setProgress(ReactDOM.findDOMNode(this.refs.audio));
-		this.props.setTime(ReactDOM.findDOMNode(this.refs.audio));
+		this.props.setAudio(this.audio.audioEl);
+		this.props.updateVolume(this.props.audio.volume);
+		this.props.setProgress();
+		this.props.setTime();
 		this.props.retrieveSongs(this.props.isShuffling);
 
 		// Get current user if not in store
@@ -39,50 +41,45 @@ export default class App extends Component {
 	}
 
 
-	handleProgress = () => { this.props.setProgress(ReactDOM.findDOMNode(this.refs.audio));}
-	handleTimeUpdate = () => { this.props.setTime(ReactDOM.findDOMNode(this.refs.audio));}
-	handleError = (e) => { this.props.setError(ReactDOM.findDOMNode(this.refs.audio));}
-	handleVolumeChange = (volume) => { this.props.updateVolume(ReactDOM.findDOMNode(this.refs.audio), volume);}
+	handleProgress = () => { this.props.setProgress();}
+	handleTimeUpdate = () => { this.props.setTime();}
+	handleError = (e) => { this.props.setError();}
+	handleVolumeChange = (volume) => { this.props.updateVolume(this.audio, volume);}
 	handleToggleFavorite = () => { this.props.toggleFavorite();}
 	handleToggleRepeat = () => { this.props.toggleRepeat();}
 	handleToggleShuffle = () => { this.props.toggleShuffle();}
-	handleTrackClick = (percent) => { this.props.updatePosition(ReactDOM.findDOMNode(this.refs.audio), percent);}
-	handleToggleLoop = () => { this.props.toggleLoop(ReactDOM.findDOMNode(this.refs.audio));}
+	handleTrackClick = (percent) => { this.props.updatePosition(percent);}
+	handleToggleLoop = () => { this.props.toggleLoop();}
 
 	handlePlay = () => {
-		this.props.play(ReactDOM.findDOMNode(this.refs.audio));
+		this.props.play();
 		this.setState({autoPlay: true});
 	}
 
 	handleNext = () => {
-		const audio = ReactDOM.findDOMNode(this.refs.audio);
 		if (!this.props.audio.isRepeating) {
-			this.props.next(audio);
+			this.props.next();
 		}
 	}
 
 	handlePrevious = () => {
-		const audio = ReactDOM.findDOMNode(this.refs.audio);
-		this.props.previous(audio);
-		this.props.play(audio);
+		this.props.previous();
+		this.props.play();
 	}
 
 	handleEnd = () => {
-		const audio = ReactDOM.findDOMNode(this.refs.audio);
-		this.props.next(audio);
-		this.props.updateQueue(audio)
+		this.props.next();
+		this.props.updateQueue();
 	}
 
 	handleLoadedData = () => {
-		const audio = ReactDOM.findDOMNode(this.refs.audio);
 		if (this.props.audio.isRepeating) {
-			this.props.play(audio);
+			this.props.play();
 		}
 	}
-
+	
 	pushToQueue = (songs) => {
-		const audio = ReactDOM.findDOMNode(this.refs.audio);
-		this.props.addToQueue(songs)
+		this.props.addToQueue();
 	}
 
 	render() {
@@ -125,16 +122,15 @@ export default class App extends Component {
 					position:'fixed'
 					}}
 					>
-					<Audio
-						ref="audio"
+					<ReactAudioPlayer
+						ref={(audio) => { this.audio = audio; }}
 						autoPlay={this.state.autoPlay}
 						src={song ? song.url : ""}
 						onProgress={this.handleProgress}
-						onTimeUpdate={this.handleTimeUpdate}
+						onListen={this.handleTimeUpdate}
 						onError={this.handleError}
 						onEnded={this.handleEnd}
-						onLoadedData={this.handleLoadedData}
-						// onCanPlay={this.handlePlay}
+						// onLoadedData={this.handleLoadedData}
 						/>
 					<Header
 						{...audioProps}

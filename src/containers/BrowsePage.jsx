@@ -1,12 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-// import AlbumCarousel from '../components/AlbumCarousel'
-import * as GenreActions from '../actions/GenreActions'
-// import * as TrackActions from '../actions/TrackActions'
-import * as ArtistActions from '../actions/ArtistActions'
-import * as AlbumActions from '../actions/AlbumActions'
-import BrowseCarousel from '../components/BrowseCarousel'
+import * as GenreActions from '../actions/GenreActions';
+import * as ArtistActions from '../actions/ArtistActions';
+import * as AlbumActions from '../actions/AlbumActions';
+import BrowseCarousel from '../components/BrowseCarousel';
 class BrowsePage extends Component {
 	constructor(props) {
 		super(props);
@@ -42,7 +40,7 @@ class BrowsePage extends Component {
 				>
 				<BrowseCarousel
 					{...this.props}
-					label={"New Releases"}
+					label={'New Releases'}
 					list={albums.allAlbums}
 					select={this.addToSelected.bind(this)}
 					selectedTracks={this.state.selected}
@@ -50,7 +48,7 @@ class BrowsePage extends Component {
 					/>
 				<BrowseCarousel
 					{...this.props}
-					label={"Genres"}
+					label={'Genres'}
 					list={genres}
 					select={this.addToSelected.bind(this)}
 					selectedTracks={this.state.selected}
@@ -58,7 +56,7 @@ class BrowsePage extends Component {
 					/>
 				<BrowseCarousel
 					{...this.props}
-					label={"Artists"}
+					label={'Artists'}
 					list={artists.allArtists}
 					select={this.addToSelected.bind(this)}
 					selectedTracks={this.state.selected}
@@ -66,7 +64,7 @@ class BrowsePage extends Component {
 					/>
 				<BrowseCarousel
 					{...this.props}
-					label={"Albums"}
+					label={'Albums'}
 					list={albums.allAlbums}
 					select={this.addToSelected.bind(this)}
 					selectedTracks={this.state.selected}
@@ -83,11 +81,11 @@ BrowsePage.propTypes = {
 	tracks: PropTypes.object.isRequired,
 	artists: PropTypes.object.isRequired,
 	albums: PropTypes.object.isRequired
-}
+};
 
 function mapStateToProps(state) {
-	const {genres, artists, albums, tracks} = state
-	return { genres, artists, albums, tracks};
+	const { genres, artists, albums, tracks } = state;
+	return { genres, artists, albums, tracks };
 }
 
 export default connect(mapStateToProps)(BrowsePage);

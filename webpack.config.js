@@ -9,7 +9,7 @@ module.exports = {
 
    entry: {
       App: [
-         'webpack-dev-server/client?http://' + ip + ':3000',
+         'webpack-dev-server/client?http://' + ip + ':8080',
          'webpack/hot/only-dev-server',
          "./src/main.jsx",
       ],
@@ -32,7 +32,7 @@ module.exports = {
   output: {
     path: path.resolve("./bundles/"),
     filename: "[name]-[hash].js",
-    publicPath: 'http://' + ip + ':3000' + '/assets/bundles/'
+    publicPath: 'http://' + ip + ':8080' + '/assets/bundles/'
   },
   module: {
     loaders: [

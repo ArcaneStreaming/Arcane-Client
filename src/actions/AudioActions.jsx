@@ -11,59 +11,40 @@ export function retrieveSongs(shuffle) {
 };
 
 
-export function play(audio) {
-	if (audio.paused)
-		audio.play();
-	else
-		audio.pause();
-
-  return { type: types.PLAY, audio }
+export function play() {
+  return { type: types.PLAY }
 }
 
-export function pause(audio) {
-	audio.pause();
-	return { type: types.PAUSE, audio }
+export function pause() {
+	return { type: types.PAUSE }
 }
 
-function resetAudio(audio) {
-	// need to reset the song if it's the same file
-	audio.currentTime = 0;
-	const src = audio.src;
-	audio.src = null;
-	audio.src = src;
+export function next() {
+	return { type: types.NEXT}
 }
 
-export function next(audio) {
-	resetAudio(audio)
-	return { type: types.NEXT, audio }
+export function previous() {
+	return { type: types.PREVIOUS }
 }
 
-export function previous(audio) {
-	resetAudio(audio)
-return { type: types.PREVIOUS, audio }
+export function updateVolume(volume) {
+	return { type: types.UPDATE_VOLUME, volume }
 }
 
-export function updateVolume(audio, volume) {
-	audio.volume = volume/100;
-return { type: types.UPDATE_VOLUME, volume }
+export function setTime() {
+	return { type: types.SET_TIME }
 }
 
-export function setTime(audio) {
-	const percent = audio.currentTime / audio.duration;
-	return { type: types.SET_TIME, audio }
+export function setProgress() {
+	return { type: types.SET_PROGRESS}
 }
 
-export function setProgress(audio) {
-	return { type: types.SET_PROGRESS, audio }
+export function setError() {
+	return { type: types.ERROR }
 }
 
-export function setError(audio) {
-	return { type: types.ERROR, audio }
-}
-
-export function updatePosition(audio, percent) {
-	audio.currentTime = percent * audio.duration;
-	return { type: types.UPDATE_POSITION, audio }
+export function updatePosition(percent) {
+	return { type: types.UPDATE_POSITION, percent}
 }
 
 export function toggleFavorite() {
@@ -74,9 +55,8 @@ export function toggleRepeat() {
 	return { type: types.TOGGLE_REPEAT }
 }
 
-export function toggleLoop(audio) {
-	audio.loop = !audio.loop;
-	return { type: types.TOGGLE_LOOP, audio }
+export function toggleLoop() {
+	return { type: types.TOGGLE_LOOP}
 }
 
 export function toggleShuffle() {
@@ -114,4 +94,8 @@ export function playAlbumTracks(tracks) {
 		type: types.PLAY_ALBUM_TRACKS,
 		tracks: tracks
 	}
+}
+
+export function setAudio(audio) {
+	return { type: types.SET_AUDIO, audio: audio }
 }

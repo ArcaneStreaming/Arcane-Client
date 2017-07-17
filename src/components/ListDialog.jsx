@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import { Dialog, FloatingActionButton, FontIcon } from 'material-ui'
 import{ CardTitle } from 'material-ui/Card'
 import TracksCollection  from './TracksCollection'
 import AlbumsCollection  from './AlbumsCollection'
 import ArtistsCollection  from './ArtistsCollection'
+import * as AudioActions from '../actions/AudioActions'
 
 const styles = {
    fab: {
@@ -40,10 +42,10 @@ const styles = {
 export default class ListDialog extends Component {
 
 	handlePlayClick = () => {
-		const { dispatch, tracks } = this.props;
+		const { dispatch, tracks, type } = this.props;
 		switch (type) {
 			case "album":
-				dispatch(AudioActions.playAlbumTracks(tracks.albumTracks));
+				dispatch(AudioActions.playAlbumTracks(tracks.albumTracks.results));
 				break;
 			case "artist":
 				dispatch(AudioActions.startArtistRadio(this.props.id));
