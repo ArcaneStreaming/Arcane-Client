@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { FloatingActionButton, FontIcon, CircularProgress } from 'material-ui'
-import theme from '../constants/material-ui-theme'
-// import * as ActionTypes from '../constants/ActionTypes'
+import React, { Component } from 'react';
+import { FloatingActionButton, FontIcon, CircularProgress } from 'material-ui';
+import theme from '../constants/material-ui-theme';
 
 const style = {
 	fab: {
@@ -20,15 +19,7 @@ const style = {
 		WebkitTransform: 'rotate(-90deg)',
 		transform: 'rotate(-90deg)'
 	}
-}
-
-const controls = [
-	{ "id": 1, "name": "skip_next" },
-	{ "id": 2, "name": "skip_previous" },
-	{ "id": 3, "name": "shuffle" },
-	{ "id": 4, "name": "repeat" },
-	{ "id": 5, "name": "favorite_border" },
-]
+};
 
 export default class FloatingControls extends Component {
 	constructor(props) {
@@ -46,17 +37,15 @@ export default class FloatingControls extends Component {
 			<div>
 				<FloatingActionButton
 					onClick={this.props.onPlay}
-					style={style.fab}
-					>
-					<FontIcon className="material-icons">{this.props.isPlaying ? "pause" : "play_arrow"}</FontIcon>
+					style={style.fab}>
+					<FontIcon className="material-icons">{this.props.isPlaying ? 'pause' : 'play_arrow'}</FontIcon>
 					<CircularProgress
 						color={theme.palette.alternateTextColor}
 						mode="determinate"
 						size={57}
 						style={style.progress}
 						thickness={3}
-						value={this.props.percent * 100}
-						/>
+						value={this.props.percent * 100}/>
 				</FloatingActionButton>
 			</div>
 		);

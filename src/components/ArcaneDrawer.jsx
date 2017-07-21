@@ -1,22 +1,21 @@
-import React from 'react'
-import {Drawer} from 'material-ui'
-import ArcaneMenu from './ArcaneMenu'
+import React from 'react';
+import { Drawer } from 'material-ui';
+import ArcaneMenu from './ArcaneMenu';
 
 const drawerStyle = {
-  height: 'calc(100vh - 64px)',
-  top:'64px',
-  overflowY:'auto'
+	height: 'calc(100vh - 64px)',
+	top:'64px',
+	overflowY:'auto'
 };
 
 const ArcaneDrawer = (props) => {
-  return (
-    <Drawer
-      {...props}
-      containerStyle={drawerStyle}
-      docked={false}
-    >
-      <ArcaneMenu onClick={props.onClose} currentUser={props.currentUser} />
-    </Drawer>
-    );
-}
+	return (
+		<Drawer
+			{...props}
+			containerStyle={drawerStyle}
+			docked={false}>
+			<ArcaneMenu onClick={props.onClose} currentUser={props.currentUser} />
+		</Drawer>
+	);
+};
 export default ArcaneDrawer;

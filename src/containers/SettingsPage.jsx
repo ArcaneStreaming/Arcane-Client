@@ -6,7 +6,6 @@ import Toggle from 'material-ui/Toggle';
 
 import * as ThemeActions from '../actions/ThemeActions';
 import { themeEnum } from '../constants/material-ui-theme';
-// import ThemeSwitcher from '../components/ThemeSwitcher'
 import ImageUploader from '../components/ImageUploader';
 
 const styles = {
@@ -110,8 +109,7 @@ class Settings extends Component {
 				defaultValue={item.defaultValue}
 				floatingLabelText={item.label}
 				onChange={this.onChange}
-				value={this.props.profile.currentUser[item.key]}
-				/>
+				value={this.props.profile.currentUser[item.key]}/>
 		);
 	}
 
@@ -127,8 +125,7 @@ class Settings extends Component {
 				fullWidth={true}
 				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}
 				floatingLabelText={item.label}
-				onChange={this.onSelect.bind(null, item)} // eslint-disable-line
-				>
+				onChange={this.onSelect.bind(null, item)} > // eslint-disable-line react/jsx-no-bind
 				{options}
 			</SelectField>
 		);
@@ -138,8 +135,7 @@ class Settings extends Component {
 		if((setting.type === 'text')|| (setting.type === 'email') || (setting.type === 'password')) {
 			return (
 				<div
-					key={section+'_settings_'+setting.key}
-					>
+					key={section+'_settings_'+setting.key}>
 					{ this.renderTextField(setting) }
 				</div>
 			);
@@ -147,8 +143,7 @@ class Settings extends Component {
 		if(setting.type === 'select') {
 			return (
 				<div
-					key={section+'_settings_'+setting.key}
-					>
+					key={section+'_settings_'+setting.key}>
 					{this.renderSelectField(setting)}
 				</div>
 			);
@@ -162,8 +157,7 @@ class Settings extends Component {
 						label={setting.label.toUpperCase()}
 						id={setting.key}
 						toggled={this.state[setting.key]}
-						onToggle={this.onToggle}
-						/>
+						onToggle={this.onToggle}/>
 				</div>
 			);
 		}
@@ -185,15 +179,13 @@ class Settings extends Component {
 							height: 'calc(100vh - 64px)',
 							overflowY: 'auto',
 							padding: 10
-						}}
-						>
+						}}>
 						<div style={styles.profileSection}>
 							<div style={styles.profileSection.avatarSection}>
 								<ImageUploader
 									tooltip='Add Profile Picture'
 									handleFileUpload={ this.onUpload }
-									url={ this.props.profile.currentUser.avatar ? this.props.profile.currentUser.avatar : this.state.defaultPic }
-									/>
+									url={ this.props.profile.currentUser.avatar ? this.props.profile.currentUser.avatar : this.state.defaultPic }/>
 							</div>
 							<div style={styles.profileSection.inputSection}>
 								{this.renderSettings(profileSettings,'profile')}

@@ -21,11 +21,11 @@
 		"brace-style": [ "error", "1tbs", { "allowSingleLine": true } ],
 		"comma-dangle": [ "error" ],
 		"constructor-super": [ "error" ],
-		/*"indent": [
+		"indent": [
 			"error",
 			"tab",
 			{ "SwitchCase": 1 }
-		],*/
+		],
 		"linebreak-style": [
 			"error",
 			"unix"
@@ -42,7 +42,7 @@
 		],
 		"react/jsx-closing-bracket-location": [
 			1,
-			"props-aligned"
+			"after-props"
 		],
 		"react/jsx-indent": [
 			"error",

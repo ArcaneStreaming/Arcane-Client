@@ -33,8 +33,7 @@ export default class TracksCollection extends Component {
 			return (
 				<Avatar
 					src={track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
-					style={{ borderRadius:1 }}
-					/>
+					style={{ borderRadius:1 }}/>
 			);
 		}
 		if (noArt && track) {
@@ -52,8 +51,7 @@ export default class TracksCollection extends Component {
 					id={'tracks_collection_menu_item'+track.id}
 					innerDivStyle={{ padding:0, width:'100%' }}
 					key={'track_list_item_'+ track.id}
-					value={track}
-					>
+					value={track}>
 					<Divider />
 					<ListItem
 						// style={{position:'relative', marginLeft:'.5%', marginRight:'2%'}}
@@ -66,11 +64,9 @@ export default class TracksCollection extends Component {
 							<TrackMenu
 								{...this.props}
 								id={track.id}
-								name={track.name}
-								/>
+								name={track.name}/>
 						}
-						secondaryText={track.artist.name + ' - ' + track.duration}
-						/>
+						secondaryText={track.artist.name + ' - ' + track.duration}/>
 				</MenuItem>
 			));
 			return arr;
@@ -82,15 +78,14 @@ export default class TracksCollection extends Component {
 		return(
 			<div style={{ width:'100%',height:'100%' }}>
 				<Menu
-				autoWidth
-				disableAutoFocus
-				id={'tracks_collection_menu'}
-				listStyle={{ paddingTop:0, paddingBottom:0, paddingRight:0, margin:0, maxWidth:'100%' }}
-				multiple
-				onChange={this.handleChange}
-				selectedMenuItemStyle={{ backgroundColor:theme.palette.accent2Color }}
-				value={selectedTracks ? selectedTracks : []}
-				>
+					autoWidth
+					disableAutoFocus
+					id={'tracks_collection_menu'}
+					listStyle={{ paddingTop:0, paddingBottom:0, paddingRight:0, margin:0, maxWidth:'100%' }}
+					multiple
+					onChange={this.handleChange}
+					selectedMenuItemStyle={{ backgroundColor:theme.palette.accent2Color }}
+					value={selectedTracks ? selectedTracks : []}>
 					{this.renderTracksListItems(tracks.results)}
 				</Menu>
 				<Waypoint onEnter={this.loadMore} />

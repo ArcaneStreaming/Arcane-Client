@@ -1,20 +1,18 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles'
-import { themeEnum, themes } from '../constants/material-ui-theme'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
 // import Audio from '../components/Audio'
-import ReactAudioPlayer from 'react-audio-player'
-import Header from "../components/Header"
-import FloatingControls from '../components/FloatingControls'
-import * as AudioActions from '../actions/AudioActions'
-import * as ProfileActions from '../actions/ProfileActions'
+import ReactAudioPlayer from 'react-audio-player';
+import Header from '../components/Header';
+import FloatingControls from '../components/FloatingControls';
+import * as AudioActions from '../actions/AudioActions';
+import * as ProfileActions from '../actions/ProfileActions';
 import clone from 'lodash/clone';
 
 @connect(
-	state => ({audio: state.audio, theme: state.theme, profile: state.profile}),
-	dispatch => bindActionCreators({...AudioActions, ...ProfileActions}, dispatch)
+	state => ({ audio: state.audio, theme: state.theme, profile: state.profile }),
+	dispatch => bindActionCreators({ ...AudioActions, ...ProfileActions }, dispatch)
 )
 
 export default class App extends Component {
@@ -22,7 +20,7 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			autoPlay: false
-		}
+		};
 	}
 
 
@@ -41,19 +39,19 @@ export default class App extends Component {
 	}
 
 
-	handleProgress = () => { this.props.setProgress();}
-	handleTimeUpdate = () => { this.props.setTime();}
-	handleError = (e) => { this.props.setError();}
-	handleVolumeChange = (volume) => { this.props.updateVolume(this.audio, volume);}
-	handleToggleFavorite = () => { this.props.toggleFavorite();}
-	handleToggleRepeat = () => { this.props.toggleRepeat();}
-	handleToggleShuffle = () => { this.props.toggleShuffle();}
-	handleTrackClick = (percent) => { this.props.updatePosition(percent);}
-	handleToggleLoop = () => { this.props.toggleLoop();}
+	handleProgress = () => { this.props.setProgress(); }
+	handleTimeUpdate = () => { this.props.setTime(); }
+	handleError = () => { this.props.setError(); }
+	handleVolumeChange = (volume) => { this.props.updateVolume(this.audio, volume); }
+	handleToggleFavorite = () => { this.props.toggleFavorite(); }
+	handleToggleRepeat = () => { this.props.toggleRepeat(); }
+	handleToggleShuffle = () => { this.props.toggleShuffle(); }
+	handleTrackClick = (percent) => { this.props.updatePosition(percent); }
+	handleToggleLoop = () => { this.props.toggleLoop(); }
 
 	handlePlay = () => {
 		this.props.play();
-		this.setState({autoPlay: true});
+		this.setState({ autoPlay: true });
 	}
 
 	handleNext = () => {
@@ -77,15 +75,15 @@ export default class App extends Component {
 			this.props.play();
 		}
 	}
-	
+
 	pushToQueue = (songs) => {
-		this.props.addToQueue();
+		this.props.addToQueue(songs);
 	}
 
 	render() {
 		const {
-			volume, isPlaying, percent, isFavorite, progress, error,
-			duration, isRepeating, currentlyPlaying, autoPlay, isLooping,
+			isPlaying, percent,
+			currentlyPlaying, isLooping,
 			isShuffling
 		} = this.props.audio;
 
@@ -109,8 +107,8 @@ export default class App extends Component {
 			isShuffling: isShuffling,
 			isLooping: isLooping,
 			currentlyPlaying: currentlyPlaying,
-			queue: queue,
-		}
+			queue: queue
+		};
 
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(this.props.theme.currentTheme)}>
@@ -120,28 +118,23 @@ export default class App extends Component {
 					background: this.props.theme.currentTheme.palette.canvasColor + ' repeat top center fixed',
 					backgroundSize:'cover',
 					position:'fixed'
-					}}
-					>
+				}}>
 					<ReactAudioPlayer
 						ref={(audio) => { this.audio = audio; }}
 						autoPlay={this.state.autoPlay}
-						src={song ? song.url : ""}
+						src={song ? song.url : ''}
 						onProgress={this.handleProgress}
 						onListen={this.handleTimeUpdate}
 						onError={this.handleError}
-						onEnded={this.handleEnd}
-						// onLoadedData={this.handleLoadedData}
-						/>
+						onEnded={this.handleEnd}/>
 					<Header
 						{...audioProps}
-						currentUser={this.props.profile.currentUser}
-						/>
+						currentUser={this.props.profile.currentUser}/>
 
-						{this.props.children}
+					{this.props.children}
 
 					<FloatingControls
-						{...audioProps}
-						/>
+						{...audioProps}/>
 				</div>
 			</MuiThemeProvider>
 		);

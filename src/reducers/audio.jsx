@@ -9,8 +9,8 @@ import {
 	UPDATE_POSITION, PAUSE, TOGGLE_LOOP,
 	TOGGLE_SHUFFLE, ADD_TO_QUEUE,
 	START_GENRE_RADIO, START_ARTIST_RADIO,
-	PLAY_ALBUM_TRACKS, SET_AUDIO,
-} from '../constants/ActionTypes'
+	PLAY_ALBUM_TRACKS, SET_AUDIO
+} from '../constants/ActionTypes';
 
 import clone from 'lodash/clone';
 import { host } from '../constants/host';
@@ -31,12 +31,12 @@ const initialState = {
 	completed: [],
 	currentlyPlaying: null,
 	defaultSong: {
-		"id": -1,
-		"album": "",
-		"url": host + "static/default.mp3",
-		"name": "Waiting...",
-		"artist": "No song loaded",
-		"favorite": false
+		'id': -1,
+		'album': '',
+		'url': host + 'static/default.mp3',
+		'name': 'Waiting...',
+		'artist': 'No song loaded',
+		'favorite': false
 	}
 };
 
@@ -49,7 +49,7 @@ function getAudioState(audio) {
 		duration: audio.duration,
 		isLooping: audio.loop,
 		error: audio.error
-	}
+	};
 
 	return test;
 }
@@ -68,11 +68,11 @@ function shuffle(array) {
 	// While there are elements in the array
 	while (counter > 0) {
 	// Pick a random index
-	let index = Math.floor(Math.random() * counter);
-	// Decrease counter by 1
-	counter--;
-	// And swap the last element with it
-	let temp = array[counter];
+		let index = Math.floor(Math.random() * counter);
+		// Decrease counter by 1
+		counter--;
+		// And swap the last element with it
+		let temp = array[counter];
 		array[counter] = array[index];
 		array[index] = temp;
 	}
@@ -88,18 +88,18 @@ export default function audio(state = initialState, action) {
 			let songsArray = shuffle(action.songs);
 			let firstSong = songsArray.shift();
 			//  const songsArray = sortBy(action.songs, ['id']);
-			return {...state, currentlyPlaying: firstSong, upcoming: songsArray };
+			return { ...state, currentlyPlaying: firstSong, upcoming: songsArray };
 		case PLAY:
 			if (newAudio.paused)
 				newAudio.play();
 			else
 				newAudio.pause();
-			return {...state, audio: newAudio, ...getAudioState(newAudio)}
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case PAUSE:
 			newAudio.pause();
-			return {...state, audio: newAudio, ...getAudioState(newAudio)}
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case ERROR:
-			return {...state, audio: newAudio, ...getAudioState(newAudio) };
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case NEXT:
 			resetAudio(newAudio);
 			let nextUpcoming = state.upcoming.map(clone);
@@ -130,30 +130,30 @@ export default function audio(state = initialState, action) {
 			};
 		case UPDATE_VOLUME:
 			newAudio.volume = action.volume / 100;
-			return {...state, audio: newAudio, volume: action.volume };
+			return { ...state, audio: newAudio, volume: action.volume };
 		case SET_TIME:
 			newAudio.percent = newAudio.currentTime / newAudio.duration;
-			return {...state, audio: newAudio, ...getAudioState(newAudio) };
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case UPDATE_POSITION:
 			newAudio.currentTime = action.percent * newAudio.duration;
-			return {...state, audio: newAudio, ...getAudioState(newAudio) };
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case SET_PROGRESS:
-			return {...state, ...getAudioState(state.audio) };
+			return { ...state, ...getAudioState(state.audio) };
 		case TOGGLE_FAVORITE:
 			let currentSong = state.currentSong;
 			currentSong.favorite = !currentSong.favorite;
-			return {...state, currentSong: currentSong };
+			return { ...state, currentSong: currentSong };
 		case TOGGLE_REPEAT:
-			return {...state, isRepeating: !state.isRepeating };
+			return { ...state, isRepeating: !state.isRepeating };
 		case TOGGLE_LOOP:
 			newAudio.loop = !newAudio.loop;
-			return {...state, audio: newAudio, ...getAudioState(newAudio) };
+			return { ...state, audio: newAudio, ...getAudioState(newAudio) };
 		case TOGGLE_SHUFFLE:
-			return {...state, isShuffling: !state.isShuffling, upcoming: shuffle(state.upcoming.map(clone)) };
+			return { ...state, isShuffling: !state.isShuffling, upcoming: shuffle(state.upcoming.map(clone)) };
 		case ADD_TO_QUEUE:
 			let upcoming = state.upcoming.map(clone);
 			upcoming = upcoming.concat(action.songs);
-			return {...state, upcoming: upcoming };
+			return { ...state, upcoming: upcoming };
 		case START_GENRE_RADIO:
 		case START_ARTIST_RADIO:
 		case PLAY_ALBUM_TRACKS:
@@ -167,9 +167,9 @@ export default function audio(state = initialState, action) {
 				...getAudioState(newAudio)
 			};
 		case SET_AUDIO:
-			return { ...state, audio: action.audio, ...getAudioState(newAudio) }
+			return { ...state, audio: action.audio, ...getAudioState(newAudio) };
 
 		default:
-			return state
+			return state;
 	}
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import isFunction from 'lodash/isFunction';
 import partialRight from 'lodash/partialRight';
 import forEach from 'lodash/forEach';
@@ -21,7 +20,7 @@ export default class Audio extends React.Component {
 	static defaultProps = {
 		autoPlay: false,
 		preload: true,
-		src: "",
+		src: '',
 		loop: false,
 		volume: .8,
 		onTimeUpdate: null,
@@ -31,13 +30,13 @@ export default class Audio extends React.Component {
 	};
 
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
-		   listeners: []
+			listeners: []
 		};
 	}
+
 	componentDidMount() {
-		console.info(this);
 		const audio = this.audio;
 		this.addListener('timeupdate', this.props.onTimeUpdate, audio);
 		this.addListener('progress', this.props.onProgress, audio);
@@ -45,6 +44,7 @@ export default class Audio extends React.Component {
 		this.addListener('ended', this.props.onEnded, audio);
 		this.addListener('loadeddata', this.props.onLoadedData, audio);
 	}
+	
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.autoPlay === true && this.props.autoPlay === false) {
 			this.audio.play();
@@ -71,15 +71,15 @@ export default class Audio extends React.Component {
 
 	addListener = (event, func, audio) => {
 		audio.addEventListener(event, partialRight(this.handler, func));
-		this.state.listeners.push({event: event, func: func});
+		this.state.listeners.push({ event: event, func: func });
 	}
 
 	removeAllListeners = () => {
 		let audio = this.audioEl;
 		forEach(this.state.listeners, (obj) => {
 			audio.removeEventListener(obj.event, obj.func);
-		})
-		this.setState({listeners:[]})
+		});
+		this.setState({ listeners:[] });
 	}
 
 	togglePlay = () => {
@@ -106,9 +106,8 @@ export default class Audio extends React.Component {
 			<audio
 				{...this.props}
 				crossOrigin="anonymous"
-				refs={(audioEl) => { this.audioEl = audioEl; }}
-				/>
-		)
+				refs={(audioEl) => { this.audioEl = audioEl; }}/>
+		);
 	}
 
 }

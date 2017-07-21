@@ -42,7 +42,7 @@ const arcaneDark = {
 		color:Colors.grey900
 	},
 	iconButton: {
-	color: Colors.redA700
+		color: Colors.redA700
 	},
 	raisedButton: {
 		secondaryColor:Colors.redA700,
@@ -64,6 +64,12 @@ const arcaneDark = {
 	},
 	listItem: {
 		hoverColor: fade(Colors.cyanA700, 0.3)
+	},
+	toggle: {
+		thumbOnColor: Colors.redA700,
+		thumbOffColor: Colors.grey900,
+		trackOnColor: Colors.redA500,
+		trackOffColor: Colors.grey900
 	}
 };
 

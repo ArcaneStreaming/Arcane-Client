@@ -29,10 +29,10 @@ const styles = {
 };
 
 export default class ImageUploader extends Component {
-   constructor(props) {
-      super(props);
+	constructor(props) {
+		super(props);
 
-   }
+	}
 
 	handleDrop = (droppedFiles) => {
 		var reader = new FileReader();
@@ -49,36 +49,35 @@ export default class ImageUploader extends Component {
 
 	render() {
 		return (
-			<div style={{  }}>
+			<div style={{ height: '100%' }}>
 				<div style={{ textAlign: 'center' }}>{this.props.name}</div>
 				<div style={styles.outerDiv} >
 					<img
 						ref={(img) => { this.imgPreview = img; }}
 						id='imgPreview'
 						src={this.props.url}
-						style={styles.imgPreview}
-						/>
+						style={styles.imgPreview}/>
 					<Dropzone
 						accept='image/jpeg,image/png'
 						onDrop={this.handleDrop}
 						ref={(node) => { this.dropzone = node; }}
 						style={styles.dropzone}
-						multiple={false}
-						>
+						multiple={false}>
 						<IconButton
-						style={styles.dropIcon}
-						iconClassName='material-icons'
-						tooltip={this.props.tooltip}
-						tooltipPosition='bottom-right'
-						hoveredStyle={{
-							backgroundColor: '#000',
-							opacity: '0.75',
-							transition: 'all 0.5s',
-							WebkitTransition: 'all 0.5s',
-							MozTransition: 'all 0.5s',
-							zIndex: '5'
-						}}
-						>file_upload</IconButton>
+							style={styles.dropIcon}
+							iconClassName='material-icons'
+							tooltip={this.props.tooltip}
+							tooltipPosition='bottom-right'
+							hoveredStyle={{
+								backgroundColor: '#000',
+								opacity: '0.75',
+								transition: 'all 0.5s',
+								WebkitTransition: 'all 0.5s',
+								MozTransition: 'all 0.5s',
+								zIndex: '5'
+							}}>
+							file_upload
+						</IconButton>
 					</Dropzone>
 				</div>
 			</div>
@@ -88,9 +87,9 @@ export default class ImageUploader extends Component {
 }
 
 ImageUploader.propTypes = {
-   handleFileUpload: PropTypes.func.isRequired
+	handleFileUpload: PropTypes.func.isRequired
 };
 
 ImageUploader.defaultProps = {
-   url: ''
+	url: ''
 };

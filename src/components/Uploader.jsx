@@ -11,13 +11,13 @@ const styles = {
 	paper: {
 		overflowY:'auto',
 		height:'60vh',
-			backgroundColor:theme.palette.primary3Color
-		},
-		dropzone: {
-			height:'100%',
-			width:'100%',
-			textAlign:'center',
-			text: {
+		backgroundColor:theme.palette.primary3Color
+	},
+	dropzone: {
+		height:'100%',
+		width:'100%',
+		textAlign:'center',
+		text: {
 			padding:'10%',
 			height:'100%',
 			width:'100%',
@@ -119,10 +119,10 @@ export default class Uploader extends Component  {
 			credentials: 'same-origin',
 			body:fd
 		})
-		.then(response => response.json())
-		.then(json => (
-		this.setState({ stepIndex: 4, snackOpen: true, stagedFiles: json.tracks })
-		));
+			.then(response => response.json())
+			.then(json => (
+				this.setState({ stepIndex: 4, snackOpen: true, stagedFiles: json.tracks })
+			));
 	}
 
 	handleUpload = () => {
@@ -173,8 +173,7 @@ export default class Uploader extends Component  {
 						<CircularProgress
 							color={theme.palette.accent1Color}
 							size={300}
-							thickness={5}
-							/>
+							thickness={5}/>
 					</div>
 				);
 			case 4:
@@ -192,8 +191,7 @@ export default class Uploader extends Component  {
 					album={this.state.album}
 					handleFileUpload={this.handleAlbumArtworkSubmit}
 					handleNameChange={this.handleAlbumNameChange}
-					handleGenreChange={this.handleAlbumGenreChange}
-					/>
+					handleGenreChange={this.handleAlbumGenreChange}/>
 			</div>
 		);
 	}
@@ -209,8 +207,7 @@ export default class Uploader extends Component  {
 			return (
 				<Table
 					multiSelectable
-					onRowSelection={this.handleSelect}
-					>
+					onRowSelection={this.handleSelect}>
 					<TableHeader enableSelectAll>
 						<TableRow>
 							<TableHeaderColumn>{'Name'}</TableHeaderColumn>
@@ -218,8 +215,7 @@ export default class Uploader extends Component  {
 					</TableHeader>
 					<TableBody
 						deselectOnClickaway={false}
-						stripedRows
-						>
+						stripedRows>
 						{listItems}
 					</TableBody>
 				</Table>
@@ -233,8 +229,7 @@ export default class Uploader extends Component  {
 			return (
 				<EditableTable
 					items={editedFiles}
-					onValueChange={this.handleEditedTitle}
-					/>
+					onValueChange={this.handleEditedTitle}/>
 			);
 		}
 	}
@@ -244,8 +239,7 @@ export default class Uploader extends Component  {
 				accept="audio/mp3"
 				onDrop={this.onDrop}
 				ref={(node) => { this.dropzone = node; }}
-				style={styles.dropzone}
-				>
+				style={styles.dropzone}>
 				<h3 style={styles.dropzone.text}>
 					{'Try dropping some files here, or click to select files to upload.'}
 				</h3>
@@ -271,8 +265,7 @@ export default class Uploader extends Component  {
 					label="Edit"
 					onTouchTap={this.handleNext}
 					labelStyle={this.state.stepIndex !== 1 ? { color:'red' } : {}}
-					primary
-					/>;
+					primary/>;
 		} else if (stepIndex === 0) {
 			action =
 				<FlatButton
@@ -280,15 +273,13 @@ export default class Uploader extends Component  {
 					label="Next"
 					labelStyle={this.state.isAlbumInfoValid ? { color:'red' } : { color: 'gray' }}
 					onTouchTap={this.handleNext}
-					primary
-					/>;
-			} else if (stepIndex === 2) {
+					primary/>;
+		} else if (stepIndex === 2) {
 			action =
 				<FlatButton
 					label="Upload"
 					onTouchTap={this.handleUpload}
-					secondary
-					/>;
+					secondary/>;
 		}
 		return (
 			<div style={{ marginTop: 20 }}>
@@ -296,8 +287,7 @@ export default class Uploader extends Component  {
 					disabled={stepIndex === 0 || stepIndex === 3}
 					label="Back"
 					onTouchTap={this.handlePrev}
-					style={{ marginRight: 12 }}
-					/>
+					style={{ marginRight: 12 }}/>
 				{action}
 			</div>
 		);
@@ -309,8 +299,7 @@ export default class Uploader extends Component  {
 			<div style={{ width: '100%', maxWidth: '75vw', margin: 'auto', marginTop:10, maxHeight:'calc(100vh-64px)', overflowY:'auto' }}>
 				<Stepper
 					activeStep={this.state.stepIndex}
-					linear
-					>
+					linear>
 					<Step>
 						<StepButton onClick={() => this.setState({ stepIndex: 0 })}>
 							Create
@@ -340,8 +329,7 @@ export default class Uploader extends Component  {
 					autoHideDuration={4000}
 					message={this.state.message}
 					onRequestClose={this.handleSnackClose}
-					open={this.state.snackOpen}
-					/>
+					open={this.state.snackOpen}/>
 			</div>
 		);
 	}

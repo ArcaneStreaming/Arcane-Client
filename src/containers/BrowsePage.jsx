@@ -21,9 +21,9 @@ class BrowsePage extends Component {
 		dispatch(GenreActions.getGenres());
 	}
 
-	addToSelected(items) {
+	addToSelected = (items) => {
 		this.setState({
-		selected: items
+			selected: items
 		});
 	}
 
@@ -36,40 +36,35 @@ class BrowsePage extends Component {
 					overflowY:'auto',
 					width:'100vw',
 					padding:10
-				}}
-				>
+				}}>
 				<BrowseCarousel
 					{...this.props}
 					label={'New Releases'}
 					list={albums.allAlbums}
-					select={this.addToSelected.bind(this)}
+					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'album'}
-					/>
+					type={'album'}/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Genres'}
 					list={genres}
-					select={this.addToSelected.bind(this)}
+					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'genre'}
-					/>
+					type={'genre'}/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Artists'}
 					list={artists.allArtists}
-					select={this.addToSelected.bind(this)}
+					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'artist'}
-					/>
+					type={'artist'}/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Albums'}
 					list={albums.allAlbums}
-					select={this.addToSelected.bind(this)}
+					select={this.addToSelectedWS}
 					selectedTracks={this.state.selected}
-					type={'album'}
-					/>
+					type={'album'}/>
 			</div>
 		);
 	}
