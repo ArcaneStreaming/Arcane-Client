@@ -37,7 +37,7 @@ class UploadPage extends Component {
 					dispatch={this.props.dispatch}
 					genres={this.props.genres}
 					currentUser={this.props.profile.currentUser}
-				/>
+					/>
 			</div>
 		);
 	}

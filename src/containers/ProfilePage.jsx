@@ -67,7 +67,7 @@ class ProfilePage extends Component {
 						<Avatar
 							src={member.avatar}
 							size={260}
-						/>
+							/>
 						{member.name}
 					</div>);
 				} else {
@@ -75,7 +75,7 @@ class ProfilePage extends Component {
 						<Avatar
 							icon={<FontIcon className="material-icons">person</FontIcon>}
 							size={160}
-						/>
+							/>
 					</div>);
 				}
 			});
@@ -106,12 +106,12 @@ class ProfilePage extends Component {
 				{...this.props}
 				cols={8}
 				albums={albums.artistAlbums}
-			/>,
+				/>,
 			<TracksCollection
 				{...this.props}
 				cols={8}
 				tracks={tracks.artistTracks}
-			/>,
+				/>,
 		];
 		return tabContents[index];
 	}
@@ -127,7 +127,7 @@ class ProfilePage extends Component {
 				key={tab.index}
 				label={tab.label}
 				value={tab.index}
-			/>
+				/>
 		));
 		return tabs;
 	}
@@ -139,7 +139,7 @@ class ProfilePage extends Component {
 			<div style={styles.container}>
 				<Paper style={styles.paper}
 					autoScrollBodyContent
-				>
+					>
 					<div style={styles.contents}>
 						<div style={{ padding: 0, maxWidth: '100vw' }}>
 							<div id="profile_header" style={styles.header}>
@@ -156,14 +156,14 @@ class ProfilePage extends Component {
 								id={'profile_page_tabs'}
 								onChange={this.handleChange}
 								value={this.state.tabIndex}
-							>
+								>
 								{this.renderTabs()}
 							</Tabs>
 							<div style={{ overflowY: 'auto', overflowX: 'hidden', height:'calc(100vh - 143px)' }}>
 								<div
 									id={'profile_page_tab_' + this.state.tabIndex}
 									style={styles.tab}
-								>
+									>
 									{this.renderTab(this.state.tabIndex)}
 								</div>
 							</div>

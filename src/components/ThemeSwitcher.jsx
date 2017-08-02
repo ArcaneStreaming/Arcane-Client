@@ -116,7 +116,7 @@ class ThemeSwitcher extends Component {
 							id={item.key}
 							name={item.key}
 							onChange={this.handleChange}
-						/>
+							/>
 					</div>
 				</div>
 				<Divider />
@@ -130,7 +130,7 @@ class ThemeSwitcher extends Component {
 				key={item.options.indexOf(option)}
 				primaryText={option}
 				value={option}
-			/>
+				/>
 		));
 		return (
 			<SelectField
@@ -141,7 +141,7 @@ class ThemeSwitcher extends Component {
 				onChange={this.onSelect}
 				type={item.type}
 				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}
-			>
+				>
 				{options}
 			</SelectField>
 		);
@@ -183,7 +183,7 @@ class ThemeSwitcher extends Component {
 					autoScrollBodyContent
 					open={this.state.open}
 					onRequestClose={this.handleClose}
-				>
+					>
 					{this.renderSettings(customFields)}
 				</Dialog>
 				{/*</Paper>*/}

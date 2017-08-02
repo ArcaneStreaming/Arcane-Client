@@ -38,7 +38,7 @@ export default class FloatingControls extends Component {
 				<FloatingActionButton
 					onClick={this.props.onPlay}
 					style={style.fab}
-				>
+					>
 					<FontIcon className="material-icons">{this.props.isPlaying ? 'pause' : 'play_arrow'}</FontIcon>
 					<CircularProgress
 						color={theme.palette.alternateTextColor}
@@ -47,7 +47,7 @@ export default class FloatingControls extends Component {
 						style={style.progress}
 						thickness={3}
 						value={this.props.percent * 100}
-					/>
+						/>
 				</FloatingActionButton>
 			</div>
 		);

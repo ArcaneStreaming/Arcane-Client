@@ -75,7 +75,7 @@ export default class TrackForm extends Component {
 								type={'text'}
 								value={this.state.item.name}
 								onChange={this.checkField}
-							/>
+								/>
 							<TextField
 								floatingLabelText={'Album'}
 								id={'album'}
@@ -83,7 +83,7 @@ export default class TrackForm extends Component {
 								type={'text'}
 								value={this.state.item.album.name}
 								onChange={this.checkField}
-							/>
+								/>
 							<TextField
 								floatingLabelText={'Artist'}
 								id={'artist'}
@@ -91,7 +91,7 @@ export default class TrackForm extends Component {
 								type={'text'}
 								value={this.state.item.artist.name}
 								onChange={this.checkField}
-							/>
+								/>
 						</div>
 					);
 			}
@@ -113,13 +113,13 @@ export default class TrackForm extends Component {
 							label={'Cancel'}
 							//  onTouchTap={this.handleJoin}
 							secondary
-						/>
+							/>
 						<FlatButton
 							id={'save_form_cancel'}
 							key={'save_form_cancel'}
 							label="Save Changes"
 							onTouchTap={this.props.onRequestClose}
-						/>
+							/>
 					</div>
 				);
 			}
@@ -132,7 +132,7 @@ export default class TrackForm extends Component {
 						{...this.props}
 						autoDetectWindowHeight
 						autoScrollBodyContent
-					>
+						>
 						<div>{this.renderContent(item)}</div>
 						{this.renderActions()}
 					</Dialog>

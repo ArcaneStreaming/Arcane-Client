@@ -25,7 +25,7 @@ export default class EditableTable extends Component {
 						value={item.name}
 						onChange={this.props.onValueChange}
 						fullWidth
-					/>
+						/>
 				</TableRowColumn>
 			</TableRow>
 		));
@@ -33,11 +33,11 @@ export default class EditableTable extends Component {
 			<div>
 				<Table
 					selectable={false}
-				>
+					>
 					<TableHeader
 						adjustForCheckbox={false}
 						displaySelectAll={false}
-					>
+						>
 						<TableRow>
 							<TableHeaderColumn style={{ width: '1em' }}>{'Index'}</TableHeaderColumn>
 							<TableHeaderColumn>{'Track Title'}</TableHeaderColumn>
@@ -46,7 +46,7 @@ export default class EditableTable extends Component {
 					<TableBody
 						stripedRows
 						displayRowCheckbox={false}
-					>{listItems}</TableBody>
+						>{listItems}</TableBody>
 				</Table>
 			</div>
 		);

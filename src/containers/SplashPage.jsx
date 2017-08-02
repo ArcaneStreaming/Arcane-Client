@@ -42,17 +42,19 @@ export default class SplashPage extends Component {
 
 	renderSplash(imgUrl) {
 		return (
-			<div style={{
-				background: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('+ host + 'static/images/audience-'+imgUrl+'.jpg' + ') ',
-				backgroundSize: 'cover',
-				backgroundPosition:'center center',
-				overflow:'hidden',
-				textShadow:'1px 1px black',
-				zIndex:1,
-				height:'100vh',
-				width:'100vw',
-			}}
-			><h1 style={styles.name}>{'ARCANE'}</h1>
+			<div
+				style={{
+					background: 'linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('+ host + 'static/images/audience-'+imgUrl+'.jpg' + ') ',
+					backgroundSize: 'cover',
+					backgroundPosition:'center center',
+					overflow:'hidden',
+					textShadow:'1px 1px black',
+					zIndex:1,
+					height:'100vh',
+					width:'100vw',
+				}}
+				>
+				<h1 style={styles.name}>{'ARCANE'}</h1>
 				<div style={styles.link}>
 					<RaisedButton
 						className='button-glow'
@@ -60,13 +62,13 @@ export default class SplashPage extends Component {
 						labelStyle={styles.label}
 						onClick={() => {this.setState({ open:true });}}
 						primary
-					/>
+						/>
 				</div>
 				<LoginModal
 					{...this.props}
 					onRequestClose={() => {this.setState({ open:false });}}
 					open={this.state.open}
-				/>
+					/>
 			</div>
 		);
 	}

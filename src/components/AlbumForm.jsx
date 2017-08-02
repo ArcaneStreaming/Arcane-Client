@@ -37,7 +37,7 @@ export default class AlbumForm extends Component {
 						type={'text'}
 						value={this.props.album.name}
 						onChange={this.props.handleNameChange}
-					/>
+						/>
 					<SelectField
 						floatingLabelText='Album Genre'
 						fullWidth
@@ -46,7 +46,7 @@ export default class AlbumForm extends Component {
 						style={{ maxWidth: '47.5%' }}
 						value={this.state.selectedGenre}
 						onChange={this.handleGenreSelect}
-					>
+						>
 						{this.renderGenreOptions(this.props.genres)}
 					</SelectField>
 				</div>
@@ -55,7 +55,7 @@ export default class AlbumForm extends Component {
 						tooltip='Add Album Artwork'
 						name='Album Artwork'
 						handleFileUpload={this.props.handleFileUpload}
-					/>
+						/>
 				</div>
 			</div>
 		);

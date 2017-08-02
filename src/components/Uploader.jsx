@@ -174,7 +174,7 @@ export default class Uploader extends Component  {
 							color={theme.palette.accent1Color}
 							size={300}
 							thickness={5}
-						/>
+							/>
 					</div>
 				);
 			case 4:
@@ -193,7 +193,7 @@ export default class Uploader extends Component  {
 					handleFileUpload={this.handleAlbumArtworkSubmit}
 					handleNameChange={this.handleAlbumNameChange}
 					handleGenreChange={this.handleAlbumGenreChange}
-				/>
+					/>
 			</div>
 		);
 	}
@@ -210,7 +210,7 @@ export default class Uploader extends Component  {
 				<Table
 					multiSelectable
 					onRowSelection={this.handleSelect}
-				>
+					>
 					<TableHeader enableSelectAll>
 						<TableRow>
 							<TableHeaderColumn>{'Name'}</TableHeaderColumn>
@@ -219,7 +219,7 @@ export default class Uploader extends Component  {
 					<TableBody
 						deselectOnClickaway={false}
 						stripedRows
-					>
+						>
 						{listItems}
 					</TableBody>
 				</Table>
@@ -234,7 +234,7 @@ export default class Uploader extends Component  {
 				<EditableTable
 					items={editedFiles}
 					onValueChange={this.handleEditedTitle}
-				/>
+					/>
 			);
 		}
 	}
@@ -245,7 +245,7 @@ export default class Uploader extends Component  {
 				onDrop={this.onDrop}
 				ref={(node) => { this.dropzone = node; }}
 				style={styles.dropzone}
-			>
+				>
 				<h3 style={styles.dropzone.text}>
 					{'Try dropping some files here, or click to select files to upload.'}
 				</h3>
@@ -272,7 +272,7 @@ export default class Uploader extends Component  {
 					onTouchTap={this.handleNext}
 					labelStyle={this.state.stepIndex !== 1 ? { color:'red' } : {}}
 					primary
-				/>;
+					/>;
 		} else if (stepIndex === 0) {
 			action =
 				<FlatButton
@@ -281,14 +281,14 @@ export default class Uploader extends Component  {
 					labelStyle={this.state.isAlbumInfoValid ? { color:'red' } : { color: 'gray' }}
 					onTouchTap={this.handleNext}
 					primary
-				/>;
+					/>;
 		} else if (stepIndex === 2) {
 			action =
 				<FlatButton
 					label="Upload"
 					onTouchTap={this.handleUpload}
 					secondary
-				/>;
+					/>;
 		}
 		return (
 			<div style={{ marginTop: 20 }}>
@@ -297,7 +297,7 @@ export default class Uploader extends Component  {
 					label="Back"
 					onTouchTap={this.handlePrev}
 					style={{ marginRight: 12 }}
-				/>
+					/>
 				{action}
 			</div>
 		);
@@ -310,7 +310,7 @@ export default class Uploader extends Component  {
 				<Stepper
 					activeStep={this.state.stepIndex}
 					linear
-				>
+					>
 					<Step>
 						<StepButton onClick={() => this.setState({ stepIndex: 0 })}>
 							Create
@@ -341,7 +341,7 @@ export default class Uploader extends Component  {
 					message={this.state.message}
 					onRequestClose={this.handleSnackClose}
 					open={this.state.snackOpen}
-				/>
+					/>
 			</div>
 		);
 	}

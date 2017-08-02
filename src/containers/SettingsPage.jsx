@@ -108,7 +108,7 @@ class Settings extends Component {
 				floatingLabelText={item.label}
 				onChange={this.onChange}
 				value={this.props.profile.currentUser[item.key]}
-			/>
+				/>
 		);
 	}
 
@@ -125,8 +125,8 @@ class Settings extends Component {
 				fullWidth={true}
 				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}
 				floatingLabelText={item.label}
-				onChange={this.onSelect.bind(null, item)} // eslint-disable-line react/jsx-no-bind
-			>
+				onChange={this.onSelect.bind(null, item)}
+				>
 				{options}
 			</SelectField>
 		);
@@ -138,7 +138,7 @@ class Settings extends Component {
 			return (
 				<div
 					key={section+'_settings_'+setting.key}
-				>
+					>
 					{ this.renderTextField(setting) }
 				</div>
 			);
@@ -147,7 +147,7 @@ class Settings extends Component {
 			return (
 				<div
 					key={section+'_settings_'+setting.key}
-				>
+					>
 					{this.renderSelectField(setting)}
 				</div>
 			);
@@ -161,7 +161,7 @@ class Settings extends Component {
 						id={setting.key}
 						toggled={this.state[setting.key]}
 						onToggle={this.onToggle}
-					/>
+						/>
 				</div>
 			);
 		}
@@ -185,14 +185,14 @@ class Settings extends Component {
 							overflowY: 'auto',
 							padding: 10,
 						}}
-					>
+						>
 						<div style={styles.profileSection}>
 							<div style={styles.profileSection.avatarSection}>
 								<ImageUploader
 									tooltip='Add Profile Picture'
 									handleFileUpload={ this.onUpload }
 									url={ this.props.profile.currentUser.avatar ? this.props.profile.currentUser.avatar : this.state.defaultPic }
-								/>
+									/>
 							</div>
 							<div style={styles.profileSection.inputSection}>
 								{this.renderSettings(profileSettings,'profile')}

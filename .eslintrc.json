@@ -21,11 +21,6 @@
 		"brace-style": [ "error", "1tbs", { "allowSingleLine": true } ],
 		"comma-dangle": [ 2, "always-multiline" ],
 		"constructor-super": [ "error" ],
-		"indent": [
-			"error",
-			"tab",
-			{ "SwitchCase": 1 }
-		],
 		"linebreak-style": [
 			"error",
 			"unix"
@@ -43,13 +38,13 @@
 		],
 		"react/jsx-closing-bracket-location": [
 			2,
-			"tag-aligned"
+			"props-aligned"
 		],
 		"react/jsx-indent": [
 			2,
 			"tab"
 		],
-		"react/jsx-indent-props": [ 1, "tab"],
+		"react/jsx-indent-props": [ 2, "tab"],
 		"react/jsx-max-props-per-line": [
 			"error", {
 				"maximum": 1,

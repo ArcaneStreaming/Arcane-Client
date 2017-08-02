@@ -100,26 +100,26 @@ export default class MiniPlayer extends Component {
 						flag={this.props.isLooping}
 						icon="repeat"
 						onClick={this.props.onToggleLoop}
-					/>
+						/>
 					<DefaultControl
 						icon="skip_previous"
 						onClick={this.props.onPrevious}
-					/>
+						/>
 					<IconChangeControl
 						flag={this.props.isPlaying}
 						icon1="play_arrow"
 						icon2="pause"
 						onClick={this.props.onPlay}
-					/>
+						/>
 					<DefaultControl
 						icon="skip_next"
 						onClick={this.props.onNext}
-					/>
+						/>
 					<ColoredControl
 						flag={this.props.isShuffling}
 						icon="shuffle"
 						onClick={this.props.onToggleShuffle}
-					/>
+						/>
 				</div>
 			);
 		}
@@ -133,7 +133,7 @@ export default class MiniPlayer extends Component {
 						onChange={this.handleSlideClick}
 						sliderStyle={style.slider}
 						value={this.props.percent}
-					/>
+						/>
 					{this.renderPlaybackButtons()}
 				</div>
 			);
@@ -145,11 +145,11 @@ export default class MiniPlayer extends Component {
 					<IconButton
 						iconClassName="material-icons"
 						iconStyle={{ color: theme.palette.alternateTextColor }}
-					>
+						>
 						{'equalizer'}</IconButton> :
 					<IconButton
 						iconClassName="material-icons"
-					>
+						>
 						{'play_arrow'}</IconButton>);
 		}
 
@@ -160,7 +160,7 @@ export default class MiniPlayer extends Component {
 				<div
 					id={'miniplayer_queue_track_' + (track == null ? '-1' : track.id)}
 					key={'miniplayer_queue_track_' + (track == null ? '-1' : track.id)}
-				>
+					>
 					<Divider />
 					<ListItem
 						hoverColor={fade(theme.palette.accent1Color, 0.3)}
@@ -168,11 +168,11 @@ export default class MiniPlayer extends Component {
 							<Avatar
 								src={track && track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
 								style={style.queueArt}
-							/>}
+								/>}
 						primaryText={track ? track.name : 'No Name'}
 						rightIconButton={this.renderEQIcon(track)}
 						secondaryText={track && track.artist ? track.artist.name : 'No Artist Name'}
-					/>
+						/>
 				</div>
 			));
 			return (<List style={style.queue}>{q}</List>);
@@ -184,7 +184,7 @@ export default class MiniPlayer extends Component {
 				<div
 					id="player_overlay_container"
 					style={style.container}
-				>
+					>
 					<CardTitle
 						id="player_overlay_title"
 						style={style.titleContainer}
@@ -192,7 +192,7 @@ export default class MiniPlayer extends Component {
 						subtitleStyle={style.title}
 						title={cur_song.name ? cur_song.name : null}
 						titleStyle={style.title}
-					/>
+						/>
 					{this.renderPlaybackControls()}
 				</div>
 			);
@@ -206,7 +206,7 @@ export default class MiniPlayer extends Component {
 						<img
 							src={cur_song ? cur_song.album.artwork : host + 'static/images/default-artwork.png'}
 							style={style.playerArt}
-						/>
+							/>
 					</CardMedia>
 				</Card>
 			);

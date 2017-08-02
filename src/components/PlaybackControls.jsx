@@ -55,7 +55,7 @@ const IconChangeControl = (props) => {
 			iconStyle={styles.mediumIcon}
 			onClick={props.onClick}
 			style={styles.medium}
-		>
+			>
 			{!props.flag ? props.icon1 : props.icon2}
 		</IconButton>
 	);
@@ -71,7 +71,7 @@ const ColoredControl = (props) => {
 			iconStyle={!props.flag ? styles.smallIcon : styles.coloredSmallIcon}
 			onClick={props.onClick}
 			style={styles.small}
-		>
+			>
 			{props.icon}
 		</IconButton>
 	);
@@ -87,7 +87,7 @@ const DefaultControl = (props) => {
 			iconStyle={styles.smallIcon}
 			onClick={props.onClick}
 			style={styles.small}
-		>
+			>
 			{props.icon}
 		</IconButton>
 	);

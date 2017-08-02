@@ -90,13 +90,13 @@ class PlaylistsPage extends Component {
 						fullWidth
 						hintText={'New Playlist'}
 						type={'text'}
-					/>
+						/>
 					<div style={{ textAlign: 'center' }}>
 						<RaisedButton
 							primary={true}
 							icon={<FontIcon className="material-icons">create_new_folder</FontIcon>}
 							onTouchTap={this.handleNewPlaylist}
-						/>
+							/>
 					</div>
 				</div>
 			);
@@ -108,7 +108,7 @@ class PlaylistsPage extends Component {
 							primary={true}
 							icon={<FontIcon className="material-icons">create_new_folder</FontIcon>}
 							onTouchTap={this.handleNewPlaylist}
-						/>
+							/>
 					</div>
 				</div>
 			);
@@ -121,7 +121,7 @@ class PlaylistsPage extends Component {
 				animation={null}
 				key={'playlist_' + item.id}
 				innerDivStyle={{ padding:0, width:'100%' }}
-			>
+				>
 				<ListItem
 					key={'playlit_data_' + item.id}
 					primaryText={item.name}
@@ -133,9 +133,9 @@ class PlaylistsPage extends Component {
 							id={item.id}
 							name={item.name}
 							playlist={item}
-						/>
+							/>
 					}
-				/>
+					/>
 			</MenuItem>
 		));
 		return arr;
@@ -149,7 +149,7 @@ class PlaylistsPage extends Component {
 				<Avatar
 					src={track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
 					style={{ borderRadius: 1 }}
-				/>
+					/>
 			);
 		}
 		if (noArt && track) {
@@ -171,7 +171,7 @@ class PlaylistsPage extends Component {
 					innerDivStyle={{ padding:0, width:'100%' }}
 					key={'track_list_item_'+ track.id}
 					value={track}
-				>
+					>
 					<Divider />
 					<ListItem
 						// style={{position:'relative', marginLeft:'.5%', marginRight:'2%'}}
@@ -185,10 +185,10 @@ class PlaylistsPage extends Component {
 								{...this.props}
 								id={track.id}
 								name={track.name}
-							/>
+								/>
 						}
 						secondaryText={track.artist.name + ' - ' + track.duration}
-					/>
+						/>
 				</MenuItem>
 			));
 			return arr;
@@ -210,7 +210,7 @@ class PlaylistsPage extends Component {
 								disableAutoFocus
 								autoWidth={false}
 								width={'25vw'}
-							>
+								>
 								{ this.renderPlaylists(this.props.playlists.playlists) }
 							</Menu>
 							{ this.renderNewPlaylistActions() }

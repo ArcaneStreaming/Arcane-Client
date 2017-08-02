@@ -128,14 +128,14 @@ class LoginModal extends Component {
 					label={'Login'}
 					onTouchTap={this.handleLogin}
 					secondary
-				/>
+					/>
 				<FlatButton
 					id={'login_form_join'}
 					key={'login_form_join'}
 					label="Join Us"
 					onTouchTap={this.handleJoin}
 					disabled={true}
-				/>
+					/>
 			</div>
 		);
 	}
@@ -152,7 +152,7 @@ class LoginModal extends Component {
 			return (
 				<SignUpForm {...this.props}
 					handleCancel={() => this.setState({ createUser:false })}
-				/>
+					/>
 			);
 		} else {
 			return(
@@ -165,7 +165,7 @@ class LoginModal extends Component {
 						name={'login_form_username'}
 						onChange={this.checkUsername}
 						type={'email'}
-					/>
+						/>
 					<TextField
 						errorText={password_errors.length >0 ? password_errors.join(', '): null}
 						floatingLabelText={'Password'}
@@ -174,7 +174,7 @@ class LoginModal extends Component {
 						name={'login_form_password'}
 						onChange={this.verifyPassword}
 						type={'password'}
-					/>
+						/>
 					{this.renderActions()}
 				</div>
 			);
@@ -191,7 +191,7 @@ class LoginModal extends Component {
 				autoScrollBodyContent
 				id={'login_form_container'}
 				title={null}
-			>
+				>
 				{this.renderContents()}
 			</Dialog>
 		);

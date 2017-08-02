@@ -41,7 +41,7 @@ const SearchBox = (props) => {
 		<div
 			id="searchBox"
 			style={divStyle}
-		>
+			>
 			<AutoComplete
 				dataSource={props.dataSource}
 				dataSourceConfig={dataSourceConfig}
@@ -51,12 +51,12 @@ const SearchBox = (props) => {
 				menuProps={{ maxHeight:'75vh' }}
 				onUpdateInput={props.onUpdate}
 				style={textStyle}
-			/>
+				/>
 			<IconButton
 				iconClassName="material-icons"
 				iconStyle={{ color: props.muiTheme.palette.alternateTextColor }}
 				onClick={() => props.onClick()}
-			>{'search'}</IconButton>
+				>{'search'}</IconButton>
 		</div>
 	);
 };

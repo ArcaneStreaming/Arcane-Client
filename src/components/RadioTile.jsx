@@ -80,19 +80,19 @@ class RadioTile extends Component {
 						<div
 							id="overlay_container"
 							style={styles.overlay}
-						>
+							>
 							<div style={styles.overlay.topActions}>
 								<IconButton
 									hoveredStyle={{ color:'green' }}
 									iconClassName="material-icons"
 									iconStyle={this.props.liked ? { backgroundColor:'green', borderRadius:'50%' } : {}}
-								>{'check'}</IconButton>
+									>{'check'}</IconButton>
 								<IconButton
 									hoveredStyle={{ color:'red' }}
 									iconClassName="material-icons"
 									iconStyle={this.props.disliked ? { backgroundColor:'red', borderRadius:'50%' } : {}}
 									style={{ float:'right' }}
-								>{'close'}</IconButton>
+									>{'close'}</IconButton>
 							</div>
 							<div style={styles.overlay.bottomActions}>
 								<CardTitle
@@ -101,7 +101,7 @@ class RadioTile extends Component {
 									subtitleStyle={styles.overlay.bottomActions.label.subtitle}
 									title={title}
 									titleStyle={styles.overlay.bottomActions.label.title}
-								/>
+									/>
 								{/* <IconButton
                iconClassName="material-icons"
                style={styles.overlay.bottomActions.button}
@@ -113,7 +113,7 @@ class RadioTile extends Component {
 									}
 									style={styles.overlay.bottomActions.button}
 									targetOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-								><MenuItem primaryText="Start radio" />
+									><MenuItem primaryText="Start radio" />
 									<MenuItem primaryText="Play next" />
 									<Divider />
 									<MenuItem primaryText="Add to queue" />
@@ -144,11 +144,11 @@ class RadioTile extends Component {
 							backgroundPosition:'center center',
 						}}
 						zDepth={3}
-					>
+						>
 						<div
 							className={className}
 							style={{ height:'100%', width:'100%', borderRadius:.1 }}
-						>{this.renderOverlay()}</div>
+							>{this.renderOverlay()}</div>
 					</Paper>
 
 				);

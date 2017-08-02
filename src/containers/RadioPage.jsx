@@ -27,10 +27,10 @@ class RadioPage extends Component {
 				<Radio
 					isPlaying={this.props.audio.isPlaying}
 					tracks={this.props.audio}
-				/>
+					/>
 				<RadioChoices
 					{...this.props}
-				/>
+					/>
 			</div>
 		);
 	}

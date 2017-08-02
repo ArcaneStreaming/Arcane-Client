@@ -34,7 +34,7 @@ export default class TracksCollection extends Component {
 				<Avatar
 					src={track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
 					style={{ borderRadius:1 }}
-				/>
+					/>
 			);
 		}
 		if (noArt && track) {
@@ -53,7 +53,7 @@ export default class TracksCollection extends Component {
 					innerDivStyle={{ padding:0, width:'100%' }}
 					key={'track_list_item_'+ track.id}
 					value={track}
-				>
+					>
 					<Divider />
 					<ListItem
 						// style={{position:'relative', marginLeft:'.5%', marginRight:'2%'}}
@@ -67,10 +67,10 @@ export default class TracksCollection extends Component {
 								{...this.props}
 								id={track.id}
 								name={track.name}
-							/>
+								/>
 						}
 						secondaryText={track.artist.name + ' - ' + track.duration}
-					/>
+						/>
 				</MenuItem>
 			));
 			return arr;
@@ -90,7 +90,7 @@ export default class TracksCollection extends Component {
 					onChange={this.handleChange}
 					selectedMenuItemStyle={{ backgroundColor:theme.palette.accent2Color }}
 					value={selectedTracks ? selectedTracks : []}
-				>
+					>
 					{this.renderTracksListItems(tracks.results)}
 				</Menu>
 				<Waypoint onEnter={this.loadMore} />

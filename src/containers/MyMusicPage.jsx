@@ -44,7 +44,7 @@ class MyMusic extends Component {
 					<FloatingActionButton
 						onClick={this.pushToQueue}
 						style={style.fab}
-					><FontIcon className="material-icons">{'queue'}</FontIcon></FloatingActionButton>
+						><FontIcon className="material-icons">{'queue'}</FontIcon></FloatingActionButton>
 				);
 			}
 		}
@@ -56,7 +56,7 @@ class MyMusic extends Component {
 						{...this.props}
 						select={this.addToSelected}
 						selectedTracks={this.state.selected}
-					/>
+						/>
 					{this.renderAddQueueButton()}
 					<Snackbar
 						action="undo"
@@ -65,7 +65,7 @@ class MyMusic extends Component {
 						onActionTouchTap={this.handleActionTouchTap}
 						onRequestClose={this.handleRequestClose}
 						open={this.state.snackOpen}
-					/>
+						/>
 				</div>
 			);
 		}

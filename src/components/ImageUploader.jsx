@@ -57,14 +57,14 @@ export default class ImageUploader extends Component {
 						id='imgPreview'
 						src={this.props.url}
 						style={styles.imgPreview}
-					/>
+						/>
 					<Dropzone
 						accept='image/jpeg,image/png'
 						onDrop={this.handleDrop}
 						ref={(node) => { this.dropzone = node; }}
 						style={styles.dropzone}
 						multiple={false}
-					>
+						>
 						<IconButton
 							style={styles.dropIcon}
 							iconClassName='material-icons'
@@ -78,7 +78,7 @@ export default class ImageUploader extends Component {
 								MozTransition: 'all 0.5s',
 								zIndex: '5',
 							}}
-						>
+							>
 							file_upload
 						</IconButton>
 					</Dropzone>

@@ -174,13 +174,13 @@ class SignUpForm extends Component {
 					label={'Join Arcane'}
 					onTouchTap={this.handleJoin}
 					secondary
-				/>
+					/>
 				<FlatButton
 					id={'join_form_cancel'}
 					key={'join_form_cancel'}
 					label="Cancel"
 					onTouchTap={this.props.handleCancel}
-				/>
+					/>
 			</div>
 		);
 	}
@@ -200,7 +200,7 @@ class SignUpForm extends Component {
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
 						type={'text'}
-					/>
+						/>
 					<TextField
 						errorText={last_name_errors.length >0 ? last_name_errors.join(', '): null}
 						floatingLabelText={'Last Name'}
@@ -211,7 +211,7 @@ class SignUpForm extends Component {
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
 						type={'text'}
-					/>
+						/>
 				</div>
 				<div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
 					<TextField
@@ -224,7 +224,7 @@ class SignUpForm extends Component {
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
 						type={'email'}
-					/>
+						/>
 					<TextField
 						errorText={username_errors.length > 0 ? username_errors.join(', '): null}
 						floatingLabelText={'Username'}
@@ -235,7 +235,7 @@ class SignUpForm extends Component {
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
 						type={'text'}
-					/>
+						/>
 				</div>
 				<div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
 					<TextField
@@ -248,7 +248,7 @@ class SignUpForm extends Component {
 						onChange={this.verifyPassword}
 						style={{ maxWidth:'47.5%' }}
 						type={'password'}
-					/>
+						/>
 					<TextField
 						errorText={confirm_errors.length >0 ? confirm_errors.join(', '): null}
 						floatingLabelText={'Confirm Password'}
@@ -259,7 +259,7 @@ class SignUpForm extends Component {
 						onChange={this.confirmPassword}
 						style={{ maxWidth:'47.5%' }}
 						type={'password'}
-					/>
+						/>
 				</div>
 				{this.renderActions()}
 			</div>

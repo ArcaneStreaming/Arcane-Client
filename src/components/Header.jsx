@@ -64,13 +64,13 @@ class Header extends Component  {
 					onClose={this.handleLeftClose}
 					onRequestChange={(leftOpen) => this.setState({ leftOpen })}
 					open={this.state.leftOpen}
-				/>
+					/>
 				<NowPlayingDrawer
 					{...this.props}
 					onClose={this.handleRightClose}
 					onRequestChange={(rightOpen) => this.setState({ rightOpen })}
 					open={this.state.rightOpen}
-				/>
+					/>
 				<AppBar
 					iconElementRight={
 						<RightActions
@@ -83,14 +83,14 @@ class Header extends Component  {
 							onSignOut={this.handleSignOut}
 							isToggled={this.state.isArtistView}
 							onViewSwitch={this.handleViewToggle}
-						/>
+							/>
 					}
 					iconStyleRight={{ maxWidth:'66vw' }}
 					onLeftIconButtonTouchTap={this.handleLeftToggle}
 					primary
 					title={'Arcane'}
 					titleStyle={{ maxWidth:'33vw' }}
-				/>
+					/>
 			</div>
 		);
 	}

@@ -13,7 +13,7 @@ const makeExpanding = (Target) => {
 											{...this.props}
 											isOpen={this.state.isOpen}
 											onClick={this.handleOnClick}
-										/>
+											/>
 									);
 								}
 	};

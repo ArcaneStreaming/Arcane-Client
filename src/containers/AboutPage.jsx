@@ -14,13 +14,13 @@ export default class AboutPage extends Component {
 		return (
 			<div
 				style={{ height:'calc(100vh - 64px)', width:'100vw', display:'flex', flexDirection:'column', justifyContent:'space-around' }}
-			>
+				>
 				<div
 					style={{ width: '33%', float: 'left', height:'25vh' }}
-				>
+					>
 					<ImageUploader
 						handleFileUpload={() => { confirm('Upload this file?'); }}
-					/>
+						/>
 				</div>
 
 				<Paper style={{ marginLeft:'auto', marginRight:'auto', padding:20, maxWidth:'90vw', maxHeight:'80vh', overflowY:'auto' }}>

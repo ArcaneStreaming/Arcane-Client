@@ -37,7 +37,7 @@ class BrowsePage extends Component {
 					width:'100vw',
 					padding:10,
 				}}
-			>
+				>
 				<BrowseCarousel
 					{...this.props}
 					label={'New Releases'}
@@ -45,7 +45,7 @@ class BrowsePage extends Component {
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
 					type={'album'}
-				/>
+					/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Genres'}
@@ -53,7 +53,7 @@ class BrowsePage extends Component {
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
 					type={'genre'}
-				/>
+					/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Artists'}
@@ -61,7 +61,7 @@ class BrowsePage extends Component {
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
 					type={'artist'}
-				/>
+					/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Albums'}
@@ -69,7 +69,7 @@ class BrowsePage extends Component {
 					select={this.addToSelectedWS}
 					selectedTracks={this.state.selected}
 					type={'album'}
-				/>
+					/>
 			</div>
 		);
 	}

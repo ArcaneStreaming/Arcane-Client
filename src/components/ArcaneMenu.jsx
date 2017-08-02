@@ -51,14 +51,14 @@ export default class ArcaneMenu extends Component {
 				cols={tile.featured ? 2 : 1}
 				key={tile.name}
 				rows={tile.featured ? 2 : 1}
-			>
+				>
 				<SquareButton
 					icon={tile.icon}
 					key={'menuTile' + tile.name}
 					name={tile.name}
 					onClick={this.props.onClick}
 					url={ tile.url === 'profile' || tile.url === 'playlists' ? tile.url + '/' + id : tile.url}
-				/>
+					/>
 			</GridTile>
 		));
 		return map;
@@ -70,7 +70,7 @@ export default class ArcaneMenu extends Component {
 					cellHeight={'auto'}
 					cols={2}
 					style={gridStyle.gridList}
-				>
+					>
 					{this.renderMenuMap(this.props.currentUser.artist > 0 ? artistMenu : listenerMenu, this.props.currentUser.id)}
 				</GridList>
 			</div>

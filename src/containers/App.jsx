@@ -112,14 +112,15 @@ export default class App extends Component {
 
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(this.props.theme.currentTheme)}>
-				<div style={{
-					width:'100%',
-					height:'100%',
-					background: this.props.theme.currentTheme.palette.canvasColor + ' repeat top center fixed',
-					backgroundSize:'cover',
-					position:'fixed',
-				}}
-				>
+				<div
+					style={{
+						width:'100%',
+						height:'100%',
+						background: this.props.theme.currentTheme.palette.canvasColor + ' repeat top center fixed',
+						backgroundSize:'cover',
+						position:'fixed',
+					}}
+					>
 					<ReactAudioPlayer
 						ref={(audio) => { this.audio = audio; }}
 						autoPlay={this.state.autoPlay}
@@ -128,17 +129,17 @@ export default class App extends Component {
 						onListen={this.handleTimeUpdate}
 						onError={this.handleError}
 						onEnded={this.handleEnd}
-					/>
+						/>
 					<Header
 						{...audioProps}
 						currentUser={this.props.profile.currentUser}
-					/>
+						/>
 
 					{this.props.children}
 
 					<FloatingControls
 						{...audioProps}
-					/>
+						/>
 				</div>
 			</MuiThemeProvider>
 		);

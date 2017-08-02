@@ -26,7 +26,7 @@ export default class ArtistsCollection extends Component {
 					cols={1}
 					key={'artistTile_'+ tile.id}
 					rows={1}
-				>
+					>
 					<Tile
 						{...this.props}
 						albums={tile.albums}
@@ -36,7 +36,7 @@ export default class ArtistsCollection extends Component {
 						subtitle={tile.genre}
 						title={tile.name}
 						type={'artist'}
-					/>
+						/>
 				</GridTile>
 
 			));
@@ -52,12 +52,12 @@ export default class ArtistsCollection extends Component {
 					<GridList
 						cols={cols}
 						style={{ margin:2, maxWidth:'100%', maxHeight:'100%' }}
-					>
+						>
 						{this.renderArtistTiles(artists.results,cols)}
 					</GridList>
 					<Waypoint
 						onEnter={this.handleLoadMore}
-					/>
+						/>
 				</div>
 			);
 		}

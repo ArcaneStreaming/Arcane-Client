@@ -33,7 +33,7 @@ export default class RadioChoices extends Component {
 					key={'genre_' + index}
 					primaryText={genre.name}
 					onClick={() => this.startGenreRadio(genre.id)}
-				/>
+					/>
 			));
 			return <List>{arr}</List>;
 		} else {

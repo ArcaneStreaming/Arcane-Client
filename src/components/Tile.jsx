@@ -99,12 +99,12 @@ class Tile extends Component {
 						onMouseLeave={this.handleLeave}
 						onMouseOver={this.handleHover}
 						style={styles.button}
-					>
+						>
 						<ListDialog
 							{...this.props}
 							onRequestClose={this.handleClose}
 							open={this.state.expanded}
-						/>
+							/>
 					</RaisedButton>
 
 				);

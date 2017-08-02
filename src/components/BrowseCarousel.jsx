@@ -99,13 +99,13 @@ export default class BrowseCarousel extends Component {
 					className="boxTile"
 					key={'browse_carousel_item_'+ item.id}
 					style={styles.sliderItem}
-				>
+					>
 					<Tile
 						{...this.props}
 						{...this.getProps(type, item)}
 						id={item.id}
 						type={type}
-					/>
+						/>
 				</div>
 			)) : [<div key={'browse_carousel_item_empty'} />];
 			return items;
@@ -118,7 +118,7 @@ export default class BrowseCarousel extends Component {
 					<h3 style={styles.label}>{label}</h3>
 					<Slider {...settings}
 						className="slickSlider"
-					>
+						>
 						{this.renderSliderItems(list.results)}
 					</Slider>
 				</div>

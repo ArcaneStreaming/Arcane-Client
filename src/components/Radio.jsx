@@ -85,7 +85,7 @@ export default class Radio extends Component  {
 						liked
 						subtitle={item ? item.artist.name : 'No Artist'}
 						title={item ? item.name : -1}
-					/>
+						/>
 				</div>
 			);
 		}

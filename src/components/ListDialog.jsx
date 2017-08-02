@@ -63,7 +63,7 @@ export default class ListDialog extends Component {
 				subtitleStyle={styles.subtitle}
 				title={title}
 				titleStyle={styles.title}
-			>
+				>
 				<FloatingActionButton style={styles.fab} onClick={this.handlePlayClick}>
 					<FontIcon className="material-icons">{'play_arrow'}</FontIcon>
 				</FloatingActionButton>
@@ -79,7 +79,7 @@ export default class ListDialog extends Component {
 					{...this.props}
 					noArt
 					tracks={tracks.albumTracks}
-				/>
+					/>
 			);
 		}
 
@@ -89,7 +89,7 @@ export default class ListDialog extends Component {
 					{...this.props}
 					albums={albums.artistAlbums}
 					cols={4}
-				/>
+					/>
 			);
 		}
 		if (type === 'genre') {
@@ -98,7 +98,7 @@ export default class ListDialog extends Component {
 					{...this.props}
 					artists={artists.genreArtists}
 					cols={4}
-				/>
+					/>
 			);
 		}
 	}
@@ -121,7 +121,7 @@ export default class ListDialog extends Component {
 						textShadow:'1px 1px black',
 						//  height:250,
 					}}
-				>
+					>
 					<div>{this.renderContent()}</div>
 				</Dialog>
 			);

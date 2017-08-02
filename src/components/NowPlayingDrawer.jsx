@@ -14,7 +14,7 @@ const NowPlayingDrawer = (props) => {
 			containerStyle={drawerStyle}
 			docked={false}
 			openSecondary
-		>
+			>
 			<MiniPlayer {...props} />
 		</Drawer>
 	);

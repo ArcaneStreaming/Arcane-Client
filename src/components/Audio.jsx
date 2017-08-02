@@ -107,7 +107,7 @@ export default class Audio extends React.Component {
 				{...this.props}
 				crossOrigin="anonymous"
 				refs={(audioEl) => { this.audioEl = audioEl; }}
-			/>
+				/>
 		);
 	}
 

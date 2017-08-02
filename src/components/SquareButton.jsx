@@ -49,7 +49,7 @@ export default class SquareButton extends Component {
 				<FontIcon
 					className="material-icons"
 					style={styles.guts.icon}
-				>{this.props.icon}</FontIcon>
+					>{this.props.icon}</FontIcon>
 				<span style={styles.guts.label}>{this.props.name}</span>
 			</div>
 		);
@@ -63,7 +63,7 @@ export default class SquareButton extends Component {
 					secondary
 					style={styles.root}
 					target="_blank"
-				>
+					>
 					{this.renderButtonGuts()}
 				</RaisedButton>
 			</Link>
