@@ -8,19 +8,19 @@ const styles = {
 		flexDirection:'column',
 		justifyContent:'space-between' },
 	formFields:{
-		width:'100%'
+		width:'100%',
 	},
 	underlineStyle:{
-		borderColor:theme.palette.textColor
+		borderColor:theme.palette.textColor,
 	},
 	formActions:{
 		display:'flex',
 		flexDirection:'row-reverse',
 		justifyContent:'space-around',
 		borderColor:'transparent',
-		paddingTop:24
+		paddingTop:24,
 	},
-	button:{}
+	button:{},
 };
 
 
@@ -30,7 +30,7 @@ export default class TrackForm extends Component {
 
 		this.state = {
 			item: {},
-			dirty: false
+			dirty: false,
 		};
 	}
 
@@ -74,21 +74,24 @@ export default class TrackForm extends Component {
 								name={'trackName'}
 								type={'text'}
 								value={this.state.item.name}
-								onChange={this.checkField}/>
+								onChange={this.checkField}
+							/>
 							<TextField
 								floatingLabelText={'Album'}
 								id={'album'}
 								name={'album'}
 								type={'text'}
 								value={this.state.item.album.name}
-								onChange={this.checkField}/>
+								onChange={this.checkField}
+							/>
 							<TextField
 								floatingLabelText={'Artist'}
 								id={'artist'}
 								name={'artist'}
 								type={'text'}
 								value={this.state.item.artist.name}
-								onChange={this.checkField}/>
+								onChange={this.checkField}
+							/>
 						</div>
 					);
 			}
@@ -109,12 +112,14 @@ export default class TrackForm extends Component {
 							key={'cancel_form_submit'}
 							label={'Cancel'}
 							//  onTouchTap={this.handleJoin}
-							secondary/>
+							secondary
+						/>
 						<FlatButton
 							id={'save_form_cancel'}
 							key={'save_form_cancel'}
 							label="Save Changes"
-							onTouchTap={this.props.onRequestClose}/>
+							onTouchTap={this.props.onRequestClose}
+						/>
 					</div>
 				);
 			}
@@ -126,7 +131,8 @@ export default class TrackForm extends Component {
 					<Dialog
 						{...this.props}
 						autoDetectWindowHeight
-						autoScrollBodyContent>
+						autoScrollBodyContent
+					>
 						<div>{this.renderContent(item)}</div>
 						{this.renderActions()}
 					</Dialog>

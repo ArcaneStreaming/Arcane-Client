@@ -12,33 +12,33 @@ const styles = {
 		width:'100vw',
 		height:'calc(100vh - 64px)',
 		paddingLeft:40,
-		paddingRight:40
+		paddingRight:40,
 	},
 	leftPreview:{
 		display:'flex',
 		flexDirection:'column',
-		justifyContent:'center'
+		justifyContent:'center',
 	},
 	smallDiv: {
 		height:300,
-		width:300
+		width:300,
 	},
 	centerPreview:{
 		display:'flex',
 		flexDirection:'column',
-		justifyContent:'center'
+		justifyContent:'center',
 	},
 	currentlyPlaying:{
 		display:'flex',
 		flexDirection:'column',
 		justifyContent:'center',
 		height: 'calc(100vh - 124px)',
-		width:'calc(100vh - 124px)'
+		width:'calc(100vh - 124px)',
 	},
 	rightPreview:{
 		display:'flex',
 		flexDirection:'column',
-		justifyContent:'center'
+		justifyContent:'center',
 	},
 	outerDiv:  {
 		display: 'flex',
@@ -50,10 +50,10 @@ const styles = {
 		maxWidth:'calc(100vh - 64px)',
 		marginLeft:'auto',
 		marginRight:'auto',
-		padding:30
+		padding:30,
 	},
 	innerDiv: {
-	}
+	},
 };
 
 
@@ -84,7 +84,8 @@ export default class Radio extends Component  {
 						imgURL={item && item.album.artwork ? item.album.artwork : host + 'static/images/default-artwork.png'}
 						liked
 						subtitle={item ? item.artist.name : 'No Artist'}
-						title={item ? item.name : -1}/>
+						title={item ? item.name : -1}
+					/>
 				</div>
 			);
 		}

@@ -36,7 +36,8 @@ class UploadPage extends Component {
 					addTrack={this.addTrack}
 					dispatch={this.props.dispatch}
 					genres={this.props.genres}
-					currentUser={this.props.profile.currentUser}/>
+					currentUser={this.props.profile.currentUser}
+				/>
 			</div>
 		);
 	}
@@ -45,14 +46,14 @@ class UploadPage extends Component {
 UploadPage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	genres: PropTypes.object.isRequired,
-	profile: PropTypes.object.isRequired
+	profile: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
 	const { genres, profile } = state;
 
 	return {
-		genres, profile
+		genres, profile,
 	};
 }
 

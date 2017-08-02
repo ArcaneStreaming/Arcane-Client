@@ -9,7 +9,7 @@ import {
 	UPDATE_POSITION, PAUSE, TOGGLE_LOOP,
 	TOGGLE_SHUFFLE, ADD_TO_QUEUE,
 	START_GENRE_RADIO, START_ARTIST_RADIO,
-	PLAY_ALBUM_TRACKS, SET_AUDIO
+	PLAY_ALBUM_TRACKS, SET_AUDIO,
 } from '../constants/ActionTypes';
 
 import clone from 'lodash/clone';
@@ -36,8 +36,8 @@ const initialState = {
 		'url': host + 'static/default.mp3',
 		'name': 'Waiting...',
 		'artist': 'No song loaded',
-		'favorite': false
-	}
+		'favorite': false,
+	},
 };
 
 
@@ -48,7 +48,7 @@ function getAudioState(audio) {
 		progress: audio.buffered,
 		duration: audio.duration,
 		isLooping: audio.loop,
-		error: audio.error
+		error: audio.error,
 	};
 
 	return test;
@@ -112,7 +112,7 @@ export default function audio(state = initialState, action) {
 				currentlyPlaying: nextSong,
 				completed: nextCompleted,
 				audio: newAudio,
-				...getAudioState(newAudio)
+				...getAudioState(newAudio),
 			};
 		case PREVIOUS:
 			resetAudio(newAudio);
@@ -126,7 +126,7 @@ export default function audio(state = initialState, action) {
 				completed: prevCompleted,
 				currentlyPlaying: prevSong,
 				audio: newAudio,
-				...getAudioState(newAudio)
+				...getAudioState(newAudio),
 			};
 		case UPDATE_VOLUME:
 			newAudio.volume = action.volume / 100;
@@ -164,7 +164,7 @@ export default function audio(state = initialState, action) {
 				currentlyPlaying: action.tracks[0],
 				upcoming: action.tracks.slice(1),
 				audio: newAudio,
-				...getAudioState(newAudio)
+				...getAudioState(newAudio),
 			};
 		case SET_AUDIO:
 			return { ...state, audio: action.audio, ...getAudioState(newAudio) };

@@ -11,12 +11,12 @@ const styles = {
 		bottom:10,
 		right:15,
 		position:'absolute',
-		zIndex:1
+		zIndex:1,
 	},
 	cardTitleRoot: {
 		padding:0,
 		margin:0,
-		paddingTop:160
+		paddingTop:160,
 	},
 	title: {
 		bottom:25,
@@ -25,7 +25,7 @@ const styles = {
 		textOverflow:'clip',
 		left:15,
 		position:'absolute',
-		textShadow:'1px 1px black'
+		textShadow:'1px 1px black',
 	},
 	subtitle: {
 		bottom:0,
@@ -34,8 +34,8 @@ const styles = {
 		textOverflow:'clip',
 		left:15,
 		position:'absolute',
-		textShadow:'1px 1px black'
-	}
+		textShadow:'1px 1px black',
+	},
 };
 
 export default class ListDialog extends Component {
@@ -62,7 +62,8 @@ export default class ListDialog extends Component {
 				subtitle={subtitle}
 				subtitleStyle={styles.subtitle}
 				title={title}
-				titleStyle={styles.title}>
+				titleStyle={styles.title}
+			>
 				<FloatingActionButton style={styles.fab} onClick={this.handlePlayClick}>
 					<FontIcon className="material-icons">{'play_arrow'}</FontIcon>
 				</FloatingActionButton>
@@ -77,7 +78,8 @@ export default class ListDialog extends Component {
 				<TracksCollection
 					{...this.props}
 					noArt
-					tracks={tracks.albumTracks}/>
+					tracks={tracks.albumTracks}
+				/>
 			);
 		}
 
@@ -86,7 +88,8 @@ export default class ListDialog extends Component {
 				<AlbumsCollection
 					{...this.props}
 					albums={albums.artistAlbums}
-					cols={4}/>
+					cols={4}
+				/>
 			);
 		}
 		if (type === 'genre') {
@@ -94,7 +97,8 @@ export default class ListDialog extends Component {
 				<ArtistsCollection
 					{...this.props}
 					artists={artists.genreArtists}
-					cols={4}/>
+					cols={4}
+				/>
 			);
 		}
 	}
@@ -114,9 +118,10 @@ export default class ListDialog extends Component {
 						backgroundSize: 'cover',
 						backgroundPosition:'center center',
 						overflow:'hidden',
-						textShadow:'1px 1px black'
+						textShadow:'1px 1px black',
 						//  height:250,
-					}}>
+					}}
+				>
 					<div>{this.renderContent()}</div>
 				</Dialog>
 			);
@@ -125,5 +130,5 @@ export default class ListDialog extends Component {
 }
 
 ListDialog.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
 };

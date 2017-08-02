@@ -12,7 +12,7 @@ class BrowsePage extends Component {
 		this.state = {
 			selected: [],
 			snackOpen:false,
-			snackMessage: 'Added nada!'
+			snackMessage: 'Added nada!',
 		};
 		const { dispatch } = this.props;
 		// dispatch(TrackActions.getTracks());
@@ -23,7 +23,7 @@ class BrowsePage extends Component {
 
 	addToSelected = (items) => {
 		this.setState({
-			selected: items
+			selected: items,
 		});
 	}
 
@@ -35,36 +35,41 @@ class BrowsePage extends Component {
 					height:'calc(100vh - 64px)',
 					overflowY:'auto',
 					width:'100vw',
-					padding:10
-				}}>
+					padding:10,
+				}}
+			>
 				<BrowseCarousel
 					{...this.props}
 					label={'New Releases'}
 					list={albums.allAlbums}
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'album'}/>
+					type={'album'}
+				/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Genres'}
 					list={genres}
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'genre'}/>
+					type={'genre'}
+				/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Artists'}
 					list={artists.allArtists}
 					select={this.addToSelected}
 					selectedTracks={this.state.selected}
-					type={'artist'}/>
+					type={'artist'}
+				/>
 				<BrowseCarousel
 					{...this.props}
 					label={'Albums'}
 					list={albums.allAlbums}
 					select={this.addToSelectedWS}
 					selectedTracks={this.state.selected}
-					type={'album'}/>
+					type={'album'}
+				/>
 			</div>
 		);
 	}
@@ -75,7 +80,7 @@ BrowsePage.propTypes = {
 	genres: PropTypes.object.isRequired,
 	tracks: PropTypes.object.isRequired,
 	artists: PropTypes.object.isRequired,
-	albums: PropTypes.object.isRequired
+	albums: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

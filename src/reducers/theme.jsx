@@ -3,7 +3,7 @@ import { themeEnum, themes } from '../constants/material-ui-theme';
 
 const initialState = {
 	themeIndex: themeEnum.ARCANE_DARK,
-	currentTheme: themes[themeEnum.ARCANE_DARK]
+	currentTheme: themes[themeEnum.ARCANE_DARK],
 };
 
 export default function theme(state = initialState, action) {

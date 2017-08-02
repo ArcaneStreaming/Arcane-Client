@@ -25,7 +25,8 @@ export default class AlbumsCollection extends Component {
 						className="boxTile"
 						cols={1}
 						key={'albumTile_'+ tile.id}
-						rows={1}>
+						rows={1}
+					>
 						<Tile
 							{...this.props}
 							cols={cols}
@@ -34,7 +35,8 @@ export default class AlbumsCollection extends Component {
 							subtitle={tile.artist}
 							title={tile.name}
 							tracks={tile.tracks}
-							type={'album'}/>
+							type={'album'}
+						/>
 					</GridTile>
 				));
 				return arr;
@@ -48,11 +50,13 @@ export default class AlbumsCollection extends Component {
 						<GridList
 							cols={cols}
 							// cellHeight={200}
-							style={{ margin:2, maxWidth:'100%', maxHeight:'100%' }}>
+							style={{ margin:2, maxWidth:'100%', maxHeight:'100%' }}
+						>
 							{this.renderAlbumTiles(albums.results, cols)}
 						</GridList>
 						<Waypoint
-							onEnter={this.handleLoadMore}/>
+							onEnter={this.handleLoadMore}
+						/>
 					</div>
 				);
 			}

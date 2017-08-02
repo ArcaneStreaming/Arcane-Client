@@ -12,19 +12,19 @@ const styles = {
 		flexDirection:'column',
 		justifyContent:'space-between' },
 	formFields:{
-		width:'100%'
+		width:'100%',
 	},
 	underlineStyle:{
-		borderColor:theme.palette.textColor
+		borderColor:theme.palette.textColor,
 	},
 	formActions:{
 		display:'flex',
 		flexDirection:'row-reverse',
 		justifyContent:'space-around',
 		borderColor:'transparent',
-		paddingTop:24
+		paddingTop:24,
 	},
-	button:{}
+	button:{},
 };
 
 class SignUpForm extends Component {
@@ -42,7 +42,7 @@ class SignUpForm extends Component {
 			username_errors:[],
 			password:null,
 			password_errors:[],
-			confirm_errors:[]
+			confirm_errors:[],
 		};
 	}
 
@@ -114,10 +114,10 @@ class SignUpForm extends Component {
 		fetch('/api/users/users/', {
 			method: 'post',
 			headers: {
-				'X-CSRFToken': csrftoken
+				'X-CSRFToken': csrftoken,
 			},
 			credentials: 'same-origin',
-			body:fd
+			body:fd,
 		}).then(response => response.json()).then((json) => {
 			if (json.token) {
 				const { dispatch } = this.props;
@@ -133,10 +133,10 @@ class SignUpForm extends Component {
 				fetch('/api/auth/', {
 					method: 'post',
 					header: {
-						'X-CSRFToken': csrftoken
+						'X-CSRFToken': csrftoken,
 					},
 					credentials: 'same-origin',
-					body: content
+					body: content,
 				}).then(response => response.json()).then((json) => {
 					if (json.token) {
 						const { dispatch } = this.props;
@@ -173,12 +173,14 @@ class SignUpForm extends Component {
 					key={'join_form_submit'}
 					label={'Join Arcane'}
 					onTouchTap={this.handleJoin}
-					secondary/>
+					secondary
+				/>
 				<FlatButton
 					id={'join_form_cancel'}
 					key={'join_form_cancel'}
 					label="Cancel"
-					onTouchTap={this.props.handleCancel}/>
+					onTouchTap={this.props.handleCancel}
+				/>
 			</div>
 		);
 	}
@@ -197,7 +199,8 @@ class SignUpForm extends Component {
 						name={'first_name'}
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
-						type={'text'}/>
+						type={'text'}
+					/>
 					<TextField
 						errorText={last_name_errors.length >0 ? last_name_errors.join(', '): null}
 						floatingLabelText={'Last Name'}
@@ -207,7 +210,8 @@ class SignUpForm extends Component {
 						name={'last_name'}
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
-						type={'text'}/>
+						type={'text'}
+					/>
 				</div>
 				<div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
 					<TextField
@@ -219,7 +223,8 @@ class SignUpForm extends Component {
 						name={'email'}
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
-						type={'email'}/>
+						type={'email'}
+					/>
 					<TextField
 						errorText={username_errors.length > 0 ? username_errors.join(', '): null}
 						floatingLabelText={'Username'}
@@ -229,7 +234,8 @@ class SignUpForm extends Component {
 						name={'username'}
 						onChange={this.checkField}
 						style={{ maxWidth:'47.5%' }}
-						type={'text'}/>
+						type={'text'}
+					/>
 				</div>
 				<div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
 					<TextField
@@ -241,7 +247,8 @@ class SignUpForm extends Component {
 						name={'password'}
 						onChange={this.verifyPassword}
 						style={{ maxWidth:'47.5%' }}
-						type={'password'}/>
+						type={'password'}
+					/>
 					<TextField
 						errorText={confirm_errors.length >0 ? confirm_errors.join(', '): null}
 						floatingLabelText={'Confirm Password'}
@@ -251,7 +258,8 @@ class SignUpForm extends Component {
 						name={'confirm_pass'}
 						onChange={this.confirmPassword}
 						style={{ maxWidth:'47.5%' }}
-						type={'password'}/>
+						type={'password'}
+					/>
 				</div>
 				{this.renderActions()}
 			</div>
@@ -259,7 +267,7 @@ class SignUpForm extends Component {
 	}
 }
 SignUpForm.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(SignUpForm);

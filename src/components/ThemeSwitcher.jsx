@@ -24,14 +24,14 @@ const customFields = [
 	{ 'key':'disabledColor', 'label':'Disabled Color', 'type':'picker', 'defaultValue':'#000000' },
 	{ 'key':'pickerHeaderColor', 'label':'Picker Header Color', 'type':'picker', 'defaultValue':'#000000' },
 	{ 'key':'clockCircleColor', 'label':'Clock Circle Color', 'type':'picker', 'defaultValue':'#000000' },
-	{ 'key':'shadowColor', 'label':'Shadow Color', 'type':'picker', 'defaultValue':'#000000' }
+	{ 'key':'shadowColor', 'label':'Shadow Color', 'type':'picker', 'defaultValue':'#000000' },
 ];
 class ThemeSwitcher extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			open:false,
-			theme: 'ARCANE DARK'
+			theme: 'ARCANE DARK',
 		};
 	}
 
@@ -97,8 +97,8 @@ class ThemeSwitcher extends Component {
 				disabledColor: this.state.disabledColor,
 				pickerHeaderColor: this.state.pickerHeaderColor,
 				clockCircleColor: this.state.clockCircleColor,
-				shadowColor: this.state.shadowColor
-			}
+				shadowColor: this.state.shadowColor,
+			},
 		};
 		let newTheme = getMuiTheme(theme);
 		dispatch(ThemeActions.changeTheme(newTheme));
@@ -115,7 +115,8 @@ class ThemeSwitcher extends Component {
 							color={this.state.background}
 							id={item.key}
 							name={item.key}
-							onChange={this.handleChange} />
+							onChange={this.handleChange}
+						/>
 					</div>
 				</div>
 				<Divider />
@@ -128,7 +129,8 @@ class ThemeSwitcher extends Component {
 			<MenuItem
 				key={item.options.indexOf(option)}
 				primaryText={option}
-				value={option} />
+				value={option}
+			/>
 		));
 		return (
 			<SelectField
@@ -138,7 +140,8 @@ class ThemeSwitcher extends Component {
 				name={item.key}
 				onChange={this.onSelect}
 				type={item.type}
-				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}>
+				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}
+			>
 				{options}
 			</SelectField>
 		);
@@ -179,7 +182,8 @@ class ThemeSwitcher extends Component {
 					autoDetectWindowHeight
 					autoScrollBodyContent
 					open={this.state.open}
-					onRequestClose={this.handleClose} >
+					onRequestClose={this.handleClose}
+				>
 					{this.renderSettings(customFields)}
 				</Dialog>
 				{/*</Paper>*/}
@@ -190,7 +194,7 @@ class ThemeSwitcher extends Component {
 
 ThemeSwitcher.propTypes = {
 	dispatch: PropTypes.func.isRequired,
-	theme: PropTypes.object.isRequired
+	theme: PropTypes.object.isRequired,
 };
 
 //TODO Add theme change to Settings

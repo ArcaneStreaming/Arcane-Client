@@ -7,7 +7,7 @@ export function getArtistProfile(id) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_ARTIST_PROFILE,
-			profile: json.results[0]
+			profile: json.results[0],
 		}));
 }
 
@@ -17,7 +17,7 @@ export function getArtistMembers(id) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_ARTIST_MEMBERS,
-			members: json.results
+			members: json.results,
 		}));
 }
 
@@ -26,7 +26,7 @@ export function getArtistSummaries(id) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_ARTIST_SUMMARIES,
-			summaries: json.results
+			summaries: json.results,
 		}));
 }
 
@@ -35,13 +35,13 @@ export function getCurrentUser(id) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_CURRENT_USER,
-			user: json
+			user: json,
 		}));
 }
 
 export function toggleUserView(isArtistView) {
 	return {
 		type: types.TOGGLE_USER_VIEW,
-		isArtistView: isArtistView
+		isArtistView: isArtistView,
 	};
 }

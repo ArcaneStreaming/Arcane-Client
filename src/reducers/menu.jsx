@@ -8,9 +8,9 @@ export default function menu(state = initialState, action) {
 			return [
 				{
 					name: 'Upload',
-					icon: 'music_note'
+					icon: 'music_note',
 				},
-				...state
+				...state,
 			];
 
 		default:

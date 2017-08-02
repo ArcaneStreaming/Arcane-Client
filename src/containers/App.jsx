@@ -19,7 +19,7 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			autoPlay: false
+			autoPlay: false,
 		};
 	}
 
@@ -84,7 +84,7 @@ export default class App extends Component {
 		const {
 			isPlaying, percent,
 			currentlyPlaying, isLooping,
-			isShuffling
+			isShuffling,
 		} = this.props.audio;
 
 		let song = currentlyPlaying;
@@ -107,7 +107,7 @@ export default class App extends Component {
 			isShuffling: isShuffling,
 			isLooping: isLooping,
 			currentlyPlaying: currentlyPlaying,
-			queue: queue
+			queue: queue,
 		};
 
 		return (
@@ -117,8 +117,9 @@ export default class App extends Component {
 					height:'100%',
 					background: this.props.theme.currentTheme.palette.canvasColor + ' repeat top center fixed',
 					backgroundSize:'cover',
-					position:'fixed'
-				}}>
+					position:'fixed',
+				}}
+				>
 					<ReactAudioPlayer
 						ref={(audio) => { this.audio = audio; }}
 						autoPlay={this.state.autoPlay}
@@ -126,15 +127,18 @@ export default class App extends Component {
 						onProgress={this.handleProgress}
 						onListen={this.handleTimeUpdate}
 						onError={this.handleError}
-						onEnded={this.handleEnd}/>
+						onEnded={this.handleEnd}
+					/>
 					<Header
 						{...audioProps}
-						currentUser={this.props.profile.currentUser}/>
+						currentUser={this.props.profile.currentUser}
+					/>
 
 					{this.props.children}
 
 					<FloatingControls
-						{...audioProps}/>
+						{...audioProps}
+					/>
 				</div>
 			</MuiThemeProvider>
 		);

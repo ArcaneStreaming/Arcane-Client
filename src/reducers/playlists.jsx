@@ -1,11 +1,11 @@
 import {
 	GET_USER_PLAYLISTS, GET_PLAYLIST_TRACKS, CREATE_NEW_PLAYLIST,
-	DELETE_PLAYLIST
+	DELETE_PLAYLIST,
 } from '../constants/ActionTypes';
 
 const initialState = {
 	playlists: [],
-	tracks: []
+	tracks: [],
 };
 
 export default function playlists(state = initialState, action) {
@@ -20,7 +20,7 @@ export default function playlists(state = initialState, action) {
 			const indexOfDeleted = state.playlists.indexOf(action.payload);
 			const playlistsAfterDeletion = [
 				...state.playlists.slice(0, indexOfDeleted),
-				...state.playlists.slice(indexOfDeleted + 1)
+				...state.playlists.slice(indexOfDeleted + 1),
 			];
 			return { ...state, playlists: playlistsAfterDeletion };
 		default:

@@ -19,7 +19,7 @@
 	],
 	"rules": {
 		"brace-style": [ "error", "1tbs", { "allowSingleLine": true } ],
-		"comma-dangle": [ "error" ],
+		"comma-dangle": [ 2, "always-multiline" ],
 		"constructor-super": [ "error" ],
 		"indent": [
 			"error",
@@ -31,6 +31,7 @@
 			"unix"
 		],
 		"no-case-declarations": [ "off" ],
+		"no-console": [1],
 		"object-curly-spacing": [
 			"error",
 			"always",
@@ -41,11 +42,11 @@
 			"single"
 		],
 		"react/jsx-closing-bracket-location": [
-			1,
-			"after-props"
+			2,
+			"tag-aligned"
 		],
 		"react/jsx-indent": [
-			"error",
+			2,
 			"tab"
 		],
 		"react/jsx-indent-props": [ 1, "tab"],

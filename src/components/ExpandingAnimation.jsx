@@ -12,7 +12,8 @@ const makeExpanding = (Target) => {
 										<Target
 											{...this.props}
 											isOpen={this.state.isOpen}
-											onClick={this.handleOnClick}/>
+											onClick={this.handleOnClick}
+										/>
 									);
 								}
 	};

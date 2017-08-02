@@ -15,39 +15,39 @@ const styles = {
 		overflowY: 'auto',
 		width: '90vw',
 		margin: 'auto',
-		marginTop: '15'
+		marginTop: '15',
 	},
 	paper: {
-		backgroundColor: theme.palette.primary3Color
+		backgroundColor: theme.palette.primary3Color,
 	},
 	contents: {
 		overflowY: 'auto',
 		overflowX: 'hidden',
-		height: 'calc(100vh - 95px)'
+		height: 'calc(100vh - 95px)',
 	},
 	tab: {
 		padding: 0,
-		maxWidth: '100vw'
+		maxWidth: '100vw',
 	},
 	coverPhoto: {
 		maxWidth: '50%',
 		display: 'inline-block',
 		float: 'left',
-		padding: '5'
+		padding: '5',
 	},
 	header: {
 		headerInfo: {
 		},
 		display: 'inline-block',
-		width: '100%'
-	}
+		width: '100%',
+	},
 };
 
 class ProfilePage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tabIndex: 0
+			tabIndex: 0,
 		};
 		const { dispatch } = this.props;
 		dispatch(ProfileActions.getArtistProfile(this.props.params.id));
@@ -66,14 +66,16 @@ class ProfilePage extends Component {
 					return (<div>
 						<Avatar
 							src={member.avatar}
-							size={260}/>
+							size={260}
+						/>
 						{member.name}
 					</div>);
 				} else {
 					return (<div>
 						<Avatar
 							icon={<FontIcon className="material-icons">person</FontIcon>}
-							size={160}/>
+							size={160}
+						/>
 					</div>);
 				}
 			});
@@ -103,11 +105,13 @@ class ProfilePage extends Component {
 			<AlbumsCollection
 				{...this.props}
 				cols={8}
-				albums={albums.artistAlbums}/>,
+				albums={albums.artistAlbums}
+			/>,
 			<TracksCollection
 				{...this.props}
 				cols={8}
-				tracks={tracks.artistTracks}/>
+				tracks={tracks.artistTracks}
+			/>,
 		];
 		return tabContents[index];
 	}
@@ -116,13 +120,14 @@ class ProfilePage extends Component {
 		let contents = [
 			{ index: 0, label: 'Bio' },
 			{ index: 1, label: 'Albums' },
-			{ index: 2, label: 'Tracks' }
+			{ index: 2, label: 'Tracks' },
 		];
 		let tabs = contents.map((tab) => (
 			<Tab
 				key={tab.index}
 				label={tab.label}
-				value={tab.index}/>
+				value={tab.index}
+			/>
 		));
 		return tabs;
 	}
@@ -133,7 +138,8 @@ class ProfilePage extends Component {
 		return (
 			<div style={styles.container}>
 				<Paper style={styles.paper}
-					autoScrollBodyContent>
+					autoScrollBodyContent
+				>
 					<div style={styles.contents}>
 						<div style={{ padding: 0, maxWidth: '100vw' }}>
 							<div id="profile_header" style={styles.header}>
@@ -149,13 +155,15 @@ class ProfilePage extends Component {
 							<Tabs
 								id={'profile_page_tabs'}
 								onChange={this.handleChange}
-								value={this.state.tabIndex}>
+								value={this.state.tabIndex}
+							>
 								{this.renderTabs()}
 							</Tabs>
 							<div style={{ overflowY: 'auto', overflowX: 'hidden', height:'calc(100vh - 143px)' }}>
 								<div
 									id={'profile_page_tab_' + this.state.tabIndex}
-									style={styles.tab}>
+									style={styles.tab}
+								>
 									{this.renderTab(this.state.tabIndex)}
 								</div>
 							</div>
@@ -171,7 +179,7 @@ class ProfilePage extends Component {
 
 ProfilePage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
-	profile: PropTypes.object.isRequired
+	profile: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

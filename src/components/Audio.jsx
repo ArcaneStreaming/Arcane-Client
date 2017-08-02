@@ -13,7 +13,7 @@ export default class Audio extends React.Component {
 		onProgress: React.PropTypes.func,
 		onTimeUpdate: React.PropTypes.func,
 		// preload: React.PropTypes.bool,
-		src: React.PropTypes.string // LINTER <- THIS IS NEVER USED
+		src: React.PropTypes.string, // LINTER <- THIS IS NEVER USED
 		// volume: React.PropTypes.number
 	};
 
@@ -26,13 +26,13 @@ export default class Audio extends React.Component {
 		onTimeUpdate: null,
 		onError: null,
 		onProgress: null,
-		onEnded: null
+		onEnded: null,
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			listeners: []
+			listeners: [],
 		};
 	}
 
@@ -106,7 +106,8 @@ export default class Audio extends React.Component {
 			<audio
 				{...this.props}
 				crossOrigin="anonymous"
-				refs={(audioEl) => { this.audioEl = audioEl; }}/>
+				refs={(audioEl) => { this.audioEl = audioEl; }}
+			/>
 		);
 	}
 

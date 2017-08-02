@@ -7,7 +7,7 @@ export default class EditableTable extends Component {
 		super(props);
 		this.state = {
 			selected: {},
-			expanded: false
+			expanded: false,
 		};
 	}
 
@@ -24,17 +24,20 @@ export default class EditableTable extends Component {
 						id={'text_column_' + index}
 						value={item.name}
 						onChange={this.props.onValueChange}
-						fullWidth/>
+						fullWidth
+					/>
 				</TableRowColumn>
 			</TableRow>
 		));
 		return (
 			<div>
 				<Table
-					selectable={false}>
+					selectable={false}
+				>
 					<TableHeader
 						adjustForCheckbox={false}
-						displaySelectAll={false}>
+						displaySelectAll={false}
+					>
 						<TableRow>
 							<TableHeaderColumn style={{ width: '1em' }}>{'Index'}</TableHeaderColumn>
 							<TableHeaderColumn>{'Track Title'}</TableHeaderColumn>
@@ -42,7 +45,8 @@ export default class EditableTable extends Component {
 					</TableHeader>
 					<TableBody
 						stripedRows
-						displayRowCheckbox={false}>{listItems}</TableBody>
+						displayRowCheckbox={false}
+					>{listItems}</TableBody>
 				</Table>
 			</div>
 		);

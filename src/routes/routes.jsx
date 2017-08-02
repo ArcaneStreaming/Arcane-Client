@@ -23,7 +23,7 @@ function loggedIn() {
 function checkAuth(nextState, replace) {
 	if (!loggedIn()) {
 		replace({
-			pathname: '/'
+			pathname: '/',
 		});
 	}
 }

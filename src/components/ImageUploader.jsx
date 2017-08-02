@@ -6,26 +6,26 @@ const styles = {
 	outerDiv: {
 		width: '100%',
 		height: '100%',
-		margin: 'auto'
+		margin: 'auto',
 	},
 	dropzone: {
 		position: 'relative',
 		textAlign: 'center',
-		marginTop: 'calc(-50% + 30px)'
+		marginTop: 'calc(-50% + 30px)',
 	},
 	dropIcon: {
 		margin: 'auto',
 		height: '60px',
 		width: '60px',
 		zIndex: '5',
-		opacity: '0.30'
+		opacity: '0.30',
 	},
 	imgPreview: {
 		position: 'relative',
 		width: '100%',
 		height: '100%',
-		zIndex: '1'
-	}
+		zIndex: '1',
+	},
 };
 
 export default class ImageUploader extends Component {
@@ -56,13 +56,15 @@ export default class ImageUploader extends Component {
 						ref={(img) => { this.imgPreview = img; }}
 						id='imgPreview'
 						src={this.props.url}
-						style={styles.imgPreview}/>
+						style={styles.imgPreview}
+					/>
 					<Dropzone
 						accept='image/jpeg,image/png'
 						onDrop={this.handleDrop}
 						ref={(node) => { this.dropzone = node; }}
 						style={styles.dropzone}
-						multiple={false}>
+						multiple={false}
+					>
 						<IconButton
 							style={styles.dropIcon}
 							iconClassName='material-icons'
@@ -74,8 +76,9 @@ export default class ImageUploader extends Component {
 								transition: 'all 0.5s',
 								WebkitTransition: 'all 0.5s',
 								MozTransition: 'all 0.5s',
-								zIndex: '5'
-							}}>
+								zIndex: '5',
+							}}
+						>
 							file_upload
 						</IconButton>
 					</Dropzone>
@@ -87,9 +90,9 @@ export default class ImageUploader extends Component {
 }
 
 ImageUploader.propTypes = {
-	handleFileUpload: PropTypes.func.isRequired
+	handleFileUpload: PropTypes.func.isRequired,
 };
 
 ImageUploader.defaultProps = {
-	url: ''
+	url: '',
 };

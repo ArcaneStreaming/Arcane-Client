@@ -15,19 +15,19 @@ const styles = {
 		margin:'auto',
 		maxHeight:'85vh',
 		maxWidth:'80vw',
-		marginTop:10
+		marginTop:10,
 	},
 	headline: {
 		fontSize: 24,
 		paddingTop: 16,
 		marginBottom: 12,
-		fontWeight: 400
+		fontWeight: 400,
 	},
 	slide: {
 		padding: 0,
 		height:'calc(100vh - 114px)',
-		maxWidth:'100vw'
-	}
+		maxWidth:'100vw',
+	},
 };
 export default class CollectionTabs extends Component {
 
@@ -35,7 +35,7 @@ export default class CollectionTabs extends Component {
 		super(props);
 		this.state = {
 			slideIndex: 2,
-			renderCount: false
+			renderCount: false,
 		};
 		const { dispatch } = this.props;
 		dispatch(TrackActions.getTracks());
@@ -52,7 +52,7 @@ export default class CollectionTabs extends Component {
 				genres.count > 0 ? '['+genres.count+']' : '',
 				artists.count > 0 ? '['+artists.count+']' : '',
 				albums.count > 0 ? '['+albums.count+']' : '',
-				tracks.count > 0 ? '['+tracks.count+']' : ''
+				tracks.count > 0 ? '['+tracks.count+']' : '',
 			];
 			return this.state.renderCount ? counts[countIndex] : '';
 		}
@@ -62,13 +62,14 @@ export default class CollectionTabs extends Component {
 				{ index: 0, label: 'Genres ' + this.renderCount(0) },
 				{ index: 1, label: 'Artists ' + this.renderCount(1) },
 				{ index: 2, label: 'Albums ' + this.renderCount(2) },
-				{ index: 3, label: 'Songs ' + this.renderCount(3) }
+				{ index: 3, label: 'Songs ' + this.renderCount(3) },
 			];
 			let tabs = contents.map((tab) => (
 				<Tab
 					key={tab.index}
 					label={tab.label}
-					value={tab.index}/>
+					value={tab.index}
+				/>
 			));
 			return tabs;
 		}
@@ -79,21 +80,25 @@ export default class CollectionTabs extends Component {
 					{...this.props}
 					cols={8}
 					genres={genres}
-					key={'collection_tabs_slide_guts'+index}/>,
+					key={'collection_tabs_slide_guts'+index}
+				/>,
 				<ArtistsCollection
 					{...this.props}
 					artists={artists.allArtists}
 					cols={8}
-					key={'collection_tabs_slide_guts'+index}/>,
+					key={'collection_tabs_slide_guts'+index}
+				/>,
 				<AlbumsCollection
 					{...this.props}
 					albums={albums.allAlbums}
 					cols={8}
-					key={'collection_tabs_slide_guts'+index}/>,
+					key={'collection_tabs_slide_guts'+index}
+				/>,
 				<TracksCollection
 					{...this.props}
 					key={'collection_tabs_slide_guts'+index}
-					tracks={tracks.allTracks}/>
+					tracks={tracks.allTracks}
+				/>,
 			];
 			return contents[index];
 		}
@@ -103,7 +108,8 @@ export default class CollectionTabs extends Component {
 				<div
 					id={'collection_slide_content_'+slide}
 					key={'collection_slide_content_'+slide}
-					style={styles.slide}>
+					style={styles.slide}
+				>
 					{this.renderSlide(slide)}
 				</div>
 			));
@@ -115,13 +121,15 @@ export default class CollectionTabs extends Component {
 					<Tabs
 						id={'collection_tabs_header'}
 						onChange={this.handleChange}
-						value={this.state.slideIndex}>
+						value={this.state.slideIndex}
+					>
 						{this.renderTabs()}
 					</Tabs>
 					<div style={{ overflowY:'auto', overflowX:'hidden', height:'calc(100vh - 114px)' }}>
 						<div
 							id={'collection_slide_content_'+this.state.slideIndex}
-							style={styles.slide}>
+							style={styles.slide}
+						>
 							{this.renderSlide(this.state.slideIndex)}
 						</div>
 					</div>

@@ -11,27 +11,27 @@ const styles = {
 	img: {
 		position: 'absolute',
 		width: '100%',
-		height: '100%'
+		height: '100%',
 	},
 	link: {
 		width: '100%',
 		textAlign: 'center',
 		position: 'absolute',
-		bottom: 50
+		bottom: 50,
 	},
 	button: {
-		boxShadow: '0 1px 2px rgba(0,0,0,0.15)'
+		boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
 	},
 	label: {
-		fontSize: '1.5em'
+		fontSize: '1.5em',
 	},
 	name: {
 		position: 'absolute',
 		fontFamily: 'Aldrich',
 		color: fullWhite,
 		marginLeft: '5vw',
-		marginTop: '5vw'
-	}
+		marginTop: '5vw',
+	},
 };
 
 export default class SplashPage extends Component {
@@ -50,20 +50,23 @@ export default class SplashPage extends Component {
 				textShadow:'1px 1px black',
 				zIndex:1,
 				height:'100vh',
-				width:'100vw'
-			}}><h1 style={styles.name}>{'ARCANE'}</h1>
+				width:'100vw',
+			}}
+			><h1 style={styles.name}>{'ARCANE'}</h1>
 				<div style={styles.link}>
 					<RaisedButton
 						className='button-glow'
 						label="Lets Go!"
 						labelStyle={styles.label}
 						onClick={() => {this.setState({ open:true });}}
-						primary/>
+						primary
+					/>
 				</div>
 				<LoginModal
 					{...this.props}
 					onRequestClose={() => {this.setState({ open:false });}}
-					open={this.state.open}/>
+					open={this.state.open}
+				/>
 			</div>
 		);
 	}

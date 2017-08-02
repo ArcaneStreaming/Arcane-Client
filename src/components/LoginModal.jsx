@@ -14,20 +14,20 @@ const styles = {
 		flexDirection:'column',
 		justifyContent:'space-between',
 		formFields:{
-			width:'100%'
+			width:'100%',
 		},
 		underlineStyle:{
-			borderColor:theme.palette.textColor
+			borderColor:theme.palette.textColor,
 		},
 		formActions:{
 			display:'flex',
 			flexDirection:'row-reverse',
 			justifyContent:'space-around',
 			borderColor:'transparent',
-			paddingTop:24
+			paddingTop:24,
 		},
-		button:{}
-	}
+		button:{},
+	},
 };
 
 class LoginModal extends Component {
@@ -37,7 +37,7 @@ class LoginModal extends Component {
 			username: '',
 			username_errors:[],
 			password:'',
-			password_errors:[]
+			password_errors:[],
 		};
 	}
 
@@ -77,10 +77,10 @@ class LoginModal extends Component {
 		fetch('/api/auth/', {
 			method: 'POST',
 			headers: {
-				'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+				'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
 			},
 			credentials: 'same-origin',
-			body: content
+			body: content,
 		}).then(response => response.json()).then((json) => {
 			if (json.token) {
 				const { dispatch } = this.props;
@@ -127,13 +127,15 @@ class LoginModal extends Component {
 					key={'login_form_submit'}
 					label={'Login'}
 					onTouchTap={this.handleLogin}
-					secondary/>
+					secondary
+				/>
 				<FlatButton
 					id={'login_form_join'}
 					key={'login_form_join'}
 					label="Join Us"
 					onTouchTap={this.handleJoin}
-					disabled={true}/>
+					disabled={true}
+				/>
 			</div>
 		);
 	}
@@ -149,7 +151,8 @@ class LoginModal extends Component {
 		if (this.state.createUser) {
 			return (
 				<SignUpForm {...this.props}
-					handleCancel={() => this.setState({ createUser:false })}/>
+					handleCancel={() => this.setState({ createUser:false })}
+				/>
 			);
 		} else {
 			return(
@@ -161,7 +164,8 @@ class LoginModal extends Component {
 						id={'login_form_username'}
 						name={'login_form_username'}
 						onChange={this.checkUsername}
-						type={'email'}/>
+						type={'email'}
+					/>
 					<TextField
 						errorText={password_errors.length >0 ? password_errors.join(', '): null}
 						floatingLabelText={'Password'}
@@ -169,7 +173,8 @@ class LoginModal extends Component {
 						id={'login_form_password'}
 						name={'login_form_password'}
 						onChange={this.verifyPassword}
-						type={'password'}/>
+						type={'password'}
+					/>
 					{this.renderActions()}
 				</div>
 			);
@@ -185,7 +190,8 @@ class LoginModal extends Component {
 				autoDetectWindowHeight
 				autoScrollBodyContent
 				id={'login_form_container'}
-				title={null}>
+				title={null}
+			>
 				{this.renderContents()}
 			</Dialog>
 		);
@@ -193,7 +199,7 @@ class LoginModal extends Component {
 }
 
 LoginModal.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(LoginModal);

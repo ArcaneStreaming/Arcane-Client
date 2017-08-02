@@ -7,21 +7,21 @@ const responsiveSettings = [
 	{
 		breakpoint: 560,
 		settings: {
-			slidesToShow: 3
-		}
+			slidesToShow: 3,
+		},
 	},
 	{
 		breakpoint: 770,
 		settings: {
-			slidesToShow: 4
-		}
+			slidesToShow: 4,
+		},
 	},
 	{
 		breakpoint: 1060,
 		settings: {
-			slidesToShow: 6
-		}
-	}
+			slidesToShow: 6,
+		},
+	},
 ];
 
 const settings = {
@@ -35,7 +35,7 @@ const settings = {
 	autoplaySpeed: 5000,
 	speed:2500,
 	useCSS:true,
-	responsive: responsiveSettings
+	responsive: responsiveSettings,
 };
 
 const styles = {
@@ -43,7 +43,7 @@ const styles = {
 		marginBottom:20,
 		height: 'calc((100vh - 64px) * .33 )',
 		minHeight: 'calc((100vh - 64px) * .25 )',
-		width: '100%'
+		width: '100%',
 	},
 	label:{
 		margin:0,
@@ -52,13 +52,13 @@ const styles = {
 		left:5,
 		color:'white',
 		textShadow:'1px 1px 1px black',
-		zIndex:1
+		zIndex:1,
 	},
 	sliderItem: {
 		paddingLeft:2.5,
 		paddingRight:2.5,
-		borderRadius:2
-	}
+		borderRadius:2,
+	},
 };
 
 export default class BrowseCarousel extends Component {
@@ -74,21 +74,21 @@ export default class BrowseCarousel extends Component {
 					imgURL: item.artwork ? item.artwork : host + 'static/images/default-artwork.png',
 					title:item.name,
 					subtitle: item.artist,
-					tracks: item.tracks
+					tracks: item.tracks,
 				};
 			if (type === 'artist')
 				props = {
 					imgURL: item.cover_photo ? item.cover_photo : host + 'static/images/default-avatar.png',
 					title:item.name,
 					subtitle: item.genre,
-					albums: item.albums
+					albums: item.albums,
 				};
 			if (type === 'genre')
 				props = {
 					imgURL: item.icon ? item.icon : host + 'static/images/genres/hip_hop.jpg',
 					title:item.name,
 					subtitle: null,
-					artists: item.artists
+					artists: item.artists,
 				};
 			return props;
 		}
@@ -98,12 +98,14 @@ export default class BrowseCarousel extends Component {
 				<div
 					className="boxTile"
 					key={'browse_carousel_item_'+ item.id}
-					style={styles.sliderItem}>
+					style={styles.sliderItem}
+				>
 					<Tile
 						{...this.props}
 						{...this.getProps(type, item)}
 						id={item.id}
-						type={type}/>
+						type={type}
+					/>
 				</div>
 			)) : [<div key={'browse_carousel_item_empty'} />];
 			return items;
@@ -115,7 +117,8 @@ export default class BrowseCarousel extends Component {
 				<div style={styles.outerDiv}>
 					<h3 style={styles.label}>{label}</h3>
 					<Slider {...settings}
-						className="slickSlider">
+						className="slickSlider"
+					>
 						{this.renderSliderItems(list.results)}
 					</Slider>
 				</div>

@@ -25,7 +25,8 @@ export default class ArtistsCollection extends Component {
 					className="boxTile"
 					cols={1}
 					key={'artistTile_'+ tile.id}
-					rows={1}>
+					rows={1}
+				>
 					<Tile
 						{...this.props}
 						albums={tile.albums}
@@ -34,7 +35,8 @@ export default class ArtistsCollection extends Component {
 						imgURL={tile.cover_photo ? tile.cover_photo : host +'static/images/default-avatar.png'}
 						subtitle={tile.genre}
 						title={tile.name}
-						type={'artist'}/>
+						type={'artist'}
+					/>
 				</GridTile>
 
 			));
@@ -49,11 +51,13 @@ export default class ArtistsCollection extends Component {
 				<div>
 					<GridList
 						cols={cols}
-						style={{ margin:2, maxWidth:'100%', maxHeight:'100%' }}>
+						style={{ margin:2, maxWidth:'100%', maxHeight:'100%' }}
+					>
 						{this.renderArtistTiles(artists.results,cols)}
 					</GridList>
 					<Waypoint
-						onEnter={this.handleLoadMore}/>
+						onEnter={this.handleLoadMore}
+					/>
 				</div>
 			);
 		}

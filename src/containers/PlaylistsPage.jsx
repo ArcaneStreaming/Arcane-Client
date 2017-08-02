@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
 	Paper, Menu, MenuItem,
 	RaisedButton, FontIcon, Avatar,
-	Divider, ListItem, TextField
+	Divider, ListItem, TextField,
 } from 'material-ui';
 import theme from '../constants/material-ui-theme';
 
@@ -15,14 +15,14 @@ import * as PlaylistActions from '../actions/PlaylistActions';
 
 const styles = {
 	paper: {
-		backgroundColor: theme.palette.primary3Color
+		backgroundColor: theme.palette.primary3Color,
 	},
 	container: {
 		overflowY: 'auto',
 		overflowX: 'hidden',
 		height: 'calc(100vh - 60px)',
 		position: 'relative',
-		float: 'left'
+		float: 'left',
 	},
 	playlistContainer: {
 		overflowY: 'auto',
@@ -30,8 +30,8 @@ const styles = {
 		height: 'calc(100vh - 60px)',
 		position: 'relative',
 		float: 'left',
-		width: '25vw'
-	}
+		width: '25vw',
+	},
 };
 
 class PlaylistsPage extends Component {
@@ -44,7 +44,7 @@ class PlaylistsPage extends Component {
 		this.state = {
 			selectedPlaylist: -1,
 			newPlaylistName: '',
-			textVisible: false
+			textVisible: false,
 		};
 	}
 
@@ -89,12 +89,14 @@ class PlaylistsPage extends Component {
 						onChange={this.handleNewPlaylistNameChange}
 						fullWidth
 						hintText={'New Playlist'}
-						type={'text'}/>
+						type={'text'}
+					/>
 					<div style={{ textAlign: 'center' }}>
 						<RaisedButton
 							primary={true}
 							icon={<FontIcon className="material-icons">create_new_folder</FontIcon>}
-							onTouchTap={this.handleNewPlaylist}/>
+							onTouchTap={this.handleNewPlaylist}
+						/>
 					</div>
 				</div>
 			);
@@ -105,7 +107,8 @@ class PlaylistsPage extends Component {
 						<RaisedButton
 							primary={true}
 							icon={<FontIcon className="material-icons">create_new_folder</FontIcon>}
-							onTouchTap={this.handleNewPlaylist}/>
+							onTouchTap={this.handleNewPlaylist}
+						/>
 					</div>
 				</div>
 			);
@@ -117,7 +120,8 @@ class PlaylistsPage extends Component {
 			<MenuItem
 				animation={null}
 				key={'playlist_' + item.id}
-				innerDivStyle={{ padding:0, width:'100%' }}>
+				innerDivStyle={{ padding:0, width:'100%' }}
+			>
 				<ListItem
 					key={'playlit_data_' + item.id}
 					primaryText={item.name}
@@ -128,8 +132,10 @@ class PlaylistsPage extends Component {
 							{...this.props}
 							id={item.id}
 							name={item.name}
-							playlist={item}/>
-					}/>
+							playlist={item}
+						/>
+					}
+				/>
 			</MenuItem>
 		));
 		return arr;
@@ -142,7 +148,8 @@ class PlaylistsPage extends Component {
 			return (
 				<Avatar
 					src={track.album.artwork ? track.album.artwork : host + 'static/images/default-artwork.png'}
-					style={{ borderRadius: 1 }}/>
+					style={{ borderRadius: 1 }}
+				/>
 			);
 		}
 		if (noArt && track) {
@@ -163,7 +170,8 @@ class PlaylistsPage extends Component {
 					id={'tracks_collection_menu_item'+track.id}
 					innerDivStyle={{ padding:0, width:'100%' }}
 					key={'track_list_item_'+ track.id}
-					value={track}>
+					value={track}
+				>
 					<Divider />
 					<ListItem
 						// style={{position:'relative', marginLeft:'.5%', marginRight:'2%'}}
@@ -176,9 +184,11 @@ class PlaylistsPage extends Component {
 							<TrackMenu
 								{...this.props}
 								id={track.id}
-								name={track.name}/>
+								name={track.name}
+							/>
 						}
-						secondaryText={track.artist.name + ' - ' + track.duration}/>
+						secondaryText={track.artist.name + ' - ' + track.duration}
+					/>
 				</MenuItem>
 			));
 			return arr;
@@ -199,7 +209,8 @@ class PlaylistsPage extends Component {
 								onItemTouchTap={this.handlePlaylistSelect}
 								disableAutoFocus
 								autoWidth={false}
-								width={'25vw'}>
+								width={'25vw'}
+							>
 								{ this.renderPlaylists(this.props.playlists.playlists) }
 							</Menu>
 							{ this.renderNewPlaylistActions() }
@@ -219,7 +230,7 @@ class PlaylistsPage extends Component {
 PlaylistsPage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	playlists: PropTypes.object.isRequired,
-	profile: PropTypes.object.isRequired
+	profile: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

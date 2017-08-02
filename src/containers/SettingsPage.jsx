@@ -16,21 +16,21 @@ const styles = {
 			width:'33%',
 			float: 'left',
 			padding:10,
-			height: '100%'
+			height: '100%',
 		},
 		inputSection: {
 			width:'66%',
-			float:'right'
-		}
+			float:'right',
+		},
 	},
 	appSection: {
-		padding:10
+		padding:10,
 	},
 	paper: {
 		overflowY:'auto',
 		minHeight:'60vh',
-		backgroundColor:theme.palette.primary3Color
-	}
+		backgroundColor:theme.palette.primary3Color,
+	},
 };
 
 const profileSettings = [
@@ -38,14 +38,14 @@ const profileSettings = [
 	{ 'key': 'username','label':'Email', 'type':'email', 'defaultValue': 'jdoe@example.com', 'onChange':'' },
 	{ 'key': 'password','label':'Password', 'type':'password', 'defaultValue': 'password123', 'onChange':'' },
 	{ 'key': 'location','label':'Region', 'type':'select', 'defaultValue': 'US', 'options':['US', 'CAN', 'CHI', 'JAP', 'RUS', 'ENG', 'FRA', 'MEX'],'onChange':'' },
-	{ 'key': 'privacy_level','label':'Privay Level', 'type':'select', 'defaultValue': '0 - Everyone', 'options':['0 - Everyone', '1 - Followers', '2 - Freinds Only', '3 - Antisocial'],'onChange':'' }
+	{ 'key': 'privacy_level','label':'Privay Level', 'type':'select', 'defaultValue': '0 - Everyone', 'options':['0 - Everyone', '1 - Followers', '2 - Freinds Only', '3 - Antisocial'],'onChange':'' },
 ];
 
 const appSettings = [
 	{ 'key': 'theme', 'label':'Theme', 'type':'select', 'defaultValue': 'ARCANE DARK', 'options':['ARCANE DARK','ARCANE LIGHT', 'SPOTIFY', 'GOOGLE PLAY', 'PANDORA', 'CUSTOM'],'onChange':'' },
 	{ 'key': 'player_pos', 'label':'Player Position', 'type':'select', 'defaultValue': 'RIGHT DRAWER', 'options': ['RIGHT DRAWER','LEFT DRAWER', 'HEADER', 'FOOTER'], 'onChange':'' },
 	{ 'key': 'explicit', 'label':'Allow Explicit Content', 'type':'toggle', 'defaultValue': false, 'onChange':'' },
-	{ 'key': 'push_notifications', 'label':'Enable Push Notifications', 'type':'toggle', 'defaultValue': false, 'onChange':'' }
+	{ 'key': 'push_notifications', 'label':'Enable Push Notifications', 'type':'toggle', 'defaultValue': false, 'onChange':'' },
 ];
 
 
@@ -56,20 +56,17 @@ class Settings extends Component {
 			explicit:false,
 			theme: 'ARCANE DARK',
 			defaultPic: 'https://www.explainxkcd.com/wiki/images/6/6d/BlackHat_head.png',
-			profilePic: {}
+			profilePic: {},
 		};
 	}
 
 	onUpload = ( file ) => {
 		this.setState({ profilePic: file });
-	};
-
-	/* eslint-disable */
-	onChange = (e) => {
-	//  console.log(e.target.value)
-		this.setState({[e.target.id]:e.target.value})
 	}
-	/* eslint-enable */
+
+	onChange = (e) => {
+		this.setState({ [e.target.id]:e.target.value });
+	}
 
 	onSelect = (e,i,val) => {
 		const { dispatch } = this.props;
@@ -100,6 +97,7 @@ class Settings extends Component {
 	}
 
 	renderTextField(item) {
+		console.info('In renderTextField: ', item);
 		return (
 			<TextField
 				id={item.key}
@@ -109,11 +107,13 @@ class Settings extends Component {
 				defaultValue={item.defaultValue}
 				floatingLabelText={item.label}
 				onChange={this.onChange}
-				value={this.props.profile.currentUser[item.key]}/>
+				value={this.props.profile.currentUser[item.key]}
+			/>
 		);
 	}
 
 	renderSelectField(item) {
+		console.info('In renderSelectField ', item);
 		let options = item.options.map((option) => (
 			<MenuItem key={item.options.indexOf(option)} value={option} primaryText={option}/>
 		));
@@ -125,17 +125,20 @@ class Settings extends Component {
 				fullWidth={true}
 				value={this.state[item.key] ? this.state[item.key] : item.defaultValue}
 				floatingLabelText={item.label}
-				onChange={this.onSelect.bind(null, item)} > // eslint-disable-line react/jsx-no-bind
+				onChange={this.onSelect.bind(null, item)} // eslint-disable-line react/jsx-no-bind
+			>
 				{options}
 			</SelectField>
 		);
 	}
 
 	renderSettingInput(setting, section) {
+		console.info('In renderSettingInput', setting.type);
 		if((setting.type === 'text')|| (setting.type === 'email') || (setting.type === 'password')) {
 			return (
 				<div
-					key={section+'_settings_'+setting.key}>
+					key={section+'_settings_'+setting.key}
+				>
 					{ this.renderTextField(setting) }
 				</div>
 			);
@@ -143,13 +146,13 @@ class Settings extends Component {
 		if(setting.type === 'select') {
 			return (
 				<div
-					key={section+'_settings_'+setting.key}>
+					key={section+'_settings_'+setting.key}
+				>
 					{this.renderSelectField(setting)}
 				</div>
 			);
 		}
 		if(setting.type === 'toggle') {
-			// const {[@setting.key]} = this.state
 			return (
 				<div key={section+'_settings_'+setting.key}>
 					<Toggle
@@ -157,13 +160,15 @@ class Settings extends Component {
 						label={setting.label.toUpperCase()}
 						id={setting.key}
 						toggled={this.state[setting.key]}
-						onToggle={this.onToggle}/>
+						onToggle={this.onToggle}
+					/>
 				</div>
 			);
 		}
 	}
 
 	renderSettings(collection, section) {
+		console.info('In renderSettings');
 		let map = collection.map((setting) => (
 			this.renderSettingInput(setting, section)
 		));
@@ -178,14 +183,16 @@ class Settings extends Component {
 						style={{
 							height: 'calc(100vh - 64px)',
 							overflowY: 'auto',
-							padding: 10
-						}}>
+							padding: 10,
+						}}
+					>
 						<div style={styles.profileSection}>
 							<div style={styles.profileSection.avatarSection}>
 								<ImageUploader
 									tooltip='Add Profile Picture'
 									handleFileUpload={ this.onUpload }
-									url={ this.props.profile.currentUser.avatar ? this.props.profile.currentUser.avatar : this.state.defaultPic }/>
+									url={ this.props.profile.currentUser.avatar ? this.props.profile.currentUser.avatar : this.state.defaultPic }
+								/>
 							</div>
 							<div style={styles.profileSection.inputSection}>
 								{this.renderSettings(profileSettings,'profile')}
@@ -208,7 +215,7 @@ class Settings extends Component {
 
 Settings.propTypes = {
 	dispatch: PropTypes.func.isRequired,
-	theme: PropTypes.object.isRequired
+	theme: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

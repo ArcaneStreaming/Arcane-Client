@@ -33,13 +33,16 @@ export default class PlaylistMenu extends Component {
 				onChange={this.handleSelect}
 				style={{ position:'absolute', top:12, right:'3%', padding:0 }}
 				// style={{display:'inline-flex', flexDirection:'row', justifyContent:'flex-end'}}
-				targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+				targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+			>
 				<MenuItem
 					primaryText="Edit Playlist Name"
-					value={0}/>
+					value={0}
+				/>
 				<MenuItem
 					primaryText="Delete Playlist"
-					value={1}/>
+					value={1}
+				/>
 			</IconMenu>
 		);
 	}

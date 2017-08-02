@@ -11,8 +11,8 @@ const style = {
 		bottom: '0',
 		marginBottom: '5vh',
 		marginLeft: '5vh',
-		zIndex:1
-	}
+		zIndex:1,
+	},
 };
 class MyMusic extends Component {
 
@@ -23,7 +23,7 @@ class MyMusic extends Component {
 
 		addToSelected = (items) => {
 			this.setState({
-				selected: items
+				selected: items,
 			});
 		}
 
@@ -43,7 +43,8 @@ class MyMusic extends Component {
 				return(
 					<FloatingActionButton
 						onClick={this.pushToQueue}
-						style={style.fab}><FontIcon className="material-icons">{'queue'}</FontIcon></FloatingActionButton>
+						style={style.fab}
+					><FontIcon className="material-icons">{'queue'}</FontIcon></FloatingActionButton>
 				);
 			}
 		}
@@ -54,7 +55,8 @@ class MyMusic extends Component {
 					<CollectionTabs
 						{...this.props}
 						select={this.addToSelected}
-						selectedTracks={this.state.selected}/>
+						selectedTracks={this.state.selected}
+					/>
 					{this.renderAddQueueButton()}
 					<Snackbar
 						action="undo"
@@ -62,7 +64,8 @@ class MyMusic extends Component {
 						message={this.state.snackMessage}
 						onActionTouchTap={this.handleActionTouchTap}
 						onRequestClose={this.handleRequestClose}
-						open={this.state.snackOpen}/>
+						open={this.state.snackOpen}
+					/>
 				</div>
 			);
 		}
@@ -73,7 +76,7 @@ MyMusic.propTypes = {
 	genres: PropTypes.object.isRequired,
 	tracks: PropTypes.object.isRequired,
 	artists: PropTypes.object.isRequired,
-	albums: PropTypes.object.isRequired
+	albums: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

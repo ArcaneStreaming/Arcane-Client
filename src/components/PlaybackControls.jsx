@@ -6,44 +6,44 @@ const styles = {
 	smallIcon: {
 		width:20,
 		height:20,
-		fontSize:20
+		fontSize:20,
 	},
 	mediumIcon: {
 		width:40,
 		height:40,
-		fontSize:40
+		fontSize:40,
 	},
 	coloredSmallIcon: {
 		color: theme.palette.alternateTextColor,
 		width:20,
 		height:20,
-		fontSize:20
+		fontSize:20,
 	},
 	largeIcon: {
 		width:60,
 		height:60,
-		fontSize:60
+		fontSize:60,
 	},
 	small: {
 		width: 25,
 		height: 25,
 		padding:2,
-		verticalAlign:'super'
+		verticalAlign:'super',
 	},
 	medium: {
 		width:45,
 		height:45,
 		padding:2,
-		verticalAlign:'bottom'
+		verticalAlign:'bottom',
 	},
 	large: {
 		width: 65,
 		height: 65,
-		padding:4
+		padding:4,
 	},
 	hover: {
-		color: 'red'
-	}
+		color: 'red',
+	},
 };
 
 const IconChangeControl = (props) => {
@@ -54,7 +54,8 @@ const IconChangeControl = (props) => {
 			iconClassName="material-icons"
 			iconStyle={styles.mediumIcon}
 			onClick={props.onClick}
-			style={styles.medium}>
+			style={styles.medium}
+		>
 			{!props.flag ? props.icon1 : props.icon2}
 		</IconButton>
 	);
@@ -69,7 +70,8 @@ const ColoredControl = (props) => {
 			iconClassName="material-icons"
 			iconStyle={!props.flag ? styles.smallIcon : styles.coloredSmallIcon}
 			onClick={props.onClick}
-			style={styles.small}>
+			style={styles.small}
+		>
 			{props.icon}
 		</IconButton>
 	);
@@ -84,7 +86,8 @@ const DefaultControl = (props) => {
 			iconClassName="material-icons"
 			iconStyle={styles.smallIcon}
 			onClick={props.onClick}
-			style={styles.small}>
+			style={styles.small}
+		>
 			{props.icon}
 		</IconButton>
 	);

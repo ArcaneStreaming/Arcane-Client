@@ -76,7 +76,7 @@ export function startGenreRadio(genreID) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.START_GENRE_RADIO,
-			tracks: json.results
+			tracks: json.results,
 		}));
 }
 
@@ -85,14 +85,14 @@ export function startArtistRadio(artistID) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.START_ARTIST_RADIO,
-			tracks: json.results
+			tracks: json.results,
 		}));
 }
 
 export function playAlbumTracks(tracks) {
 	return {
 		type: types.PLAY_ALBUM_TRACKS,
-		tracks: tracks
+		tracks: tracks,
 	};
 }
 

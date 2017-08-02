@@ -8,7 +8,7 @@ const styles = {
 		minHeight:100,
 		width:'100%',
 		height:'auto',
-		textAlign:'center'
+		textAlign:'center',
 	},
 	guts: {
 		root:{
@@ -16,13 +16,13 @@ const styles = {
 			height:'100%',
 			minWidth:'6rem',
 			minHeight:'6rem',
-			padding:10
+			padding:10,
 		},
 		icon: {
 			width:'100%',
 			fontSize:'6rem',
 			verticalAlign:'bottom',
-			display:'block'
+			display:'block',
 		},
 		label: {
 			marginTop:'.5rem',
@@ -30,9 +30,9 @@ const styles = {
 			fontSize:'2rem',
 			verticalAlign:'bottom',
 			display:'block',
-			overflowX:'hidden'
-		}
-	}
+			overflowX:'hidden',
+		},
+	},
 };
 
 export default class SquareButton extends Component {
@@ -48,7 +48,8 @@ export default class SquareButton extends Component {
 			<div style={styles.guts.root}>
 				<FontIcon
 					className="material-icons"
-					style={styles.guts.icon}>{this.props.icon}</FontIcon>
+					style={styles.guts.icon}
+				>{this.props.icon}</FontIcon>
 				<span style={styles.guts.label}>{this.props.name}</span>
 			</div>
 		);
@@ -61,7 +62,8 @@ export default class SquareButton extends Component {
 					onClick={this.props.onClick}
 					secondary
 					style={styles.root}
-					target="_blank">
+					target="_blank"
+				>
 					{this.renderButtonGuts()}
 				</RaisedButton>
 			</Link>

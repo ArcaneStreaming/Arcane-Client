@@ -1,13 +1,13 @@
 import {
 	GET_ARTIST_PROFILE, GET_ARTIST_MEMBERS, GET_ARTIST_SUMMARIES,
-	GET_CURRENT_USER, TOGGLE_USER_VIEW
+	GET_CURRENT_USER, TOGGLE_USER_VIEW,
 } from '../constants/ActionTypes';
 
 const initialState = {
 	artist: {},
 	members: [],
 	summaries: [],
-	currentUser: {}
+	currentUser: {},
 };
 
 export default function profile(state = initialState, action) {

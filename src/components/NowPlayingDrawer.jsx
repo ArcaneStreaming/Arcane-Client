@@ -5,7 +5,7 @@ import MiniPlayer from './MiniPlayer';
 const drawerStyle = {
 	height: 'calc(100vh - 64px)',
 	top:'64px',
-	overflowY:'hidden'
+	overflowY:'hidden',
 };
 const NowPlayingDrawer = (props) => {
 	return (
@@ -13,7 +13,8 @@ const NowPlayingDrawer = (props) => {
 			{...props}
 			containerStyle={drawerStyle}
 			docked={false}
-			openSecondary>
+			openSecondary
+		>
 			<MiniPlayer {...props} />
 		</Drawer>
 	);

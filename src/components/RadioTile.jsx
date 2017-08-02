@@ -9,7 +9,7 @@ import { CardTitle } from 'material-ui/Card';
 const styles = {
 	root: {
 		width:'100%',
-		height:'inherit'
+		height:'inherit',
 	},
 	overlay: {
 		width:'100%',
@@ -23,7 +23,7 @@ const styles = {
 		topActions: {
 			top:0,
 			height:'50%',
-			width:'100%'
+			width:'100%',
 		},
 		bottomActions: {
 			height:'50%',
@@ -35,7 +35,7 @@ const styles = {
 			button: {
 				marginTop:'auto',
 				float:'right',
-				top:-24
+				top:-24,
 			},
 			label: {
 				marginTop:'auto',
@@ -48,7 +48,7 @@ const styles = {
 					right:0,
 					width:'100%',
 					textShadow:'1px 1px black',
-					whiteSpace:'no-wrap'
+					whiteSpace:'no-wrap',
 				},
 				subtitle: {
 					bottom:0,
@@ -57,17 +57,17 @@ const styles = {
 					width:'100%',
 					textOverflow:'clip',
 					textShadow:'1px 1px black',
-					whiteSpace:'no-wrap'
-				}
-			}
-		}
-	}
+					whiteSpace:'no-wrap',
+				},
+			},
+		},
+	},
 };
 class RadioTile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			hover:false
+			hover:false,
 		};
 	}
 			handleHover = () => {this.setState({ hover: true });}
@@ -79,16 +79,20 @@ class RadioTile extends Component {
 					return (
 						<div
 							id="overlay_container"
-							style={styles.overlay}><div style={styles.overlay.topActions}>
+							style={styles.overlay}
+						>
+							<div style={styles.overlay.topActions}>
 								<IconButton
 									hoveredStyle={{ color:'green' }}
 									iconClassName="material-icons"
-									iconStyle={this.props.liked ? { backgroundColor:'green', borderRadius:'50%' } : {}}>{'check'}</IconButton>
+									iconStyle={this.props.liked ? { backgroundColor:'green', borderRadius:'50%' } : {}}
+								>{'check'}</IconButton>
 								<IconButton
 									hoveredStyle={{ color:'red' }}
 									iconClassName="material-icons"
 									iconStyle={this.props.disliked ? { backgroundColor:'red', borderRadius:'50%' } : {}}
-									style={{ float:'right' }}>{'close'}</IconButton>
+									style={{ float:'right' }}
+								>{'close'}</IconButton>
 							</div>
 							<div style={styles.overlay.bottomActions}>
 								<CardTitle
@@ -96,7 +100,8 @@ class RadioTile extends Component {
 									subtitle={subtitle}
 									subtitleStyle={styles.overlay.bottomActions.label.subtitle}
 									title={title}
-									titleStyle={styles.overlay.bottomActions.label.title}/>
+									titleStyle={styles.overlay.bottomActions.label.title}
+								/>
 								{/* <IconButton
                iconClassName="material-icons"
                style={styles.overlay.bottomActions.button}
@@ -107,7 +112,8 @@ class RadioTile extends Component {
 										<IconButton iconClassName="material-icons">{'more_vert'}</IconButton>
 									}
 									style={styles.overlay.bottomActions.button}
-									targetOrigin={{ horizontal: 'left', vertical: 'bottom' }}><MenuItem primaryText="Start radio" />
+									targetOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+								><MenuItem primaryText="Start radio" />
 									<MenuItem primaryText="Play next" />
 									<Divider />
 									<MenuItem primaryText="Add to queue" />
@@ -135,11 +141,14 @@ class RadioTile extends Component {
 							padding:0,
 							background: 'url('+ imgURL + ') ',
 							backgroundSize: 'cover',
-							backgroundPosition:'center center'
+							backgroundPosition:'center center',
 						}}
-						zDepth={3}><div
+						zDepth={3}
+					>
+						<div
 							className={className}
-							style={{ height:'100%', width:'100%', borderRadius:.1 }}>{this.renderOverlay()}</div>
+							style={{ height:'100%', width:'100%', borderRadius:.1 }}
+						>{this.renderOverlay()}</div>
 					</Paper>
 
 				);
@@ -149,7 +158,7 @@ RadioTile.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	tracks:   PropTypes.object.isRequired,
 	albums:   PropTypes.object.isRequired,
-	artists:  PropTypes.object.isRequired
+	artists:  PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

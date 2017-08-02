@@ -36,9 +36,9 @@ const styles = {
 				left:0,
 				right:0,
 				padding:4,
-				position:'absolute'
-			}
-		}
+				position:'absolute',
+			},
+		},
 	},
 	href: {
 		color:'white',
@@ -46,7 +46,7 @@ const styles = {
 		display:'block',
 		maxHeight:'50%',
 		overflow:'hidden',
-		whiteSpace:'no-wrap'
+		whiteSpace:'no-wrap',
 	},
 	hrefsub: {
 		color:'gray',
@@ -55,8 +55,8 @@ const styles = {
 		textOverflow:'clip',
 		maxHeight:'50%',
 		overflow:'hidden',
-		whiteSpace:'no-wrap'
-	}
+		whiteSpace:'no-wrap',
+	},
 };
 
 
@@ -65,7 +65,7 @@ class Tile extends Component {
 		super(props);
 		this.state = {
 			expanded: false,
-			hover:false
+			hover:false,
 		};
 	}
 			handleHover = () => {this.setState({ hover: true });}
@@ -87,7 +87,7 @@ class Tile extends Component {
 						buttonStyle={{ padding:0,
 							background: 'url('+ imgURL + ') ',
 							backgroundSize: 'cover',
-							backgroundPosition:'center center'
+							backgroundPosition:'center center',
 						}}
 						fullWidth
 						label={
@@ -98,11 +98,13 @@ class Tile extends Component {
 						onClick={this.handleExpand}
 						onMouseLeave={this.handleLeave}
 						onMouseOver={this.handleHover}
-						style={styles.button}>
+						style={styles.button}
+					>
 						<ListDialog
 							{...this.props}
 							onRequestClose={this.handleClose}
-							open={this.state.expanded}/>
+							open={this.state.expanded}
+						/>
 					</RaisedButton>
 
 				);
@@ -112,7 +114,7 @@ Tile.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	tracks:   PropTypes.object.isRequired,
 	albums:   PropTypes.object.isRequired,
-	artists:  PropTypes.object.isRequired
+	artists:  PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

@@ -2,7 +2,7 @@ import { GET_ARTISTS, GET_GENRE_ARTISTS, GET_NEXT_ARTISTS } from '../constants/A
 
 const initialState = {
 	allArtists: [],
-	genreArtists: []
+	genreArtists: [],
 };
 
 export default function artists(state = initialState, action) {

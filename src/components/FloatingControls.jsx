@@ -9,7 +9,7 @@ const style = {
 		bottom: '0',
 		marginBottom: '5vh',
 		marginRight: '5vh',
-		zIndex:1
+		zIndex:1,
 	},
 	progress: {
 		position: 'absolute',
@@ -17,8 +17,8 @@ const style = {
 		bottom: '0',
 		MsTransform: 'rotate(-90deg)',
 		WebkitTransform: 'rotate(-90deg)',
-		transform: 'rotate(-90deg)'
-	}
+		transform: 'rotate(-90deg)',
+	},
 };
 
 export default class FloatingControls extends Component {
@@ -37,7 +37,8 @@ export default class FloatingControls extends Component {
 			<div>
 				<FloatingActionButton
 					onClick={this.props.onPlay}
-					style={style.fab}>
+					style={style.fab}
+				>
 					<FontIcon className="material-icons">{this.props.isPlaying ? 'pause' : 'play_arrow'}</FontIcon>
 					<CircularProgress
 						color={theme.palette.alternateTextColor}
@@ -45,7 +46,8 @@ export default class FloatingControls extends Component {
 						size={57}
 						style={style.progress}
 						thickness={3}
-						value={this.props.percent * 100}/>
+						value={this.props.percent * 100}
+					/>
 				</FloatingActionButton>
 			</div>
 		);

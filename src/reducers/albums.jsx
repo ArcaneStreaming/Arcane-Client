@@ -2,7 +2,7 @@ import { GET_ALBUMS, GET_ARTIST_ALBUMS, GET_NEXT_ALBUMS } from '../constants/Act
 
 const initialState = {
 	allAlbums: [],
-	artistAlbums: []
+	artistAlbums: [],
 };
 
 export default function albums(state = initialState, action) {

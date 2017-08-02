@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 	profile,
 	theme,
 	playlists,
-	routing: routerReducer
+	routing: routerReducer,
 });
 
 export default rootReducer;

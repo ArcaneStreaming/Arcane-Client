@@ -1,7 +1,7 @@
 import {
 	GET_TRACKS, GET_NEXT_TRACKS,
 	GET_ALBUM_TRACKS, GET_ARTIST_TRACKS,
-	POST_TRACKS
+	POST_TRACKS,
 } from '../constants/ActionTypes';
 
 import clone from 'lodash/clone';
@@ -9,7 +9,7 @@ import clone from 'lodash/clone';
 const initialState = {
 	allTracks: [],
 	albumTracks: [],
-	artistTracks: []
+	artistTracks: [],
 };
 
 export default function tracks(state = initialState, action) {

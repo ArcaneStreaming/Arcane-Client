@@ -7,7 +7,7 @@ export function getUserPlaylists(userID) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_USER_PLAYLISTS,
-			playlists: json.results
+			playlists: json.results,
 		}));
 }
 
@@ -16,7 +16,7 @@ export function getPlaylistTracks(playlistID) {
 		.then(response => response.json())
 		.then(json => ({
 			type: types.GET_PLAYLIST_TRACKS,
-			tracks: json.tracks
+			tracks: json.tracks,
 		}));
 }
 
@@ -24,27 +24,27 @@ export function createNewPlaylist(name, userID) {
 	let postData = {
 		name: name,
 		user: userID,
-		tracks: []
+		tracks: [],
 	};
 	return fetch(host + '/users/playlists/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Accept': 'application/json'
+			'Accept': 'application/json',
 		},
 		credentials: 'same-origin',
-		body: JSON.stringify(postData)
+		body: JSON.stringify(postData),
 	}).then(response => response.json()).then((json) => ({
 		type: types.CREATE_NEW_PLAYLIST,
-		payload: json
+		payload: json,
 	}));
 }
 
 export function deletePlaylist(playlist) {
 	return fetch(host + '/users/playlists/' + playlist.id + '/', {
-		method: 'DELETE'
+		method: 'DELETE',
 	}).then(response => response.ok).then(() => ({
 		type: types.DELETE_PLAYLIST,
-		payload: playlist
+		payload: playlist,
 	}));
 }

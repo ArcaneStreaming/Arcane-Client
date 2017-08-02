@@ -10,8 +10,8 @@ const styles = {
 		overflowY: 'auto',
 		overflowX: 'visible',
 		width: '100%',
-		padding: 10
-	}
+		padding: 10,
+	},
 };
 
 class RadioPage extends Component {
@@ -26,9 +26,11 @@ class RadioPage extends Component {
 			<div style={styles.scrollable}>
 				<Radio
 					isPlaying={this.props.audio.isPlaying}
-					tracks={this.props.audio}/>
+					tracks={this.props.audio}
+				/>
 				<RadioChoices
-					{...this.props}/>
+					{...this.props}
+				/>
 			</div>
 		);
 	}
@@ -36,14 +38,14 @@ class RadioPage extends Component {
 RadioPage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	tracks: PropTypes.object.isRequired,
-	audio: PropTypes.object.isRequired
+	audio: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
 	const { tracks, audio, genres } = state;
 
 	return {
-		tracks, audio, genres
+		tracks, audio, genres,
 	};
 }
 
