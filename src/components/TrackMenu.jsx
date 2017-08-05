@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {  IconButton, IconMenu, MenuItem } from 'material-ui';
+import {  IconButton, IconMenu } from 'material-ui';
+import PlaylistContextMenu from './PlaylistContextMenu';
 
 export default class TrackMenu extends Component {
 	constructor(props) {
@@ -26,7 +27,7 @@ export default class TrackMenu extends Component {
 				// style={{display:'inline-flex', flexDirection:'row', justifyContent:'flex-end'}}
 				targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 				>
-				<PlaylistContextMenu value={1} addTrackToPlaylist={this.handleSelect} />
+				<PlaylistContextMenu value='1' addTrackToPlaylist={this.handleSelect} />
 				{// <MenuItem
 				// 	primaryText="Start radio"
 				// 	value={0}
