@@ -45,7 +45,19 @@ export default class ArcaneMenu extends Component {
 	constructor(props){
 		super(props);
 	}
-	renderMenuMap(list, id) {
+
+	filterUrl = (tile) => {
+		switch(tile.url) {
+			case 'profile':
+				return tile.url + '/' + this.props.currentUser.artist;
+			case 'playlists':
+				return tile.url + '/' + this.props.currentUser.id;
+			default:
+				return tile.url;
+		}
+	}
+
+	renderMenuMap(list) {
 		let map = list.map((tile) => (
 			<GridTile
 				cols={tile.featured ? 2 : 1}
@@ -57,7 +69,7 @@ export default class ArcaneMenu extends Component {
 					key={'menuTile' + tile.name}
 					name={tile.name}
 					onClick={this.props.onClick}
-					url={ tile.url === 'profile' || tile.url === 'playlists' ? tile.url + '/' + id : tile.url}
+					url={this.filterUrl(tile)}
 					/>
 			</GridTile>
 		));
