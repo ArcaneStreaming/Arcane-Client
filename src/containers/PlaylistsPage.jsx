@@ -38,9 +38,6 @@ class PlaylistsPage extends Component {
 	constructor(props) {
 		super(props);
 
-		const { dispatch } = this.props;
-		dispatch(PlaylistActions.getUserPlaylists(this.props.params.id));
-
 		this.state = {
 			selectedPlaylist: -1,
 			newPlaylistName: '',
@@ -231,6 +228,8 @@ PlaylistsPage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	playlists: PropTypes.object.isRequired,
 	profile: PropTypes.object.isRequired,
+	params: PropTypes.object,
+	noArt: PropTypes.bool,
 };
 
 function mapStateToProps(state) {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { GridTile, GridList } from 'material-ui';
 import Tile from './Tile';
 import MediaQuery from 'react-responsive';
@@ -7,6 +8,12 @@ import * as ArtistActions from '../actions/ArtistActions';
 import { host } from '../constants/host';
 
 export default class ArtistsCollection extends Component {
+	static propTypes = {
+		artists: PropTypes.array.isRequired,
+		dispatch: PropTypes.func.isRequired,
+		cols: PropTypes.number,
+	};
+
 	constructor(props) {
 		super(props);
 	}

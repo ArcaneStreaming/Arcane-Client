@@ -1,8 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { MenuItem } from 'material-ui';
 import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+import { getUserPlaylists } from '../actions/PlaylistActions';
 
-export default class PlaylistContextMenu extends Component {
+class PlaylistContextMenu extends PureComponent {
+	constructor(props) {
+		super(props);
+		if (props.playlists === undefined) {
+			props.dispatch(getUserPlaylists(props.currentUser.id));
+		}
+	}
 
 	handlePlaylistClick = (playlist, track) => () => {
 		this.props.addTrackToPlaylist(playlist, track);
@@ -10,11 +18,14 @@ export default class PlaylistContextMenu extends Component {
 
 	renderPlaylistMenuOptions = () => {
 		const { playlists, track } = this.props;
-		console.info(playlists);
+		console.info(playlists, track);
 		if (playlists) {
-			return playlists.forEach((playlist) => {
-				return <MenuItem primaryText={playlist.name} onItemTouchTap={this.handlePlaylistClick(playlists, track)}/>;
-			});
+			return playlists.map((playlist) => (
+				<MenuItem
+					primaryText={playlist.name}
+					onClick={this.handlePlaylistClick(playlist, track)}
+					/>
+			));
 		}
 		return [];
 	}
@@ -33,6 +44,19 @@ export default class PlaylistContextMenu extends Component {
 }
 
 PlaylistContextMenu.propTypes = {
-	value: PropTypes.number,
+	value: PropTypes.string,
+	track: PropTypes.object,
 	addTrackToPlaylist: PropTypes.func.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	playlists: PropTypes.array.isRequired,
 };
+
+function mapStateToProps(state) {
+	return {
+		playlists: state.playlists.playlists,
+		currentUser: state.profile.currentUser,
+	};
+}
+
+export default connect(mapStateToProps)(PlaylistContextMenu);

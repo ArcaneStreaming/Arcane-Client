@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { AppBar } from 'material-ui';
@@ -96,4 +97,15 @@ class Header extends Component  {
 	}
 }
 
-export default connect()(Header);
+Header.propTypes = {
+	dispatch: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+};
+
+function mapStateToProps(state) {
+	return {
+		currentUser: state.profile.currentUser,
+	};
+}
+
+export default connect(mapStateToProps)(Header);

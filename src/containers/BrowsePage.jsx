@@ -1,10 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import * as GenreActions from '../actions/GenreActions';
-import * as ArtistActions from '../actions/ArtistActions';
-import * as AlbumActions from '../actions/AlbumActions';
 import BrowseCarousel from '../components/BrowseCarousel';
+
 class BrowsePage extends Component {
 	constructor(props) {
 		super(props);
@@ -14,11 +12,6 @@ class BrowsePage extends Component {
 			snackOpen:false,
 			snackMessage: 'Added nada!',
 		};
-		const { dispatch } = this.props;
-		// dispatch(TrackActions.getTracks());
-		dispatch(AlbumActions.getAlbums());
-		dispatch(ArtistActions.getArtists());
-		dispatch(GenreActions.getGenres());
 	}
 
 	addToSelected = (items) => {

@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import { getUserPlaylists } from './PlaylistActions';
 
 const host = '/api';
 
@@ -32,11 +33,13 @@ export function getArtistSummaries(id) {
 
 export function getCurrentUser(id) {
 	return fetch(host + '/users/listeners/' + id + '/')
-		.then(response => response.json())
-		.then(json => ({
+	.then(response => response.json())
+	.then(json => {
+		return {
 			type: types.GET_CURRENT_USER,
 			user: json,
-		}));
+		};
+	});
 }
 
 export function toggleUserView(isArtistView) {

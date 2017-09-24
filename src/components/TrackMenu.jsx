@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import {  IconButton, IconMenu } from 'material-ui';
+import PropTypes from 'prop-types';
+import { IconButton, IconMenu } from 'material-ui';
 import PlaylistContextMenu from './PlaylistContextMenu';
+import { addTrackToPlaylist } from '../actions/PlaylistActions';
 
 export default class TrackMenu extends Component {
+	static propTypes = {
+		id: PropTypes.number,
+		name: PropTypes.string,
+		dispatch: PropTypes.func.isRequired,
+	}
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -10,10 +17,15 @@ export default class TrackMenu extends Component {
 		};
 	}
 
-	handleSelect = (e, value) => {
-		const { id, name } = this.props;
-		const { actions } = this.state;
-		alert('Dispatch '+actions[value]+' for track: ('+id+' : '+name+')');
+	handleSelect = (val1, val2) => {
+		const { id, name, dispatch } = this.props;
+		dispatch(addTrackToPlaylist(id, val1));
+		console.info(name, val2, 'in handleSelect');
+	}
+
+	handlePlaylistAdd = (playlist) => {
+		const { id, dispatch } = this.props;
+		dispatch(addTrackToPlaylist(id, playlist));
 	}
 
 	render() {
@@ -27,7 +39,7 @@ export default class TrackMenu extends Component {
 				// style={{display:'inline-flex', flexDirection:'row', justifyContent:'flex-end'}}
 				targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 				>
-				<PlaylistContextMenu value='1' addTrackToPlaylist={this.handleSelect} />
+				<PlaylistContextMenu value='1' addTrackToPlaylist={this.handlePlaylistAdd} />
 				{// <MenuItem
 				// 	primaryText="Start radio"
 				// 	value={0}

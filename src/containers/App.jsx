@@ -1,30 +1,74 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
-// import Audio from '../components/Audio'
 import ReactAudioPlayer from 'react-audio-player';
 import Header from '../components/Header';
 import FloatingControls from '../components/FloatingControls';
 import * as AudioActions from '../actions/AudioActions';
 import * as ProfileActions from '../actions/ProfileActions';
+import * as PlaylistActions from '../actions/PlaylistActions';
+import * as TrackActions from '../actions/TrackActions';
+import * as GenreActions from '../actions/GenreActions';
+import * as AlbumActions from '../actions/AlbumActions';
+import * as ArtistActions from '../actions/ArtistActions';
 import clone from 'lodash/clone';
 
 @connect(
 	state => ({ audio: state.audio, theme: state.theme, profile: state.profile }),
-	dispatch => bindActionCreators({ ...AudioActions, ...ProfileActions }, dispatch)
+	dispatch => bindActionCreators({
+		...AudioActions, ...ProfileActions, ...PlaylistActions,
+		...GenreActions, ...AlbumActions, ...ArtistActions, ...TrackActions,
+	}, dispatch)
 )
 
 export default class App extends Component {
+	static propTypes = {
+		updateVolume: PropTypes.func.isRequired,
+		updatePosition: PropTypes.func.isRequired,
+		// updateQueue: PropTypes.func.isRequired,
+		setAudio: PropTypes.func.isRequired,
+		setProgress: PropTypes.func.isRequired,
+		setTime: PropTypes.func.isRequired,
+		setError: PropTypes.func.isRequired,
+		retrieveSongs: PropTypes.func.isRequired,
+		toggleFavorite: PropTypes.func.isRequired,
+		toggleRepeat: PropTypes.func.isRequired,
+		toggleLoop: PropTypes.func.isRequired,
+		toggleShuffle: PropTypes.func.isRequired,
+		play: PropTypes.func.isRequired,
+		pause: PropTypes.func.isRequired,
+		next: PropTypes.func.isRequired,
+		previous: PropTypes.func.isRequired,
+		audio: PropTypes.object.isRequired,
+
+		getCurrentUser: PropTypes.func.isRequired,
+		getUserPlaylists: PropTypes.func.isRequired,
+		getAlbums: PropTypes.func.isRequired,
+		getArtists: PropTypes.func.isRequired,
+		getGenres: PropTypes.func.isRequired,
+		addToQueue: PropTypes.func.isRequired,
+		isShuffling: PropTypes.bool,
+		profile: PropTypes.object,
+		theme: PropTypes.object,
+		children: PropTypes.object,
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			autoPlay: false,
 		};
+
+		props.getAlbums();
+		props.getArtists();
+		props.getGenres();
 	}
 
 
 	componentDidMount() {
+		const { profile } = this.props;
 		// Initialize DOM Audio and retrieve
 		this.props.setAudio(this.audio.audioEl);
 		this.props.updateVolume(this.props.audio.volume);
@@ -33,8 +77,9 @@ export default class App extends Component {
 		this.props.retrieveSongs(this.props.isShuffling);
 
 		// Get current user if not in store
-		if (!this.props.profile.currentUser.avatar) {
+		if (!profile.currentUser.id) {
 			this.props.getCurrentUser(window.sessionStorage.getItem('currentUser'));
+			this.props.getUserPlaylists(window.sessionStorage.getItem('currentUser'));
 		}
 	}
 
@@ -67,7 +112,7 @@ export default class App extends Component {
 
 	handleEnd = () => {
 		this.props.next();
-		this.props.updateQueue();
+		// this.props.updateQueue();
 	}
 
 	handleLoadedData = () => {

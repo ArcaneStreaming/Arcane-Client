@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Drawer } from 'material-ui';
 import ArcaneMenu from './ArcaneMenu';
 
@@ -18,5 +19,10 @@ const ArcaneDrawer = (props) => {
 			<ArcaneMenu onClick={props.onClose} currentUser={props.currentUser} />
 		</Drawer>
 	);
+};
+
+ArcaneDrawer.propTypes = {
+	onClose: PropTypes.func,
+	currentUser: PropTypes.object,
 };
 export default ArcaneDrawer;

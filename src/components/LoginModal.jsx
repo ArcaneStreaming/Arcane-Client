@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import SignUpForm from '../components/SignUpForm';
 
 import * as ProfileActions from '../actions/ProfileActions';
+import { getUserPlaylists } from '../actions/PlaylistActions';
 
 const styles = {
 	formContainer: {
@@ -87,6 +88,7 @@ class LoginModal extends Component {
 				window.sessionStorage.setItem('token', json.token);
 				window.sessionStorage.setItem('currentUser', json.listener);
 				dispatch(ProfileActions.getCurrentUser(json.listener));
+				dispatch(getUserPlaylists(json.listener));
 				dispatch(push('/app/'));
 			} else {
 				if (json.username) {

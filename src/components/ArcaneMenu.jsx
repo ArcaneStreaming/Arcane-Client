@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { GridList, GridTile } from 'material-ui';
 import SquareButton from './SquareButton';
 
@@ -42,6 +43,11 @@ const gridStyle = {
 };
 
 export default class ArcaneMenu extends Component {
+	static propTypes = {
+		currentUser: PropTypes.object.isRequired,
+		onClick: PropTypes.func,
+	}
+
 	constructor(props){
 		super(props);
 	}

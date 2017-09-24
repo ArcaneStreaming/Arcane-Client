@@ -1,11 +1,11 @@
 import {
 	GET_USER_PLAYLISTS, GET_PLAYLIST_TRACKS, CREATE_NEW_PLAYLIST,
-	DELETE_PLAYLIST,
+	DELETE_PLAYLIST, ADD_TRACK_TO_PLAYLIST,
 } from '../constants/ActionTypes';
 
 const initialState = {
-	playlists: [],
-	tracks: [],
+	playlists: null,
+	tracks: null,
 };
 
 export default function playlists(state = initialState, action) {
@@ -23,6 +23,14 @@ export default function playlists(state = initialState, action) {
 				...state.playlists.slice(indexOfDeleted + 1),
 			];
 			return { ...state, playlists: playlistsAfterDeletion };
+		case ADD_TRACK_TO_PLAYLIST:
+			console.info(action.payload);
+			return {
+				...state, playlists: [
+					...state.playlists.filter(playlist => playlist.id !== action.payload.id),
+					action.payload,
+				].sort((a, b) => a.id < b.id),
+			};
 		default:
 			return state;
 	}

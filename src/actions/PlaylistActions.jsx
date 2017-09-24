@@ -48,3 +48,21 @@ export function deletePlaylist(playlist) {
 		payload: playlist,
 	}));
 }
+
+export function addTrackToPlaylist(track, playlist) {
+	playlist.tracks.push(track);
+	return fetch(host + '/users/playlists/' + playlist.id + '/', {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json',
+		},
+		credentials: 'same-origin',
+		body: JSON.stringify({
+			'tracks' : playlist.tracks,
+		}),
+	}).then(response => response.json()).then(json => ({
+		type: types.ADD_TRACK_TO_PLAYLIST,
+		payload: json,
+	}));
+}
