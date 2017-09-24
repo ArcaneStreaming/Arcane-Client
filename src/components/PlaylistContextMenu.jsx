@@ -10,9 +10,13 @@ export default class PlaylistContextMenu extends Component {
 
 	renderPlaylistMenuOptions = () => {
 		const { playlists, track } = this.props;
-		return playlists.forEach((playlist) => {
-			return <MenuItem primaryText={playlist.name} onItemTouchTap={this.handlePlaylistClick(playlists, track)}/>;
-		});
+		console.info(playlists);
+		if (playlists) {
+			return playlists.forEach((playlist) => {
+				return <MenuItem primaryText={playlist.name} onItemTouchTap={this.handlePlaylistClick(playlists, track)}/>;
+			});
+		}
+		return [];
 	}
 
 	render() {
@@ -29,6 +33,6 @@ export default class PlaylistContextMenu extends Component {
 }
 
 PlaylistContextMenu.propTypes = {
-	value: PropTypes.string,
+	value: PropTypes.number,
 	addTrackToPlaylist: PropTypes.func.isRequired,
 };
