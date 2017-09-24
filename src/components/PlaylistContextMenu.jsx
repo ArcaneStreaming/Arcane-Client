@@ -18,7 +18,6 @@ class PlaylistContextMenu extends PureComponent {
 
 	renderPlaylistMenuOptions = () => {
 		const { playlists, track } = this.props;
-		console.info(playlists, track);
 		if (playlists) {
 			return playlists.map((playlist) => (
 				<MenuItem

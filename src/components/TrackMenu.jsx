@@ -39,6 +39,7 @@ export default class TrackMenu extends Component {
 				// style={{display:'inline-flex', flexDirection:'row', justifyContent:'flex-end'}}
 				targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 				>
+<<<<<<< HEAD
 				<PlaylistContextMenu value='1' addTrackToPlaylist={this.handlePlaylistAdd} />
 				{// <MenuItem
 				// 	primaryText="Start radio"
@@ -67,6 +68,35 @@ export default class TrackMenu extends Component {
 				// 	value={5}
 				// />
 				}
+=======
+				<PlaylistContextMenu value={1} addTrackToPlaylist={this.handleSelect} />
+				{/* <MenuItem
+					primaryText="Start radio"
+					value={0}
+				/>
+				<MenuItem
+					primaryText="Play next"
+					value={1}
+				/>
+				<Divider />
+				<MenuItem
+					primaryText="Add to queue"
+					value={2}
+				/>
+				<MenuItem
+					primaryText="Add to playlist"
+					value={3}
+					/>
+				<Divider />
+				<MenuItem
+					primaryText="Artist info"
+					value={4}
+				/>
+				<MenuItem
+					primaryText="Album info"
+					value={5}
+					/>*/}
+>>>>>>> master
 			</IconMenu>
 		);
 	}
