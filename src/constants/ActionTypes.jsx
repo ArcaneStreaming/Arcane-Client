@@ -2,6 +2,7 @@ export const GET_GENRES = 'GET_GENRES';
 export const GET_TRACKS = 'GET_TRACKS';
 export const GET_ARTISTS = 'GET_ARTISTS';
 export const GET_ALBUMS = 'GET_ALBUMS';
+export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const GET_ALBUM_TRACKS = 'GET_ALBUM_TRACKS';
 export const GET_ARTIST_ALBUMS = 'GET_ARTIST_ALBUMS';
 export const GET_GENRE_ARTISTS = 'GET_GENRE_ARTISTS';

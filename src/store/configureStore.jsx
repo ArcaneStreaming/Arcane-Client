@@ -4,7 +4,7 @@ import promise from 'redux-promise';
 import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import rootReducer from '../reducers';
-import environment from '../constants/environment.js';
+import { environment } from '../constants/environment.js';
 const debugware = [];
 
 

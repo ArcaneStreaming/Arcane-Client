@@ -42,10 +42,10 @@ RadioPage.propTypes = {
 };
 
 function mapStateToProps(state) {
-	const { tracks, audio, genres } = state;
+	const { tracks, audio, genres, locations } = state;
 
 	return {
-		tracks, audio, genres,
+		tracks, audio, genres, locations,
 	};
 }
 
