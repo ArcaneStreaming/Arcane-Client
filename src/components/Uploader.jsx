@@ -306,28 +306,45 @@ export default class Uploader extends Component  {
 	render() {
 		const contentStyle = { margin: '0 16px' };
 		return (
-			<div style={{ width: '100%', maxWidth: '75vw', margin: 'auto', marginTop:10, maxHeight:'calc(100vh-64px)', overflowY:'auto' }}>
+			<div
+				style={{
+					width: '100%',
+					maxWidth: '75vw',
+					margin: 'auto',
+					marginTop:10,
+					maxHeight:'calc(100vh-64px)',
+					overflowY:'auto'
+				}}
+				>
 				<Stepper
 					activeStep={this.state.stepIndex}
 					linear
 					>
 					<Step>
-						<StepButton onClick={() => this.setState({ stepIndex: 0 })}>
+						<StepButton
+							onClick={() => this.setState({ stepIndex: 0 })}
+							>
 							Create
 						</StepButton>
 					</Step>
 					<Step>
-						<StepButton onClick={() => this.setState({ stepIndex: 1 })}>
+						<StepButton
+							onClick={() => this.setState({ stepIndex: 1 })}
+							>
 							Add
 						</StepButton>
 					</Step>
 					<Step>
-						<StepButton onClick={() => this.setState({ stepIndex: 2 })}>
+						<StepButton
+							onClick={() => this.setState({ stepIndex: 2 })}
+							>
 							Edit
 						</StepButton>
 					</Step>
 					<Step>
-						<StepButton onClick={() => this.setState({ stepIndex: 3 })}>
+						<StepButton
+							onClick={() => this.setState({ stepIndex: 3 })}
+							>
 							Upload
 						</StepButton>
 					</Step>

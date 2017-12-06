@@ -5,8 +5,9 @@ import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import rootReducer from '../reducers';
 import { environment } from '../constants/environment.js';
-const debugware = [];
+import { fetchData } from '../actions/GeneralActions.jsx';
 
+const debugware = [];
 
 export default function configureStore(initialState) {
 	let composeEnhancers;
@@ -24,5 +25,6 @@ export default function configureStore(initialState) {
 		),
 	);
 
+	store.dispatch(fetchData());
 	return store;
 }

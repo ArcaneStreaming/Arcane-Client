@@ -19,7 +19,6 @@ export default function profile(state = initialState, action) {
 		case GET_ARTIST_SUMMARIES:
 			return { ...state, summaries: action.summaries };
 		case GET_CURRENT_USER:
-			console.info('get current user', action);
 			if (action.user)
 				return { ...state, currentUser: action.user };
 			else {

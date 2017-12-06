@@ -28,6 +28,7 @@
 			"error",
 			"unix"
 		],
+		"max-len": [ "error", { "code": 100, "ignore-comments": true } ],
 		"no-case-declarations": [ "off" ],
 		"no-console": [1],
 		"object-curly-spacing": [

@@ -60,10 +60,6 @@ export default class App extends Component {
 		this.state = {
 			autoPlay: false,
 		};
-
-		props.getAlbums();
-		props.getArtists();
-		props.getGenres();
 	}
 
 
