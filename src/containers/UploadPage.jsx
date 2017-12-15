@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Uploader from '../components/Uploader';
 import * as GenreActions from '../actions/GenreActions';
-// import * as TrackActions from '../actions/TrackActions'
+import * as AlbumActions from '../actions/AlbumActions';
 
 class Track {
 	constructor() {
@@ -23,6 +23,15 @@ class UploadPage extends Component {
 		this.state = { tracks: [] };
 		this.props.dispatch(GenreActions.getGenres());
 	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.profile.currentUser.artist !==
+			this.props.profile.currentUser.artist) {
+			this.props.dispatch(
+				AlbumActions.getArtistAlbums(
+					nextProps.profile.currentUser.artist
+				));
+		}
+	}
 
 	addTrack = (track) => {
 		let newTrack = new Track();
@@ -37,6 +46,7 @@ class UploadPage extends Component {
 					dispatch={this.props.dispatch}
 					genres={this.props.genres}
 					currentUser={this.props.profile.currentUser}
+					{...this.props}
 					/>
 			</div>
 		);
@@ -47,13 +57,16 @@ UploadPage.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	genres: PropTypes.object.isRequired,
 	profile: PropTypes.object.isRequired,
+	albums: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
-	const { genres, profile } = state;
+	const { genres, profile, albums } = state;
 
 	return {
-		genres, profile,
+		genres,
+		profile,
+		albums,
 	};
 }
 

@@ -1,40 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Popover } from 'material-ui';
+import { TextField, Popover, Menu, MenuItem } from 'material-ui';
 
 export default class TextDropdown extends Component {
 	static propTypes = {
-		id: PropTypes.number,
+		id: PropTypes.string,
 		value: PropTypes.string,
 		onChange: PropTypes.func.isRequired,
-		options: PropTypes.object,
+		options: PropTypes.array,
+	}
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			open: false,
+		}
 	}
 
 	renderPopoverContents = () => {
-		const { options = [] } = this.props;
-		return options.map(option => (
-			<MenuItem />
-		));
+		const { options } = this.props;
+		return options ? options.map(option => (
+			<MenuItem
+				key={option.id}
+				value={option.id}
+				primaryText={option.name}
+				/>
+		)) : [];
+	}
+
+	onTextFocus = () => {
+		this.setState({ open: true }, this.textField.focus());
 	}
 
 	render() {
+		const { options, ...rest } = this.props;
 		return (
-			<div>
+			<div
+				ref={(div) => this.container = div}
+				>
 				<TextField
 					floatingLabelText='Album Name'
-					fullWidth
 					id={this.props.id}
-					style={{ maxWidth: '47.5%' }}
 					type={'text'}
 					value={this.props.value}
 					onChange={this.props.onChange}
+					onFocus={this.onTextFocus}
+					ref={(field) => this.textField = field}
+					{...rest}
 					/>
-				<Popover
-					>
-					<Menu>
-					{this.renderPopoverContents()}
-					</Menu>
-				</Popover>
+				{
+					options &&
+					<Popover
+						open={this.state.open}
+						anchorEl={this.container}
+						onRequestClose={() => this.setState({ open: false })}
+						useLayerForClickAway={false}
+						>
+						<Menu>
+						{this.renderPopoverContents()}
+						</Menu>
+					</Popover>
+
+				}
 			</div>
 		)
 	}

@@ -1,13 +1,21 @@
 import React, { Component, PropTypes } from 'react';
-import { TextField, SelectField, MenuItem } from 'material-ui';
+import { TextField, SelectField, MenuItem, AutoComplete } from 'material-ui';
 import ImageUploader from './ImageUploader';
 
 export default class AlbumForm extends Component {
+	static propTypes = {
+		genres: PropTypes.array.isRequired,
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			selectedGenre: this.props.album.genre,
 		};
+	}
+	componentWillReceiveProps(nextProps) {
+		console.info('recieved props');
+		this.setState({ selectedGenre: nextProps.album.genre });
 	}
 
 	handleGenreSelect = (event, index, value) => {
@@ -18,25 +26,29 @@ export default class AlbumForm extends Component {
 	renderGenreOptions = (genres) => {
 		const genreOptions = [];
 		genres.map((genre) => {
-			genreOptions.push(<MenuItem value={genre.name} key={'genre_' + genre.id} primaryText={genre.name} />);
+			genreOptions.push(<MenuItem value={genre.id} key={'genre_' + genre.id} primaryText={genre.name} />);
 		});
 
 		return genreOptions;
 	}
 
 	render() {
+		const albums = this.props.albums.artistAlbums.results;
+		const dataSource = albums ? albums.map(album => ({ text: album.name, value: album.id })) : [];
 		return (
 			<div>
 				<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-					<TextField
+					<AutoComplete
 						floatingLabelText='Album Name'
+						searchText={this.state.value}
 						fullWidth
+						style={{ width: '47.5%' }}
 						id={'album_name'}
 						name={'album_name'}
-						style={{ maxWidth: '47.5%' }}
-						type={'text'}
 						value={this.props.album.name}
-						onChange={this.props.handleNameChange}
+						onUpdateInput={this.props.handleNameChange}
+						onNewRequest={this.props.handleNameSelect}
+						dataSource={dataSource}
 						/>
 					<SelectField
 						floatingLabelText='Album Genre'
@@ -55,6 +67,7 @@ export default class AlbumForm extends Component {
 						tooltip='Add Album Artwork'
 						name='Album Artwork'
 						handleFileUpload={this.props.handleFileUpload}
+						url={this.props.album.artwork || undefined}
 						/>
 				</div>
 			</div>
@@ -62,6 +75,3 @@ export default class AlbumForm extends Component {
 	}
 }
 
-AlbumForm.propTypes = {
-	genres: PropTypes.array.isRequired,
-};

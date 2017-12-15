@@ -136,11 +136,16 @@ export default class Uploader extends Component  {
 		this.setState({ album: { ...this.state.album, artwork: artwork } });
 	}
 
-	handleAlbumNameChange = (event, newValue) => {
-		this.setState({ album: { ...this.state.album, name: newValue }, isAlbumInfoValid: this.isAlbumValid() });
+	handleAlbumNameChange = (text) => {
+		this.setState({ album: { ...this.state.album, name: text }, isAlbumInfoValid: this.isAlbumValid() });
+	}
+	handleExistingAlbumSelect = (text, index) => {
+		if (index >= 0) this.setState({ album: this.props.albums.artistAlbums.results[index], isAlbumInfoValid: this.isAlbumValid() });
+		else this.handleAlbumNameChange(text);
 	}
 
 	handleAlbumGenreChange = (genre) => {
+		console.info('genre', genre);
 		this.setState({ album: { ...this.state.album, genre: genre.id }, isAlbumInfoValid: this.isAlbumValid() });
 	}
 
@@ -188,11 +193,13 @@ export default class Uploader extends Component  {
 		return (
 			<div style={{ height: '100%', width: '95%', margin: 'auto' }}>
 				<AlbumForm
+					{...this.props}
 					genres={this.props.genres.results ? this.props.genres.results : []}
 					album={this.state.album}
 					handleFileUpload={this.handleAlbumArtworkSubmit}
 					handleNameChange={this.handleAlbumNameChange}
 					handleGenreChange={this.handleAlbumGenreChange}
+					handleNameSelect={this.handleExistingAlbumSelect}
 					/>
 			</div>
 		);
