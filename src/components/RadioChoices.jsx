@@ -19,7 +19,6 @@ export default class RadioChoices extends PureComponent {
 		super(props);
 
 		const { genres, locations, dispatch } = this.props;
-		console.info('locations', locations);
 		if (!genres.genres) {
 			dispatch(GenreActions.getGenres());
 		}
@@ -39,7 +38,7 @@ export default class RadioChoices extends PureComponent {
 			return (
 				<LocationCollection
 					locations={locations.get('results')}
-					cols={4}
+					cols={8}
 					/>
 			);
 		}
@@ -54,7 +53,7 @@ export default class RadioChoices extends PureComponent {
 			return (
 				<GenresCollection
 					genres={genres.results}
-					cols={4}
+					cols={8}
 					/>
 			);
 		} else {

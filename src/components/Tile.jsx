@@ -8,11 +8,14 @@ import ListDialog from './ListDialog';
 
 const styles = {
 	button: {
-		width:'100%',
-		height:'inherit',
-		//  height:'100%',
-		//  minHeight:'calc(100vh/4)',
+		width: '160px',
+		height: '160px',
+		minWidth: '50px',
+		// width:'100%',
+		// height:'inherit',
 		bottom:0,
+		marginBottom: '5px',
+		marginLeft: '5px',
 		label: {
 			width:'inherit',
 			height:'100%',
@@ -26,8 +29,6 @@ const styles = {
 			textShadow:'1px 1px black',
 			overflow:'hidden',
 			labelText:{
-				//  top:'35%',
-				//  bottom:'35%',
 				height:'100%',
 				width:'100%',
 				display: 'flex',
@@ -85,7 +86,7 @@ class Tile extends Component {
 					<RaisedButton
 						backgroundColor={'transparent'}
 						buttonStyle={{ padding:0,
-							background: 'url('+ imgURL + ') ',
+							background: `url(${imgURL})`,
 							backgroundSize: 'cover',
 							backgroundPosition:'center center',
 						}}
@@ -111,6 +112,11 @@ class Tile extends Component {
 			}
 }
 Tile.propTypes = {
+	type: PropTypes.string,
+	title: PropTypes.string,
+	subtitle: PropTypes.string,
+	imgURL: PropTypes.string,
+	id: PropTypes.string,
 	dispatch: PropTypes.func.isRequired,
 	tracks:   PropTypes.object.isRequired,
 	albums:   PropTypes.object.isRequired,

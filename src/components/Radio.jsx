@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // import Slider from 'react-slick'
 import clone from 'lodash/clone';
 import RadioTile from './RadioTile';
@@ -9,7 +10,7 @@ const styles = {
 		display:'flex',
 		flexDirection:'row',
 		justifyContent:'space-between',
-		width:'100vw',
+		width:'100%',
 		height:'calc(100vh - 64px)',
 		paddingLeft:40,
 		paddingRight:40,
@@ -34,30 +35,22 @@ const styles = {
 		justifyContent:'center',
 		height: 'calc(100vh - 124px)',
 		width:'calc(100vh - 124px)',
+		padding: '0 10px',
 	},
 	rightPreview:{
 		display:'flex',
 		flexDirection:'column',
 		justifyContent:'center',
 	},
-	outerDiv:  {
-		display: 'flex',
-		flexDirection:'column',
-		justifyContent:'center',
-		bottom:0,
-		height: 'calc(100vh - 64px)',
-		width: '100vw',
-		maxWidth:'calc(100vh - 64px)',
-		marginLeft:'auto',
-		marginRight:'auto',
-		padding:30,
-	},
-	innerDiv: {
-	},
 };
 
 
 export default class Radio extends Component  {
+	static propTypes = {
+		isPlaying: PropTypes.bool.isRequired,
+		tracks: PropTypes.array.isRequired,
+	}
+
 	constructor(props){
 		super(props);
 	}
