@@ -10,12 +10,9 @@ const styles = {
 	flexGrid: {
 		width: '100%',
 		height: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-		flexWrap: 'wrap',
-		marginTop: '5px',
+		display: 'grid',
+		gridAutoFlow: 'row',
+		justifyItems: 'center',
 	},
 };
 

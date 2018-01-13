@@ -10,7 +10,7 @@ const styles = {
 	button: {
 		width: '160px',
 		height: '160px',
-		minWidth: '50px',
+		minWidth: '160px',
 		// width:'100%',
 		// height:'inherit',
 		bottom:0,
